@@ -15,7 +15,7 @@
     <div class="row" id="container">
     <?php foreach ($mitra as $m) : ?>
         <div class="col-md-4">
-            <form method="post" action="<?php echo base_url(); ?>shop/shopping/tambah" accept-charset="utf-8" id="result">
+            <form method="post" action="<?php echo base_url(); ?>pesan/form" accept-charset="utf-8" id="result">
                 <div class="product text-center">
                     <div class="mb-3 position-relative">
                         <div class="badge text-white badge"></div>
