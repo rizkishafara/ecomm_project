@@ -17,10 +17,10 @@
                     <p class="text-muted text-small mb-0"><?php echo $mitra['deskripsi'] ?></p>
                 </div>
 
-                <form action="<?php echo base_url(); ?>shop/shopping/tambah" method="post" accept-charset="utf-8">
+                <form action="<?php echo base_url('pesan/Form/pesan/' . $mitra['id_keahlian'])?>" method="post" accept-charset="utf-8">
                     <div class="row align-items-stretch mb-4">
 
-                        <div class="col-sm-3 pl-sm-0 ml-5"><button type="submit" class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0">Pesan Sekarang</button></div>
+                        <div class="col-sm-3 pl-sm-0 ml-5"><button type="submit" class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" action="">Pesan Sekarang</button></div>
                     </div>
 
                 </form>

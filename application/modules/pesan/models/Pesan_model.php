@@ -12,6 +12,7 @@ class Pesan_model extends CI_Model
     public $kecamatan;
     public $lokasi_pelanggan;
     public $id_keahlian;
+    
 
     public function rules()
     {
@@ -25,6 +26,12 @@ class Pesan_model extends CI_Model
             [
                 'field' => 'tanggal',
                 'label' => 'tanggal',
+                'rules' => 'required'
+            ],
+
+            [
+                'field' => 'waktu',
+                'label' => 'waktu',
                 'rules' => 'required'
             ],
 
@@ -57,20 +64,25 @@ class Pesan_model extends CI_Model
             ]
         ];
     }
-    
-    //public function 
+    public function get_keahlian_id($keahlian){
+        $this->db->from('keahlian');
+        $this->db->where('id_keahlian', $keahlian);
+        return $this->db->get()->row_array();
+
+    }
 
     public function pesan()
     {
         $post = $this->input->post();
         $this->id_order;
         $this->tanggal = $post["tanggal"];
+        $this->waktu = $post["waktu"];
         $this->id_pelanggan = $this->session->userdata('id');
         $this->provinsi = $post["provinsi"];
         $this->kota = $post["kota"];
         $this->kecamatan = $post["kecamatan"];
         $this->lokasi_pelanggan = $post["lokasi_pelanggan"];
-       // $this->id_keahlian = $post["id_keahlian"];
+        $this->id_keahlian = $post['keahlian'];
         return $this->db->insert($this->_table, $this);
     }
 }

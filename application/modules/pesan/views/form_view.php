@@ -1,3 +1,5 @@
+<!-- NOTIFICATION -->
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('pesan'); ?>"></div>
 <body>
 <div class="container" style="padding: 50px;">
 <div class="container">
@@ -10,10 +12,16 @@
 		
     <?php endif; ?>
 	<form style="padding: 20px; background-color: #e9e9e9;" action="<?php echo base_url()?>pesan/form/postPesan" method="post" enctype="multipart/form-data">
+			<?php
+				error_reporting(0);
+			?>
+
+			<input class="form-control " type="hidden" name="keahlian" placeholder="Keahlian" value="<?php echo $keahlian['id_keahlian'] ?>" />
+		
 	
 		<div class="form-group">
 			<label for="provinsi" class="form-label ">Provinsi</label>
-			<select class="form-control bootstrap-select <?php echo form_error('provinsi') ? 'is-invalid' : '' ?> type="select" name="provinsi"">
+			<select class="form-control bootstrap-select <?php echo form_error('provinsi') ? 'is-invalid' : '' ?>" type="select" name="provinsi">
 				<option selected>--Pilih--</option>
 				<option value="Jawa Tengah">Jawa Tengah</option>
 				<option value="Jawa Timur">Jawa Timur</option>
@@ -62,6 +70,14 @@
 			<input class="form-control <?php echo form_error('tanggal') ? 'is-invalid' : '' ?>" type="date" id="example-date-input" name="tanggal">
 			<div class="invalid-feedback">
 				<?php echo form_error('tanggal') ?>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="example-time-input" class="form-label">Waktu Pengerjaan</label>
+			<input class="form-control <?php echo form_error('waktu') ? 'is-invalid' : '' ?>" type="time" id="example-time-input" name="waktu">
+			<div class="invalid-feedback">
+				<?php echo form_error('waktu') ?>
 			</div>
 		</div>
 
