@@ -1,32 +1,65 @@
-<?php
-defined('BASEPATH') or exit('No direct script access allowed');
-class m_mitra extends CI_Model
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+class M_mitra extends CI_Model
 {
-    // Produk //
-    public function tampil_produk()
+
+    public function count_all_data()
     {
-        return $this->db->get('tbl_produk');
-    }
-    public function tambah_produk($data, $table)
-    {
-        $this->db->insert($table, $data);
+        return $this->db->get('order_servis')->num_rows();
     }
 
-    public function tampil_kategori(){
-        return $this->db->get('tbl_kategori');
+    public function tampil_order($limit,$start){
+        $this->db->select('*');
+        $this->db->from('order_servis');
+        $this->db->join('keahlian', 'order_servis.id_keahlian=keahlian.id_keahlian');
+        return $this->db->get()->result_array();
     }
 
-    public function delete_produk($id_produk, $table){
-        $this->db->where($id_produk);
-        $this->db->delete($table);
-    }
-
-    public function edit_produk($id_produk, $table)
+    public function get_keahlian_all()
     {
-        return $this->db->get_where($table, $id_produk);
+        $this->db->select('*');
+        $this->db->from('keahlian');
+        return $this->db->get()->result_array();
     }
-    public function update_data($id_produk, $data, $table){
-        $this->db->where($id_produk);
-        $this->db->update($table, $data);
+
+    public function get_order_id($id){
+        $this->db->select('*');
+        $this->db->from('order_servis');
+        $this->db->join('keahlian', 'order_servis.id_keahlian=keahlian.id_keahlian');
+        $this->db->join('mitra', 'order_servis.id_keahlian=mitra.id_keahlian');
+        $this->db->join('pelanggan', 'pelanggan.id_pelanggan=mitra.id_pelanggan');
+        $this->db->where('mitra.id_pelanggan', $id);
+        //$this->db->where('order_servis.id_keahlian', $mitra);
+        return $this->db->get()->result_array();
+    }
+
+    public function get_mitra_keahlian($id)
+    {
+        $this->db->select('*');
+        $this->db->from('mitra');
+        $this->db->join('pelanggan', 'pelanggan.id_pelanggan=mitra.id_pelanggan');
+        $this->db->where('mitra.id_pelanggan', $id);
+        return $this->db->get()->result();
+    }
+
+    public function detail_order($data){
+        $this->db->insert('detail_order_service', $data);
+       
+    }
+    public function edit_status_order($id_order,$data1, $table)
+    {
+        $this->db->where($id_order);
+        $this->db->update($table, $data1);
+    }
+
+    public function find($search)
+    {
+        $this->db->select('*');
+        $this->db->from('mitra');
+        $this->db->join('keahlian', 'mitra.id_keahlian=keahlian.id_keahlian', 'left');
+        if ($search != '') {
+            $this->db->like('keahlian.daftar_keahlian', $search);
+        }
+
+        return $this->db->get()->result_array();
     }
 }

@@ -11,8 +11,17 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo base_url('service/page') ?>">Home</a>
                             </li>
+                            <?php if ($this->session->userdata('jenis') == 'mitra') { ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo base_url('mitra/mitra/index') ?>">Pesanan</a>
+                                </li>
+                            <?php } else { ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo base_url('service/page/layanan') ?>">Layanan</a>
+                                </li>
+                            <?php } ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo base_url('service/page/layanan') ?>">Layanan</a>
+                                <a class="nav-link" href="<?php echo base_url('service/page/layanan') ?>">Riwayat</a>
                             </li>
                             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Feature</a>
                                 <div class="dropdown-menu mt-3" aria-labelledby="pagesDropdown">
@@ -30,7 +39,6 @@
                             } else {
                             ?>
                                 <li class="nav-item"><a class="nav-link" href="#"> <i class="fas fa-user-alt mr-1 text-gray"></i>&ensp;Hai, <?php echo ucfirst($this->session->userdata('username')); ?> !</a></li>
-
                                 <li class="nav-item"><a class="nav-link" href="<?php echo base_url('auth/login/logout') ?>"> <i class="fas fa-sign-out-alt mr-1 text-gray"></i>&ensp;Logout</a></li>
                             <?php
                             }

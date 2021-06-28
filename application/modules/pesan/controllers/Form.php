@@ -22,11 +22,19 @@ class Form extends CI_Controller {
         $keahlian = $this->Pesan_model;
         $data["keahlian"] = $keahlian->get_keahlian_id($id);
         $data1['title'] = "Pesan";
+        $data['kota'] = $this->Pesan_model->get_kota();
         $this->load->view('template/shop/header_shop', $data1);
         $this->load->view('template/shop/navbar_shop');
         $this->load->view("form_view", $data);
         //$this->load->model("pesan/Pesan_model", $data);
         $this->load->view('template/shop/footer_shop', $data1);
+    }
+
+    public function kecamatan()
+    {
+        $id = $this->input->post('id');
+        $data = $this->Pesan_model->get_kec($id);
+        echo json_encode($data);
     }
 	public function postPesan()
     {

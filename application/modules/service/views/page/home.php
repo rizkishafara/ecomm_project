@@ -115,11 +115,11 @@
                                 <div class="form-group">
                                     <label>Keahlian</label>
                                     <select class="form-control" placeholder="keahlian" id="keahlian" name="keahlian">
-                                        <option holder>Pilih Kategori Produk</option>
+                                        <option holder>Pilih Keahlian</option>
                                         <?php
                                         foreach ($id as $ahli) :
                                         ?>
-                                            <option value="<?php echo $ahli->id_keahlian ?>"><?php echo $ahli->daftar_keahlian ?></option>
+                                            <option value="<?php echo $ahli['id_keahlian']?>"><?php echo $ahli['daftar_keahlian'] ?></option>
                                         <?php
                                         endforeach;
                                         ?>

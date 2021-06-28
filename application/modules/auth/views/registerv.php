@@ -156,6 +156,32 @@
                   </div>
 
                   <div class="form-label-group">
+                    <select class=" form-control bootstrap-select <?php echo form_error('kota') ? 'is-invalid' : '' ?>" id="kota" name="kota" placeholder="kota" aria-label="Default select example">
+                      <option value="">Pilih </option>
+                      <?php foreach ($kota as $k) { ?>
+                        <option id="id_kota" value="<?php echo $k['id_kota'] ?>"><?php echo $k['nama_kota']; ?></option>
+                      <?php } ?>
+                    </select>
+                    
+                    <div class="invalid-feedback">
+                      <?php echo form_error('kota') ?>
+                    </div>
+                  </div>
+
+                  <div class="form-label-group">
+                    
+                    <select class=" form-control bootstrap-select <?php echo form_error('kecamatan') ? 'is-invalid' : '' ?>" id="kecamatan" name="kecamatan" placeholder="kecamatan">
+                      <option value="0">Pilih </option>
+                      <?php foreach ($kec as $kec) { ?>
+                        <option id="id_kecamatan" value="<?php echo $kec['id_kec'] ?>"><?php echo $kec['nama_kec']; ?></option>
+                      <?php } ?>
+                    </select>
+                    <div class="invalid-feedback">
+                      <?php echo form_error('kecamatan') ?>
+                    </div>
+                  </div>
+
+                  <div class="form-label-group">
                     <input value="<?php echo set_value('alamat'); ?>" type="text" id="inputAlamat" name="alamat" class="form-control" placeholder="Alamat">
                     <label for="inputAlamat">Alamat</label>
                     <?php echo form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -196,6 +222,39 @@
   </div>
   <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.js') ?>"></script>
   <script src="<?php echo base_url('assets/jquery/jquery.js') ?>"></script>
+  <script src="<?php echo base_url('assets/ajax/jquery.js') ?>"></script>
+
+
+  <script>
+    $(document).ready(function() {
+      $('#kota').change(function() {
+        var id = $(this).val();
+        $.ajax({
+          type: "POST",
+          url: "<?php echo base_url('pesan/form/kecamatan'); ?>",
+          data: {
+            id: id
+          },
+          async: false,
+          dataType: 'json',
+          success: function(data) {
+            var html = '';
+            var i;
+            for (i = 0; i < data.length; i++) {
+              html += '<option value="' + data[i].id_kec + '">' + data[i].nama_kec + '</option>';
+            }
+            $('#kecamatan').html(html);
+          },
+          error: function(xhr, ajaxOptions, thrownError) {
+            // Ketika ada error          
+            alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            // Munculkan alert error        
+
+          }
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>

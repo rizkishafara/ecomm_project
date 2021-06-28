@@ -49,7 +49,7 @@ class simple_login
                 $this->CI->session->set_userdata('id', $id);
                 $this->CI->session->set_flashdata('pesan', 'Login');
                 //redirect ke halaman dashboard
-                redirect(site_url('mitra/page'));
+                redirect(site_url('service/page'));
             }
         } else {
             //jika tidak ada, set notifikasi dalam flashdata.

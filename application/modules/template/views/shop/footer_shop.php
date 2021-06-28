@@ -39,7 +39,7 @@
 <script src="<?php echo base_url('assets/owl.carousel2.thumbs/owl.carousel2.thumbs.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/boutique/js/front.js') ?>"></script>
 <script src="<?php echo base_url('assets/sweetalert2/sweetalert2.min.js') ?>"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="<?php echo base_url('assets/ajax/jquery.js') ?>"></script>
 
 <script>
     // ------------------------------------------------------- //
@@ -93,7 +93,7 @@
         //cek kesiapan ajax
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
-               container.innerHTML = xhr.responseText;
+                container.innerHTML = xhr.responseText;
             }
         }
         //eksekusi ajax
@@ -102,6 +102,38 @@
     });
 </script>
 
+
+
+<script>
+    $(document).ready(function() {
+        $('#kota').change(function() {
+            var id = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url('pesan/form/kecamatan'); ?>",
+                data: {
+                    id: id
+                },
+                async: false,
+                dataType: 'json',
+                success: function(data) {
+                    var html = '';
+                    var i;
+                    for (i = 0; i < data.length; i++) {
+                        html += '<option value="'+data[i].id_kec+'">' + data[i].nama_kec + '</option>';
+                    }
+                    $('#kecamatan').html(html);
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    // Ketika ada error          
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                    // Munculkan alert error        
+
+                }
+            });
+        });
+    });
+</script>
 <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </div>

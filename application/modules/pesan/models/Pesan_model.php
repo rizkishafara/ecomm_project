@@ -2,12 +2,11 @@
 
 class Pesan_model extends CI_Model
 {
-    private $_table = "order_service";
+    private $_table = "order_servis";
 
     public $id_order;
     public $tanggal;
     public $id_pelanggan;
-    public $provinsi;
     public $kota;
     public $kecamatan;
     public $lokasi_pelanggan;
@@ -41,11 +40,6 @@ class Pesan_model extends CI_Model
                 'rules' => 'numeric'
             ],
 
-            [
-                'field' => 'provinsi',
-                'label' => 'provinsi',
-                'rules' => 'required'
-            ],
 
             [
                 'field' => 'kota',
@@ -78,11 +72,23 @@ class Pesan_model extends CI_Model
         $this->tanggal = $post["tanggal"];
         $this->waktu = $post["waktu"];
         $this->id_pelanggan = $this->session->userdata('id');
-        $this->provinsi = $post["provinsi"];
         $this->kota = $post["kota"];
         $this->kecamatan = $post["kecamatan"];
         $this->lokasi_pelanggan = $post["lokasi_pelanggan"];
         $this->id_keahlian = $post['keahlian'];
         return $this->db->insert($this->_table, $this);
+    }
+
+    //lokasi dengan ajax
+    public function get_kota()
+    {
+        $hasil = $this->db->query("SELECT * FROM kota");
+        return $hasil->result_array();
+    }
+
+    public function get_kec($id)
+    {
+        $ambil = $this->db->query("SELECT * FROM kecamatan WHERE id_kota = '$id'");
+        return $ambil->result();
     }
 }

@@ -15,13 +15,14 @@
     <div class="row" id="container">
         <?php foreach ($mitra as $m) : ?>
             <div class="col-md-4">
-                <form method="post" action="<?php echo base_url('pesan/Form/pesan/' . $m['id_keahlian'])?>" accept-charset="utf-8" id="result">
+                <form method="post" action="<?php echo base_url(); ?>pesan/form/pesan/<?php echo $m['id_keahlian'] ?>" accept-charset=" utf-8" id="result">
                     <div class="product text-center">
                         <div class="mb-3 position-relative">
                             <div class="badge text-white badge"></div>
                             <a class="d-block">
                                 <img class="" src="<?php echo base_url() . 'assets/gambar/mitra/' . $m['gambar_keahlian'] ?>" width="200" height="180">
                             </a>
+                            <input type="hidden" name='keahlian' value="<?php echo $m['id_keahlian'] ?>">
                             <div class="product-overlay">
                                 <ul class="mb-0 list-inline">
                                     <li class="list-inline-item m-0 p-0"><button type="submit" class="btn btn-sm btn-dark">Order</button></li>
@@ -30,7 +31,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <h6><a class="reset-anchor"><?php echo $m['daftar_keahlian'] ?></a></h6>
+                        <h6><a class="reset-anchor" name="kealian"><?php echo $m['daftar_keahlian'] ?></a></h6>
                     </div>
                 </form>
             </div>

@@ -31,6 +31,8 @@ class Register extends CI_Controller
 			$data['nama_pelanggan'] = $this->input->post('name');
 			$data['username_pelanggan'] = $this->input->post('username');
 			$data['email_pelanggan'] = $this->input->post('email');
+			$data['id_kota'] = $this->input->post('kota');
+			$data['id_kecamatan'] = $this->input->post('kecamatan');
 			$data['alamat_pelanggan'] = $this->input->post('alamat');
 			$data['no_hp'] = $this->input->post('tlp');
 			$data['password_pelanggan'] = md5($this->input->post('password'));
@@ -41,8 +43,16 @@ class Register extends CI_Controller
 			$pesan['message'] = "Pendaftaran Berhasil!";
 			$this->load->view('loginv', $pesan);
 		} else {
-			$this->load->view('registerv');
+			$data['kota'] = $this->m_account->get_kota();
+			$this->load->view('registerv', $data);
 		}
+	}
+
+	public function kecamatan()
+	{
+		$id = $this->input->post('id');
+		$data = $this->Pesan_model->get_kec($id);
+		echo json_encode($data);
 	}
 
 	private function _sendEmail(){
