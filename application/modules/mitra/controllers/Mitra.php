@@ -37,10 +37,9 @@ class Mitra extends CI_Controller
 
         $data['title'] = "Order";
         $data['ahli'] = $this->M_mitra->get_keahlian_all();
-        $data['order'] = $this->M_mitra->tampil_order($config['per_page'], $data['start']);
 
         $id_login = $this->session->userdata['id'];
-        $data['order_servis'] = $this->M_mitra->get_order_id($id_login);
+        $data['order_servis'] = $this->M_mitra->get_order_id($id_login,$config['per_page'], $data['start']);
         
         $this->load->view('template/shop/header_shop', $data);
         $this->load->view('template/shop/navbar_shop');

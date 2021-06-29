@@ -104,13 +104,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="gambar">Gambar</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="gambar" name="gambar">
-                                            <label class="custom-file-label" for="gambar" placeholder="Choose file...">Choose file</label>
-                                            <?php echo form_error('gambar', '<small class="text-danger pl-3">', '</small>'); ?>
-                                        </div>
-                                    </div>
+                                    <input type="file" name="gambar">
                                 </div>                                
                                 <div class="form-group">
                                     <label>Keahlian</label>

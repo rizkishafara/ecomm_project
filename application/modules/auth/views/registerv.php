@@ -156,7 +156,7 @@
                   </div>
 
                   <div class="form-label-group">
-                    <select class=" form-control bootstrap-select <?php echo form_error('kota') ? 'is-invalid' : '' ?>" id="kota" name="kota" placeholder="kota" aria-label="Default select example">
+                    <select style="border-radius: 20px;" class="pl-4 form-control bootstrap-select <?php echo form_error('kota') ? 'is-invalid' : '' ?>" id="kota" name="kota" placeholder="kota" aria-label="Default select example">
                       <option value="">Pilih </option>
                       <?php foreach ($kota as $k) { ?>
                         <option id="id_kota" value="<?php echo $k['id_kota'] ?>"><?php echo $k['nama_kota']; ?></option>

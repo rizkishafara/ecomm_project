@@ -21,15 +21,14 @@ class M_mitra extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    public function get_order_id($id){
+    public function get_order_id($id,$limit, $start){
         $this->db->select('*');
-        $this->db->from('order_servis');
         $this->db->join('keahlian', 'order_servis.id_keahlian=keahlian.id_keahlian');
         $this->db->join('mitra', 'order_servis.id_keahlian=mitra.id_keahlian');
         $this->db->join('pelanggan', 'pelanggan.id_pelanggan=mitra.id_pelanggan');
         $this->db->where('mitra.id_pelanggan', $id);
         //$this->db->where('order_servis.id_keahlian', $mitra);
-        return $this->db->get()->result_array();
+        return $this->db->get('order_servis',$limit, $start)->result_array();
     }
 
     public function get_mitra_keahlian($id)
@@ -42,7 +41,7 @@ class M_mitra extends CI_Model
     }
 
     public function detail_order($data){
-        $this->db->insert('detail_order_service', $data);
+        $this->db->insert('detail_order_servis', $data);
        
     }
     public function edit_status_order($id_order,$data1, $table)

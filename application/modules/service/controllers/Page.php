@@ -36,18 +36,22 @@ class Page extends CI_Controller
             if ($foto == '') {
                 
             } else {
-                $config['upload_path']          = './assets/gambar/mitra/';
+                $config['upload_path']          = './assets/gambar/';
                 $config['allowed_types']        = 'jpg|png|jpeg';
-                $config['max_size']             = 100;
+                $config['max_size']             = 10000;
                 $config['max_width']            = 1024;
                 $config['max_height']           = 768;
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config);
+                $config['file_name']            = $foto;
+                $this->load->library('upload');
 
+               $this->upload->initialize($config);
                 if (!$this->upload->do_upload('gambar')) {
-                    echo "upload Gagal";
+                    $error = array('error' => $this->upload->display_errors());
+                    echo '<div class="alert alert-danger">'.$error['error'].'</div>';
+                    echo $foto;
                 } else {
                     $foto = $this->upload->data('file_name');
+                    echo $foto;
                 }
             }
 
@@ -70,9 +74,10 @@ class Page extends CI_Controller
             );
 
            
-            $this->M_Page->Add_mitra($data, 'mitra');
-            $this->M_Page->edit_jenis_pelanggan($id_pelanggan, $data1, 'pelanggan');
+            // $this->M_Page->Add_mitra($data, 'mitra');
+            // $this->M_Page->edit_jenis_pelanggan($id_pelanggan, $data1, 'pelanggan');
             $this->session->set_flashdata('pesan', 'ditambahkan');
+            //redirect('service/page/index');
         
 
     }

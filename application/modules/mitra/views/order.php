@@ -36,7 +36,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                <button class="btn btn-success" type="submit">Terima</button>
+                                    <button class="btn btn-success" type="submit">Terima</button>
                                 </td>
                             </tr>
                         </form>
@@ -45,10 +45,11 @@
 
 
             </div>
-
-            <div style="margin-left: 330px;">
-                <?php echo $this->pagination->create_links(); ?>
-            </div>
+            <tr>
+                <div style="margin-left: 330px;">
+                    <?php echo $this->pagination->create_links(); ?>
+                </div>
+            </tr>
         </table>
     </div>
 </div>
