@@ -31,19 +31,15 @@ class Page extends CI_Controller
             $nama = $this->input->post('nama');
             $alamat = $this->input->post('alamat');
             $id = $this->session->userdata['id'];
-            $foto = $this->input->post('gambar');
+            $foto = $_FILES['gambar'];
             $keahlian = $this->input->post('keahlian');
             if ($foto == '') {
-                
+                echo '....';
             } else {
-                $config['upload_path']          = './assets/gambar/';
-                $config['allowed_types']        = 'jpg|png|jpeg';
-                $config['max_size']             = 10000;
-                $config['max_width']            = 1024;
-                $config['max_height']           = 768;
-                $config['file_name']            = $foto;
-                $this->load->library('upload');
+               $config['upload_path'] = 'assets/gambar/mitra';
+               $config['allowed_types'] = 'jpg|png|jpeg';
 
+               $this->load->library('upload', $config);
                $this->upload->initialize($config);
                 if (!$this->upload->do_upload('gambar')) {
                     $error = array('error' => $this->upload->display_errors());
@@ -51,7 +47,7 @@ class Page extends CI_Controller
                     echo $foto;
                 } else {
                     $foto = $this->upload->data('file_name');
-                    echo $foto;
+                    echo 'success';
                 }
             }
 
@@ -74,10 +70,10 @@ class Page extends CI_Controller
             );
 
            
-            // $this->M_Page->Add_mitra($data, 'mitra');
-            // $this->M_Page->edit_jenis_pelanggan($id_pelanggan, $data1, 'pelanggan');
+            $this->M_Page->Add_mitra($data, 'mitra');
+            $this->M_Page->edit_jenis_pelanggan($id_pelanggan, $data1, 'pelanggan');
             $this->session->set_flashdata('pesan', 'ditambahkan');
-            //redirect('service/page/index');
+            redirect('service/page/index');
         
 
     }
@@ -145,6 +141,16 @@ class Page extends CI_Controller
         $this->load->view('template/shop/header_shop', $data);
         $this->load->view('template/shop/navbar_shop');
         $this->load->view('page/about');
+        $this->load->view('template/shop/footer_shop');
+    }
+
+    public function riwayat(){
+        $data['title'] = "Riwayat";
+        $id = $this->session->userdata['id'];
+        $data['riwayat'] = $this->M_Page->riwayat_order($id);
+        $this->load->view('template/shop/header_shop', $data);
+        $this->load->view('template/shop/navbar_shop');
+        $this->load->view('page/riwayat', $data);
         $this->load->view('template/shop/footer_shop');
     }
 

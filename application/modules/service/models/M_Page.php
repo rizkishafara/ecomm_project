@@ -46,6 +46,16 @@ class M_Page extends CI_Model
 
     }
 
+    public function riwayat_order($id){
+        $this->db->select('*');
+        $this->db->join('keahlian', 'order_servis.id_keahlian=keahlian.id_keahlian');
+        $this->db->join('mitra', 'order_servis.id_keahlian=mitra.id_keahlian');
+        $this->db->join('pelanggan', 'pelanggan.id_pelanggan=mitra.id_pelanggan');
+        $this->db->where('order_servis.id_pelanggan', $id);
+        //$this->db->where('order_servis.id_keahlian', $mitra);
+        return $this->db->get('order_servis')->result_array();
+    }
+
 
     public function find($search)
     {

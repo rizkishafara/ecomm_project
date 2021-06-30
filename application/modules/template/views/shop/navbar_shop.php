@@ -21,7 +21,7 @@
                                 </li>
                             <?php } ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo base_url('service/page/layanan') ?>">Riwayat</a>
+                                <a class="nav-link" href="<?php echo base_url('service/page/riwayat') ?>">Riwayat</a>
                             </li>
                             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Feature</a>
                                 <div class="dropdown-menu mt-3" aria-labelledby="pagesDropdown">

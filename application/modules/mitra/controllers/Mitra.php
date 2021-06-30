@@ -69,6 +69,7 @@ class Mitra extends CI_Controller
         );
         $this->M_mitra->edit_status_order($id, $data1, 'order_servis');
         $this->M_mitra->detail_order($data);
+        redirect('mitra/index');
     }
 
 
