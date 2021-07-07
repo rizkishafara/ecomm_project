@@ -6,10 +6,12 @@ class Login extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->library('simple_login');
+		$this->load->model('m_account');
 	}
 
 	public function index()
 	{
+		
 		// Fungsi Login
 		$valid = $this->form_validation;
 		$username = $this->input->post('username');

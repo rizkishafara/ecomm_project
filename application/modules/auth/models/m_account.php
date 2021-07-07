@@ -20,5 +20,7 @@ class m_account extends CI_Model
         $ambil = $this->db->query("SELECT * FROM kecamatan WHERE id_kota = '$id'");
         return $ambil->result();
     }
+
+   
     
 }

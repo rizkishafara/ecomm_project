@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2021 at 11:19 AM
--- Server version: 10.1.40-MariaDB
--- PHP Version: 7.3.5
+-- Generation Time: Jul 07, 2021 at 10:47 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -32,10 +31,17 @@ CREATE TABLE `detail_order_servis` (
   `id` int(11) NOT NULL,
   `id_order` int(11) NOT NULL,
   `harga_jasa` int(11) NOT NULL,
-  `harga_jarak` int(11) NOT NULL,
   `biaya_admin` int(11) NOT NULL,
-  `id_mitra` int(11) NOT NULL
+  `id_mitra` int(11) NOT NULL,
+  `bukti_tf` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `detail_order_servis`
+--
+
+INSERT INTO `detail_order_servis` (`id`, `id_order`, `harga_jasa`, `biaya_admin`, `id_mitra`, `bukti_tf`) VALUES
+(1, 1, 20000, 5000, 6, 'index.jpg');
 
 -- --------------------------------------------------------
 
@@ -153,6 +159,13 @@ CREATE TABLE `mitra` (
   `rating` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `mitra`
+--
+
+INSERT INTO `mitra` (`id_mitra`, `id_pelanggan`, `id_keahlian`, `nama_mitra`, `foto_mitra`, `alamat_mitra`, `harga_jasa`, `no_ktp`, `status`, `rating`) VALUES
+(6, 3, 1, 'Tama', 'background_2.png', 'adasfas', 20000, 2147483647, 'tersedia', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -168,8 +181,16 @@ CREATE TABLE `order_servis` (
   `id_kecamatan` int(11) NOT NULL,
   `lokasi_pelanggan` varchar(255) NOT NULL,
   `id_keahlian` int(11) NOT NULL,
-  `status` enum('belum','sedang diproses','selesai','') NOT NULL
+  `status_order` enum('belum','sedang diproses','selesai','') NOT NULL,
+  `status_bayar` enum('Belum Terbayar','Sudah Terbayar','','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_servis`
+--
+
+INSERT INTO `order_servis` (`id_order`, `tanggal`, `waktu`, `id_pelanggan`, `id_kota`, `id_kecamatan`, `lokasi_pelanggan`, `id_keahlian`, `status_order`, `status_bayar`) VALUES
+(1, '2021-07-05', '12:00:00', 2, 1, 16, 'asfasfasf', 1, 'selesai', 'Sudah Terbayar');
 
 -- --------------------------------------------------------
 
@@ -196,7 +217,9 @@ CREATE TABLE `pelanggan` (
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `nama_pelanggan`, `email_pelanggan`, `username_pelanggan`, `password_pelanggan`, `alamat_pelanggan`, `no_hp`, `jenis`, `id_kota`, `id_kecamatan`) VALUES
 (1, 'admin', 'admin@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '081111111111', 'admin', 0, 0),
-(2, 'Rian', 'rian@gmail.com', 'rian', 'cb2b28afc2cc836b33eb7ed86f99e65a', 'Jl.Dr.Cipto Mangunkusumo', '088233520366', 'member', 2, 17);
+(2, 'Rian', 'rian@gmail.com', 'rian', 'cb2b28afc2cc836b33eb7ed86f99e65a', 'Jl.Dr.Cipto Mangunkusumo', '088233520366', 'member', 2, 17),
+(3, 'Tama', 'tama@gmail.com', 'tama', '407b056f5e6197a948b7f836567fb63d', 'asdasdasd', '0456536', 'mitra', 1, 1),
+(4, 'Rizki', 'rizki@gmail.com', 'rizki', '3e089c076bf1ec3a8332280ee35c28d4', 'Jln. Ngaliyan Nomor 52', '088233520117', 'member', 1, 7);
 
 -- --------------------------------------------------------
 
@@ -284,7 +307,7 @@ ALTER TABLE `pembayaran_servis`
 -- AUTO_INCREMENT for table `detail_order_servis`
 --
 ALTER TABLE `detail_order_servis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `keahlian`
@@ -308,19 +331,19 @@ ALTER TABLE `kota`
 -- AUTO_INCREMENT for table `mitra`
 --
 ALTER TABLE `mitra`
-  MODIFY `id_mitra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_mitra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `order_servis`
 --
 ALTER TABLE `order_servis`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `pembayaran_servis`

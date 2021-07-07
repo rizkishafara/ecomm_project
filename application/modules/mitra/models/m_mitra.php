@@ -61,4 +61,34 @@ class M_mitra extends CI_Model
 
         return $this->db->get()->result_array();
     }
+
+    public function riwayat_order($id)
+    {
+        $this->db->select('*');
+        $this->db->join('detail_order_servis', 'detail_order_servis.id_order=order_servis.id_order');
+        $this->db->join('keahlian', 'order_servis.id_keahlian=keahlian.id_keahlian');
+        $this->db->join('mitra', 'order_servis.id_keahlian=mitra.id_keahlian');
+        $this->db->join('pelanggan', 'pelanggan.id_pelanggan=mitra.id_pelanggan');
+        $this->db->where('pelanggan.id_pelanggan', $id);
+        //$this->db->where('order_servis.id_keahlian', $mitra);
+        return $this->db->get('order_servis')->result_array();
+    }
+
+
+    public function get_mitra_id($id)
+    {
+        $this->db->select('*');
+        $this->db->from('pelanggan');
+        $this->db->join('order_servis', 'pelanggan.id_pelanggan=order_servis.id_pelanggan');
+        $this->db->join('detail_order_servis', 'detail_order_servis.id_order=order_servis.id_order');
+        $this->db->join('keahlian', 'order_servis.id_keahlian=keahlian.id_keahlian');
+        $this->db->join('mitra', 'mitra.id_mitra=detail_order_servis.id_mitra');
+        $this->db->where('mitra.id_mitra', $id);
+        return $this->db->get()->result_array();
+    }
+
+    public function change_order_status($id_order, $data, $table){
+        $this->db->where($id_order);
+        $this->db->update($table, $data);
+    }
 }

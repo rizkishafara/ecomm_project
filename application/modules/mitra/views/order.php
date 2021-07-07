@@ -32,6 +32,8 @@
 
                                             <input type="hidden" value="<?php echo $o['id_order'] ?>" name="id_order">
                                             <input type="hidden" value="<?php echo $o['id_mitra'] ?>" name="id_mitra">
+                                            <input type="hidden" value="<?php echo $o['harga_jasa'] ?>" name="tarif">
+
                                         </div>
                                     </div>
                                 </td>

@@ -50,13 +50,13 @@ class Mitra extends CI_Controller
     public function input_detail(){
         $id_order = $this->input->post('id_order');
         $id_mitra = $this->input->post('id_mitra');
-
+        $tarif = $this->input->post('tarif');
+        $biaya_admin = 10/100*$tarif;
         $data = array(
             'id_order' => $id_order,
             'id_mitra' => $id_mitra,
-            'biaya_admin' => 5000,
-            'harga_jasa' => 30000,
-            'harga_jarak' => 4000
+            'biaya_admin' => $biaya_admin,
+            'harga_jasa' => $tarif,
         );
 
         $status = 'sedang diproses';
@@ -78,5 +78,34 @@ class Mitra extends CI_Controller
         $search = $_GET['search'];
         $data['mitra']  = $this->M_Page->find($search);
         $hasil = $this->load->view('page/view_search', $data);
+    }
+
+    public function riwayat()
+    {
+        $data['title'] = "Riwayat";
+        $id = $this->session->userdata['id'];
+        echo $id;
+        $data['riwayat'] = $this->M_mitra->riwayat_order($id);
+        $data['detail'] = $this->M_mitra->get_mitra_id($id);
+        $this->load->view('template/shop/header_shop', $data);
+        $this->load->view('template/shop/navbar_shop');
+        $this->load->view('mitra/riwayat', $data);
+        $this->load->view('template/shop/footer_shop');
+    }
+
+    public function change_status(){
+        $id_order = $this->input->post('id_order');
+        $status = 'selesai';
+
+        $data = array(
+         'status_order' => $status
+        );
+
+        $id = array(
+                'id_order' => $id_order
+            );
+
+        $this->M_mitra->change_order_status($id, $data, 'order_servis');
+        redirect('mitra/riwayat');
     }
 }

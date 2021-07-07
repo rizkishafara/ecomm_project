@@ -85,46 +85,51 @@
                 </div>
                 <div class="modal-body">
                     <?php echo form_open_multipart('service/page/tambah_mitra'); ?>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="nama_produk">NIK</label>
-                                <input type="text" class="form-control" id="nik" name="nik" placeholder="NIK">
-                                <?php echo form_error('nama_produk', '<small class="text-danger pl-3">', '</small>'); ?>
-                            </div>
-                            <div class="form-group">
-                                <label for="nama_produk">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap">
-                                <?php echo form_error('nama_produk', '<small class="text-danger pl-3">', '</small>'); ?>
-                            </div>
-                            <div class=" form-group">
-                                <label for="deskripsi">Alamat</label>
-                                <textarea type="text" class="form-control" id="alamat" name="alamat" rows="4" placeholder="Alamat"></textarea>
-                                <?php echo form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
-                            </div>
-                            <div class="form-group">
-                                <label for="gambar">Gambar</label>
-                                <input type="file" name="gambar">
-                            </div>
-                            <div class="form-group">
-                                <label>Keahlian</label>
-                                <select class="form-control" placeholder="keahlian" id="keahlian" name="keahlian">
-                                    <option holder>Pilih Keahlian</option>
-                                    <?php
-                                    foreach ($id as $ahli) :
-                                    ?>
-                                        <option value="<?php echo $ahli['id_keahlian'] ?>"><?php echo $ahli['daftar_keahlian'] ?></option>
-                                    <?php
-                                    endforeach;
-                                    ?>
-                                </select>
-                                <?php echo form_error('keahlian', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="nama_produk">NIK</label>
+                            <input type="text" class="form-control" id="nik" name="nik" placeholder="NIK">
+                            <?php echo form_error('nama_produk', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="form-group">
+                            <label for="nama_produk">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap">
+                            <?php echo form_error('nama_produk', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class=" form-group">
+                            <label for="deskripsi">Alamat</label>
+                            <textarea type="text" class="form-control" id="alamat" name="alamat" rows="4" placeholder="Alamat"></textarea>
+                            <?php echo form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="form-group">
+                            <label for="gambar">Gambar</label>
+                            <input type="file" name="gambar">
+                        </div>
+                        <div class="form-group">
+                            <label>Keahlian</label>
+                            <select class="form-control" placeholder="keahlian" id="keahlian" name="keahlian">
+                                <option holder>Pilih Keahlian</option>
+                                <?php
+                                foreach ($id as $ahli) :
+                                ?>
+                                    <option value="<?php echo $ahli['id_keahlian'] ?>"><?php echo $ahli['daftar_keahlian'] ?></option>
+                                <?php
+                                endforeach;
+                                ?>
+                            </select>
+                            <?php echo form_error('keahlian', '<small class="text-danger pl-3">', '</small>'); ?>
 
-                            </div>
                         </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                            <button type="submit" name="btnSubmit" class="btn btn-primary">Submit</button>
+                        <div class="form-group">
+                            <label for="nama_produk">Tarif Jasa</label>
+                            <input type="text" class="form-control" id="tarif" name="tarif" placeholder="Nama Lengkap">
+                            <?php echo form_error('nama_produk', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <button type="submit" name="btnSubmit" class="btn btn-primary">Submit</button>
+                    </div>
                     <?php echo form_close(); ?>
                 </div>
             </div>

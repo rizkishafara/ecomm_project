@@ -27,10 +27,11 @@ class simple_login
         md5($password)));
         if ($query->num_rows() == 1) {
             //ambil data user berdasar username
-            $row = $this->CI->db->query('SELECT id_pelanggan, jenis FROM pelanggan where username_pelanggan = "' . $username . '"');
+            $row = $this->CI->db->query('SELECT * FROM pelanggan where username_pelanggan = "' . $username . '"');
             $pelanggan = $row->row();
-            $id = $pelanggan->id_pelanggan;
             $jenis = $pelanggan->jenis;
+            $id = $pelanggan->id_pelanggan;
+        
 
             if ($jenis == 'member') {
                 //set session user
@@ -42,11 +43,14 @@ class simple_login
                 //redirect ke halaman dashboard
                 redirect(site_url('service/page'));
             } else {
+                $row = $this->CI->db->query('SELECT * FROM mitra where id_pelanggan = "'.$id.'"');
+                $mitra = $row->row();
+                $id_mitra = $mitra->id_mitra;
                 //set session user
                 $this->CI->session->set_userdata('username', $username);
                 $this->CI->session->set_userdata('jenis', $jenis);
                 $this->CI->session->set_userdata('id_login', uniqid(rand()));
-                $this->CI->session->set_userdata('id', $id);
+                $this->CI->session->set_userdata('id', $id_mitra);
                 $this->CI->session->set_flashdata('pesan', 'Login');
                 //redirect ke halaman dashboard
                 redirect(site_url('service/page'));
