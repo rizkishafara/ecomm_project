@@ -11,10 +11,10 @@ class Form extends CI_Controller {
     }
 	public function index()
 	{
-        $data['title'] = "Pesan";
+        $data['title'] = "Layanan";
         $this->load->view('template/shop/header_shop', $data);
         $this->load->view('template/shop/navbar_shop');
-        $this->load->view("form_view");
+        //$this->load->view("form_view");
         //$this->load->model("pesan/Pesan_model", $data);
         $this->load->view('template/shop/footer_shop', $data);
 	}
@@ -28,6 +28,7 @@ class Form extends CI_Controller {
         $this->load->view("form_view", $data);
         //$this->load->model("pesan/Pesan_model", $data);
         $this->load->view('template/shop/footer_shop', $data1);
+        
     }
 
     public function kecamatan()
@@ -41,21 +42,13 @@ class Form extends CI_Controller {
         $pesan = $this->Pesan_model;
         $validation = $this->form_validation;
         $validation->set_rules($pesan->rules());
-        $pesan->pesan();
-        $this->session->set_flashdata('pesan', ', Pesanan Diproses!');
-        $this->pesan($id=null);
-
-        /*if ($validation->run()) {
-            $pesan->pesan();
-            $this->session->set_flashdata('pesan', ', Pesanan Diproses!');  
-           //$this->"service/Page"->layanan();
-            $this->load->module("../service/Page/layanan");
-            //$this->Page->layanan();
-        //}else{
-           // $pesan->pesan();
-            //$this->session->set_flashdata('pesan', 'Berhasil disimpan');  
-          //  $this->load->library("service/controllers/page/layanan");          
-        //}*/
         
+        if ($validation->run()) {
+            $pesan->pesan();
+            $this->session->set_flashdata('pesan', ', Pesanan Diproses!');
+            $this->pesan($id=null);
+            
+        }
+        redirect(site_url("service/page/layanan"));
     }
 }

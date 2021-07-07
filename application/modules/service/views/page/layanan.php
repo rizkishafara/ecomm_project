@@ -1,3 +1,6 @@
+<!-- NOTIFICATION -->
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('pesan'); ?>"></div>
+
 <!-- SHOP LISTING-->
 <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
     <div class="col-md-4">

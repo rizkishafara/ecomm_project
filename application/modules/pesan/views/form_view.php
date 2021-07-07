@@ -1,5 +1,3 @@
-<!-- NOTIFICATION -->
-<div class="flash-data" data-flashdata="<?= $this->session->flashdata('pesan'); ?>"></div>
 
 <body>
 	<div class="container" style="padding: 50px;">
