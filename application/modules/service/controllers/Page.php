@@ -83,40 +83,39 @@ class Page extends CI_Controller
 
     public function layanan()
     {
-    
-            //load library
-            $this->load->library('pagination');
-            //pagination
-            $config['base_url'] = 'http://localhost/ecomm_service/service/page/layanan';
-            $config['total_rows'] = $this->M_Page->count_all_data();
-            $data['total_rows'] = $config['total_rows'];
-            $config['per_page'] = 3;
 
-            $data['start'] = $this->uri->segment(4);
+        //load library
+        $this->load->library('pagination');
+        //pagination
+        $config['base_url'] = 'http://localhost/ecomm_service/service/page/layanan';
+        $config['total_rows'] = $this->M_Page->count_all_data();
+        $data['total_rows'] = $config['total_rows'];
+        $config['per_page'] = 3;
 
-            // Agar bisa mengganti stylenya sesuai class2 yg ada dibootstrap
-            $config['full_tag_open'] = '<nav><ul class="pagination">';
-            $config['full_tag_close'] = '</ul></nav>';
+        $data['start'] = $this->uri->segment(4);
 
-            $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="">';
-            $config['cur_tag_close'] = '</a></li>';
-            $config['num_tag_open'] = '<li class="page-item">';
-            $config['num_tag_close'] = '</li>';
+        // Agar bisa mengganti stylenya sesuai class2 yg ada dibootstrap
+        $config['full_tag_open'] = '<nav><ul class="pagination">';
+        $config['full_tag_close'] = '</ul></nav>';
 
-            $config['attributes'] = array('class' => 'page-link');
-            // End style pagination
+        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
 
-            $this->pagination->initialize($config);
+        $config['attributes'] = array('class' => 'page-link');
+        // End style pagination
 
-            $data['title'] = "Layanan";
-            $data['keahlian'] = $this->M_Page->get_keahlian_all();
-            $data['mitra'] = $this->M_Page->tampil_mitra($config['per_page'], $data['start']);
-            $this->load->view('template/shop/header_shop', $data);
-            $this->load->view('template/shop/navbar_shop');
-            $this->load->view('template/shop/sidebar_shop', $data);
-            $this->load->view('page/layanan', $data);
-            $this->load->view('template/shop/footer_shop', $data);
+        $this->pagination->initialize($config);
 
+        $data['title'] = "Layanan";
+        $data['keahlian'] = $this->M_Page->get_keahlian_all();
+        $data['mitra'] = $this->M_Page->tampil_mitra($config['per_page'], $data['start']);
+        $this->load->view('template/shop/header_shop', $data);
+        $this->load->view('template/shop/navbar_shop');
+        $this->load->view('template/shop/sidebar_shop', $data);
+        $this->load->view('page/layanan', $data);
+        $this->load->view('template/shop/footer_shop', $data);
     }
 
     public function detail($id)
@@ -155,13 +154,17 @@ class Page extends CI_Controller
         $data['title'] = "Riwayat";
         $id = $this->session->userdata['id'];
         $data['riwayat'] = $this->M_Page->riwayat_order($id);
+        if (empty($id)) {
+            redirect('auth/login');
+        }
         $this->load->view('template/shop/header_shop', $data);
         $this->load->view('template/shop/navbar_shop');
         $this->load->view('page/riwayat', $data);
         $this->load->view('template/shop/footer_shop');
     }
 
-    public function status_bayar(){
+    public function status_bayar()
+    {
         $id = $this->input->post('id_order');
         $status_bayar = 'Sudah Terbayar';
         $bukti_tf = $_FILES['bukti_tf'];
@@ -189,14 +192,14 @@ class Page extends CI_Controller
         }
 
         $data = array(
-            'status_bayar'=>$status_bayar
+            'status_bayar' => $status_bayar
         );
 
         $id_order = array(
             'id_order' => $id
         );
         $detail_riwayat = array(
-            'bukti_tf'=> $bukti_tf
+            'bukti_tf' => $bukti_tf
         );
 
         $this->M_Page->pembayaran($id_order, $data, 'order_servis');

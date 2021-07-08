@@ -19,7 +19,7 @@
     }
 
     .bg-image {
-      background-image: url("https://source.unsplash.com/WLUHO9A_xik/600x1200");
+      background-image: url("<?php echo base_url('assets/gambar/images/Register.png') ?>");
       background-size: cover;
       background-position: center;
     }
@@ -155,29 +155,34 @@
                     <?php echo form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                   </div>
 
-                  <div class="form-label-group">
-                    <select style="border-radius: 20px;" class="pl-4 form-control bootstrap-select <?php echo form_error('kota') ? 'is-invalid' : '' ?>" id="kota" name="kota" placeholder="kota" aria-label="Default select example">
-                      <option value="">Pilih </option>
-                      <?php foreach ($kota as $k) { ?>
-                        <option id="id_kota" value="<?php echo $k['id_kota'] ?>"><?php echo $k['nama_kota']; ?></option>
-                      <?php } ?>
-                    </select>
-                    
-                    <div class="invalid-feedback">
-                      <?php echo form_error('kota') ?>
-                    </div>
-                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-label-group">
+                        <select style="border-radius: 20px;" class="pl-4 form-control bootstrap-select <?php echo form_error('kota') ? 'is-invalid' : '' ?>" id="kota" name="kota" placeholder="kota" aria-label="Default select example">
+                          <option value="">Pilih </option>
+                          <?php foreach ($kota as $k) { ?>
+                            <option id="id_kota" value="<?php echo $k['id_kota'] ?>"><?php echo $k['nama_kota']; ?></option>
+                          <?php } ?>
+                        </select>
 
-                  <div class="form-label-group">
-                    
-                    <select class=" form-control bootstrap-select <?php echo form_error('kecamatan') ? 'is-invalid' : '' ?>" id="kecamatan" name="kecamatan" placeholder="kecamatan">
-                      <option value="0">Pilih </option>
-                      <?php foreach ($kec as $kec) { ?>
-                        <option id="id_kecamatan" value="<?php echo $kec['id_kec'] ?>"><?php echo $kec['nama_kec']; ?></option>
-                      <?php } ?>
-                    </select>
-                    <div class="invalid-feedback">
-                      <?php echo form_error('kecamatan') ?>
+                        <div class="invalid-feedback">
+                          <?php echo form_error('kota') ?>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-label-group">
+                        <select style="border-radius: 20px;" class="pl-4 form-control bootstrap-select <?php echo form_error('kecamatan') ? 'is-invalid' : '' ?>" id="kecamatan" name="kecamatan" placeholder="kecamatan">
+                          <option value="0">Pilih </option>
+                          <?php foreach ($kec as $kec) { ?>
+                            <option id="id_kecamatan" value="<?php echo $kec['id_kec'] ?>"><?php echo $kec['nama_kec']; ?></option>
+                          <?php } ?>
+                        </select>
+                        <div class="invalid-feedback">
+                          <?php echo form_error('kecamatan') ?>
+                        </div>
+                      </div>
                     </div>
                   </div>
 

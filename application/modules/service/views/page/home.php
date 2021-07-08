@@ -7,7 +7,7 @@
             <div class="row px-4 px-lg-5">
                 <div class="col-lg-6">
                     <p class="text-white small text-uppercase mb-2">Layanan Jasa Online</p>
-                    <h1 class="h2 text-uppercase mb-3 text-white">Selamat Datang </h1><a class="btn btn-dark" href="shop.html">Browse collections</a>
+                    <h1 class="h2 text-uppercase mb-3 text-white">Selamat Datang </h1><a class="btn btn-light" href="shop.html">Browse collections</a>
                 </div>
             </div>
         </div>

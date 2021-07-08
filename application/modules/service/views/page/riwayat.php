@@ -4,6 +4,8 @@
         <?php foreach ($riwayat as $r) {
             $biaya_admin = 10 / 100 * $r['harga_jasa'];
             $total = $biaya_admin + $r['harga_jasa'];
+            $date = new DateTime($r['waktu']);
+            $tanggal = new DateTime($r['tanggal'])
         ?>
             <div class="card">
                 <div class="card-body">
@@ -28,7 +30,12 @@
                         <tr>
                             <td>Waktu Pengerjaan</td>
                             <td>:</td>
-                            <td><?php echo $r['waktu'] ?>, <?php echo $r['tanggal'] ?></td>
+                            <td><?php echo $date->format('H:i') ?></td>
+                        </tr>
+                        <tr>
+                            <td>Tanggal Pengerjaan</td>
+                            <td>:</td>
+                            <td><?php echo $tanggal->format('d F Y') ?></td>
                         </tr>
 
                     </table>

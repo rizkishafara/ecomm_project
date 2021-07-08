@@ -31,7 +31,7 @@ class simple_login
             $pelanggan = $row->row();
             $jenis = $pelanggan->jenis;
             $id = $pelanggan->id_pelanggan;
-        
+
 
             if ($jenis == 'member') {
                 //set session user
@@ -43,7 +43,7 @@ class simple_login
                 //redirect ke halaman dashboard
                 redirect(site_url('service/page'));
             } else {
-                $row = $this->CI->db->query('SELECT * FROM mitra where id_pelanggan = "'.$id.'"');
+                $row = $this->CI->db->query('SELECT * FROM mitra where id_pelanggan = "' . $id . '"');
                 $mitra = $row->row();
                 $id_mitra = $mitra->id_mitra;
                 //set session user
@@ -83,6 +83,7 @@ class simple_login
      */
     public function logout()
     {
+        $this->CI->session->unset_userdata('jenis');
         $this->CI->session->unset_userdata('username');
         $this->CI->session->unset_userdata('id_login');
         $this->CI->session->unset_userdata('id');

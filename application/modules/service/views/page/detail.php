@@ -5,7 +5,7 @@
                 <!-- PRODUCT SLIDER-->
                 <div class="row m-sm-0">
                     <div class="col-sm-10 order-1 order-sm-2">
-                        <img class="img-fluid" src="<?php echo base_url('assets/gambar/mitra/') . $mitra['gambar_keahlian'] ?>" height="70%">
+                        <img class="img-fluid" src="<?php echo base_url('assets/gambar/mitra/') . $mitra['gambar_keahlian'] ?>">
                     </div>
                 </div>
             </div>
