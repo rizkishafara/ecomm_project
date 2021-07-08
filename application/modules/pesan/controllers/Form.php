@@ -10,8 +10,13 @@ class Form extends CI_Controller
         $this->load->model("Pesan_model");
         $this->load->library('form_validation');
     }
+<<<<<<< HEAD
     public function index()
     {
+=======
+	public function index()
+	{
+>>>>>>> 4f8e28eef2bc21b1a2a08b3b5f8d74e1d94c8f4f
         $data['title'] = "Layanan";
         $this->load->view('template/shop/header_shop', $data);
         $this->load->view('template/shop/navbar_shop');
@@ -30,6 +35,7 @@ class Form extends CI_Controller
         $this->load->view("form_view", $data);
         //$this->load->model("pesan/Pesan_model", $data);
         $this->load->view('template/shop/footer_shop', $data1);
+        
     }
 
     public function kecamatan()
@@ -43,11 +49,20 @@ class Form extends CI_Controller
         $pesan = $this->Pesan_model;
         $validation = $this->form_validation;
         $validation->set_rules($pesan->rules());
+<<<<<<< HEAD
 
         if ($validation->run()) {
             $pesan->pesan();
             $this->session->set_flashdata('pesan', ', Pesanan Diproses!');
             $this->pesan($id = null);
+=======
+        
+        if ($validation->run()) {
+            $pesan->pesan();
+            $this->session->set_flashdata('pesan', ', Pesanan Diproses!');
+            $this->pesan($id=null);
+            
+>>>>>>> 4f8e28eef2bc21b1a2a08b3b5f8d74e1d94c8f4f
         }
         redirect(site_url("service/page/layanan"));
     }

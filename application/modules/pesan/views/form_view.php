@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4f8e28eef2bc21b1a2a08b3b5f8d74e1d94c8f4f
 <body>
 	<div class="container" style="padding: 50px;">
 		<div class="container">
