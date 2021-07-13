@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2021 at 03:05 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.3.28
+-- Generation Time: Jul 13, 2021 at 03:53 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -63,11 +63,19 @@ CREATE TABLE `keahlian` (
 
 INSERT INTO `keahlian` (`id_keahlian`, `daftar_keahlian`, `gambar_keahlian`, `deskripsi`, `jenis`) VALUES
 (1, 'Tukang Ledeng', 'pipa.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Pembangunan'),
-(2, 'Kelistrikan', 'listrik.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Pembangunan'),
+(2, 'Kelistrikan', 'listrik.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Elektronik'),
 (3, 'Tukang Bangunan', 'bangunan.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Pembangunan'),
 (4, 'Check Up Motor', 'check.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Otomotif'),
-(5, 'Tune Up', 'tune.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Otomotif'),
-(6, 'Servis Lengkap', 'servis.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Otomotif');
+(5, 'Overhaul Mesin Motor', 'tune.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Otomotif'),
+(6, 'Tune Up Motor', 'servis.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Otomotif'),
+(7, 'Cleanning Servis', 'cleanning.jpg', 'Ini contoh', 'Pembangunan'),
+(8, 'Oli Motor', 'gantioli.jpg', 'Ganti oli motor', 'Otomotif'),
+(9, 'Rantai Motor', 'gantirantai.jpg', 'Ganti rantai motor', 'Otomotif'),
+(10, 'Kampas Rem Motor', 'kampasrem.jpg', 'Ganti kampas rem motor', 'Otomotif'),
+(11, 'Kelistrikan Motor', 'kelistrikanmotor.jpg', 'Kelistrikan motor', 'Otomotif'),
+(12, 'Tukang Kebun', 'tukang_kebun.jpg', 'Tukang kebun', 'Asisten Rumah'),
+(13, 'Servis AC', 'servisac.jpg', 'Servis AC', 'Elektronik'),
+(14, 'Pembantu', 'pembantu.jpg', 'Pembantu', 'Asisten Rumah');
 
 -- --------------------------------------------------------
 
@@ -328,7 +336,7 @@ ALTER TABLE `detail_order_servis`
 -- AUTO_INCREMENT for table `keahlian`
 --
 ALTER TABLE `keahlian`
-  MODIFY `id_keahlian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_keahlian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `kecamatan`
