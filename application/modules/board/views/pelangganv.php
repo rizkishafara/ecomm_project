@@ -33,28 +33,37 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th>ID Pelanggan</th>
                                         <th>Nama Lengkap</th>
                                         <th>Email</th>
+                                        <th>Username</th>
+                                        <th>Password</th>
                                         <th>Alamat</th>
-                                        <th>Telp</th>
+                                        <th>Kecamatan</th>
+                                        <th>Kota</th>
+                                        <th>No HP</th>
+                                        <th>Jenis</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $no = 1;
                                     foreach ($pelanggan as $plg) {
                                     ?>
                                         <tr>
-                                            <td><?php echo $no++ ?></td>
-                                            <td><?php echo $plg->nama ?></td>
-                                            <td><?php echo $plg->email ?></td>
-                                            <td><?php echo $plg->alamat ?></td>
-                                            <td><?php echo $plg->telp ?></td>
+                                            <td><?php echo $plg->id_pelanggan ?></td>
+                                            <td><?php echo $plg->nama_pelanggan ?></td>
+                                            <td><?php echo $plg->email_pelanggan ?></td>
+                                            <td><?php echo $plg->username_pelanggan ?></td>
+                                            <td><?php echo $plg->password_pelanggan ?></td>
+                                            <td><?php echo $plg->alamat_pelanggan ?></td>
+                                            <td><?php echo $plg->nama_kec ?></td>
+                                            <td><?php echo $plg->nama_kota ?></td>
+                                            <td><?php echo $plg->no_hp ?></td>
+                                            <td><?php echo $plg->jenis ?></td>
                                             <td>
-                                                <a href=""><span class="badge badge-success">Edit</span></a>
-                                                <a href=""><span class="badge badge-danger">Delete</span></a>
+                                                <a href="<?php echo base_url('board/data/pelanggan/editPelanggan/'.$plg->id_pelanggan)?>"><span class="badge badge-success">Edit</span></a>
+                                                <a href="<?php echo base_url('board/data/pelanggan/hapusPelanggan/'.$plg->id_pelanggan)?>"><span class="badge badge-danger">Delete</span></a>
                                             </td>
                                         </tr>
                                     <?php
