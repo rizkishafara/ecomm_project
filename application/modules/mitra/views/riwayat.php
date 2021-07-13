@@ -1,5 +1,5 @@
 <div class="">
-    <?php echo json_encode($detail) ?>
+    <!-- <?php echo json_encode($detail) ?> -->
     <div class="container pb-5">
         <?php 
         foreach ($detail as $d) { 
@@ -10,6 +10,7 @@
                     <div class="card-body">
                         <table>
                             <input type="hidden" name="id_order" value="<?php echo $d['id_order']; ?>">
+                            <input type="hidden" name="id_mitra" value="<?php echo $d['id_mitra']?>">
                             <tr>
                                 <td>Jenis Jasa</td>
                                 <td>:</td>

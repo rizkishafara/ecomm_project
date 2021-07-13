@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>
-    Halaman Login 
+    Halaman Login
   </title>
   <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.css') ?>">
   <style>
@@ -23,7 +23,7 @@
     }
 
     .bg-image {
-      background-image: url("https://source.unsplash.com/WEQbe2jBg40/600x1200");
+      background-image: url("<?php echo base_url('assets/gambar/images/Login.png') ?>");
       background-size: cover;
       background-position: center;
     }
@@ -154,7 +154,7 @@
                     ?>
                   </div>
                   <div class="form-label-group">
-                    <input value="<?php echo set_value('username'); ?>" type="text" id="inputUsername" autocomplete="off" name="username" class="form-control" placeholder="Username"   required autofocus>
+                    <input value="<?php echo set_value('username'); ?>" type="text" id="inputUsername" autocomplete="off" name="username" class="form-control" placeholder="Username" required autofocus>
                     <label for="inputUsername">Username</label>
                     <p><?php echo form_error('username'); ?></p>
                   </div>

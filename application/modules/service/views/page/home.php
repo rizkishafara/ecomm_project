@@ -6,8 +6,8 @@
         <div class="container py-5">
             <div class="row px-4 px-lg-5">
                 <div class="col-lg-6">
-                    <p class="text-white small text-uppercase mb-2">Layanan Jasa Online</p>
-                    <h1 class="h2 text-uppercase mb-3 text-white">Selamat Datang </h1><a class="btn btn-dark" href="shop.html">Browse collections</a>
+                    <p class="text-white small text-uppercase mb-2">Layanan Jasa Servis Online</p>
+                    <h1 class="h2 text-uppercase mb-3 text-white">Selamat Datang </h1><a class="btn btn-light" href="<?php echo base_url('service/page/layanan') ?>">Lihat Layanan</a>
                 </div>
             </div>
         </div>
@@ -15,8 +15,8 @@
     <!-- CATEGORIES SECTION-->
     <section class="pt-5">
         <header class="text-center">
-            <p class="small text-muted small text-uppercase mb-1">Carefully created collections</p>
-            <h2 class="h5 text-uppercase mb-4">Browse our categories</h2>
+            <p class="small text-muted small text-uppercase mb-1">Kenapa Harus Memilih</p>
+            <h2 class="h5 text-uppercase mb-4">Function Service?</h2>
         </header>
         <div class="container ml-4 pt-5">
             <div class="row">
@@ -25,17 +25,17 @@
                         <div class="card-body text-white">
                             <h5 class="card-title">Menyediakan Tenaga Kerja Profesional</h5>
 
-                            <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit similique et quia? Nostrum reiciendis repellat aspernatur perferendis iure! Maxime perspiciatis earum quidem harum deserunt ullam eaque iure ut! Vel, dolore.</p>
+                            <p class="card-text">Kami memahami kebutuhan Anda untuk mendapatkan pelayanan dengan orang yang berpengalaman serta profesional dalam bidangnya.</p>
 
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card bg-dark" style="width: 18rem; border-radius: 30px;">
+                    <div class="card bg-dark pb-4" style="width: 18rem; border-radius: 30px;">
                         <div class="card-body text-white">
                             <h5 class="card-title">Mudah Dalam Penggunaan</h5>
                             <br>
-                            <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit similique et quia? Nostrum reiciendis repellat aspernatur perferendis iure! Maxime perspiciatis earum quidem harum deserunt ullam eaque iure ut! Vel, dolore.</p>
+                            <p class="card-text">Di desain secara user-friendly sehingga memudahkan pengunjung saat menggunakan aplikasi.</p>
 
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                         <div class="card-body text-white">
                             <h5 class="card-title">Tanpa Ribet&Nyaman</h5>
                             <br>
-                            <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit similique et quia? Nostrum reiciendis repellat aspernatur perferendis iure! Maxime perspiciatis earum quidem harum deserunt ullam eaque iure ut! Vel, dolore.</p>
+                            <p class="card-text">Berbagai fitur lengkap siap mendukung pengguna sehingga proses transaksi dapat dilakukan dengan cepat, tanpa ribet dan nyaman</p>
 
                         </div>
                     </div>
@@ -61,13 +61,13 @@
                 <p class="text-small text-muted mb-0">Jadilah salah satu Mitra kami</p>
             </div>
             <div style="margin-left: 505px; margin-top:5px;">
-                <form action="#">
-                    <div class="input-group flex-column flex-sm-row mb-3">
-                        <div class="input-group-append">
-                            <button class="btn btn-dark btn-block" id="button-addon2" data-toggle="modal" data-target="#exampleModal">Daftar </button>
-                        </div>
+
+                <div class="input-group flex-column flex-sm-row mb-3">
+                    <div class="input-group-append">
+                        <button class="btn btn-dark btn-block" id="button-addon2" data-toggle="modal" type="button" data-target="#exampleModal">Daftar </button>
                     </div>
-                </form>
+                </div>
+
             </div>
         </div>
     </section>

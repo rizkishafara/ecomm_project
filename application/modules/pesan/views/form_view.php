@@ -1,4 +1,5 @@
 
+
 <body>
 	<div class="container" style="padding: 50px;">
 		<div class="container">
@@ -43,7 +44,7 @@
 								<?php echo form_error('kecamatan') ?>
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label for="lokasi_pelanggan" class="form-label">Detail Alamat</label>
 							<textarea type="text" class="form-control <?php echo form_error('lokasi_pelanggan') ? 'is-invalid' : '' ?>" name="lokasi_pelanggan"></textarea>
@@ -54,7 +55,7 @@
 
 						<div class="form-group">
 							<label for="example-date-input" class="form-label">Tanggal Pengerjaan</label>
-							<input class="form-control <?php echo form_error('tanggal') ? 'is-invalid' : '' ?>" type="date" id="example-date-input" name="tanggal">
+							<input class="form-control <?php echo form_error('tanggal') ? 'is-invalid' : '' ?>" type="text" id="datepicker" name="tanggal">
 							<div class="invalid-feedback">
 								<?php echo form_error('tanggal') ?>
 							</div>

@@ -8,13 +8,14 @@ class Form extends CI_Controller {
         parent::__construct();
 		$this->load->model("Pesan_model");
 		$this->load->library('form_validation');
+       
     }
 	public function index()
 	{
-        $data['title'] = "Layanan";
+        $data['title'] = "Pesan";
         $this->load->view('template/shop/header_shop', $data);
         $this->load->view('template/shop/navbar_shop');
-        //$this->load->view("form_view");
+        $this->load->view("form_view");
         //$this->load->model("pesan/Pesan_model", $data);
         $this->load->view('template/shop/footer_shop', $data);
 	}
@@ -28,7 +29,6 @@ class Form extends CI_Controller {
         $this->load->view("form_view", $data);
         //$this->load->model("pesan/Pesan_model", $data);
         $this->load->view('template/shop/footer_shop', $data1);
-        
     }
 
     public function kecamatan()
@@ -42,13 +42,13 @@ class Form extends CI_Controller {
         $pesan = $this->Pesan_model;
         $validation = $this->form_validation;
         $validation->set_rules($pesan->rules());
-        
+
         if ($validation->run()) {
             $pesan->pesan();
             $this->session->set_flashdata('pesan', ', Pesanan Diproses!');
-            $this->pesan($id=null);
-            
+            $this->pesan($id = null);
         }
         redirect(site_url("service/page/layanan"));
+        
     }
 }

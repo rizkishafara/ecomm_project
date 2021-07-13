@@ -6,12 +6,11 @@
                 <h5 class="text-uppercase mb-4">Categories</h5>
                 <ul class="list-unstyled small text-muted pl-lg-4 font-weight-normal">
                     <li class="mb-2"><a class="reset-anchor" href="<?php echo base_url() ?>service/page/layanan/">All</a></li>
-                    <?php
-                    foreach ($keahlian as $row) {
-                    ?>
-                        <li class="mb-2"><a class="reset-anchor" href="<?php echo base_url('service/page/kategori/' . $row['id_keahlian']); ?>"><?php echo $row['daftar_keahlian']; ?></a></li>
-                    <?php
-                    }
-                    ?>
+
+                    <li class="mb-2"><a class="reset-anchor" href="<?php echo base_url('service/page/kategori/pembangunan'); ?>">Pembangunan</a></li>
+                    <li class="mb-2"><a class="reset-anchor" href="<?php echo base_url('service/page/kategori/otomotif'); ?>">Otomotif</a></li>
+                    <li class="mb-2"><a class="reset-anchor" href="<?php echo base_url('service/page/kategori/AsistenRumah'); ?>">Asisten Rumah</a></li>
+                    <li class="mb-2"><a class="reset-anchor" href="<?php echo base_url('service/page/kategori/Elektronik'); ?>">Elektronik</a></li>
+
                 </ul>
             </div>

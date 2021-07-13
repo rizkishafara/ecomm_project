@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2021 at 10:47 AM
+-- Generation Time: Jul 13, 2021 at 04:01 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -41,7 +41,7 @@ CREATE TABLE `detail_order_servis` (
 --
 
 INSERT INTO `detail_order_servis` (`id`, `id_order`, `harga_jasa`, `biaya_admin`, `id_mitra`, `bukti_tf`) VALUES
-(1, 1, 20000, 5000, 6, 'index.jpg');
+(5, 4, 20000, 2000, 6, 'pexels-snapwire-730896.jpg');
 
 -- --------------------------------------------------------
 
@@ -53,20 +53,29 @@ CREATE TABLE `keahlian` (
   `id_keahlian` int(11) NOT NULL,
   `daftar_keahlian` varchar(50) NOT NULL,
   `gambar_keahlian` varchar(100) NOT NULL,
-  `deskripsi` varchar(255) NOT NULL
+  `deskripsi` varchar(255) NOT NULL,
+  `jenis` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `keahlian`
 --
 
-INSERT INTO `keahlian` (`id_keahlian`, `daftar_keahlian`, `gambar_keahlian`, `deskripsi`) VALUES
-(1, 'Tukang Ledeng', 'pipa.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?'),
-(2, 'Kelistrikan', 'listrik.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?'),
-(3, 'Tukang Bangunan', 'bangunan.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?'),
-(4, 'Check Up Motor', 'check.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?'),
-(5, 'Tune Up', 'tune.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?'),
-(6, 'Servis Lengkap', 'servis.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?');
+INSERT INTO `keahlian` (`id_keahlian`, `daftar_keahlian`, `gambar_keahlian`, `deskripsi`, `jenis`) VALUES
+(1, 'Tukang Ledeng', 'pipa.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Pembangunan'),
+(2, 'Kelistrikan', 'listrik.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Elektronik'),
+(3, 'Tukang Bangunan', 'bangunan.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Pembangunan'),
+(4, 'Check Up Motor', 'check.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Otomotif'),
+(5, 'Overhaul Mesin Motor', 'tune.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Otomotif'),
+(6, 'Tune Up Motor', 'servis.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Otomotif'),
+(7, 'Cleanning Servis', 'cleanning.jpg', 'Ini contoh', 'Pembangunan'),
+(8, 'Oli Motor', 'gantioli.jpg', 'Ganti oli motor', 'Otomotif'),
+(9, 'Rantai Motor', 'gantirantai.jpg', 'Ganti rantai motor', 'Otomotif'),
+(10, 'Kampas Rem Motor', 'kampasrem.jpg', 'Ganti kampas rem motor', 'Otomotif'),
+(11, 'Kelistrikan Motor', 'kelistrikanmotor.jpg', 'Kelistrikan motor', 'Otomotif'),
+(12, 'Tukang Kebun', 'tukang_kebun.jpg', 'Tukang kebun', 'Asisten Rumah'),
+(13, 'Servis AC', 'servisac.jpg', 'Servis AC', 'Elektronik'),
+(14, 'Pembantu', 'pembantu.jpg', 'Pembantu', 'Asisten Rumah');
 
 -- --------------------------------------------------------
 
@@ -164,7 +173,7 @@ CREATE TABLE `mitra` (
 --
 
 INSERT INTO `mitra` (`id_mitra`, `id_pelanggan`, `id_keahlian`, `nama_mitra`, `foto_mitra`, `alamat_mitra`, `harga_jasa`, `no_ktp`, `status`, `rating`) VALUES
-(6, 3, 1, 'Tama', 'background_2.png', 'adasfas', 20000, 2147483647, 'tersedia', 0);
+(6, 3, 1, 'Tama', 'background_2.png', 'adasfas', 20000, 2147483647, 'tersedia', 4);
 
 -- --------------------------------------------------------
 
@@ -174,7 +183,7 @@ INSERT INTO `mitra` (`id_mitra`, `id_pelanggan`, `id_keahlian`, `nama_mitra`, `f
 
 CREATE TABLE `order_servis` (
   `id_order` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
+  `tanggal` varchar(8) NOT NULL,
   `waktu` time NOT NULL,
   `id_pelanggan` int(11) NOT NULL,
   `id_kota` int(11) NOT NULL,
@@ -190,7 +199,8 @@ CREATE TABLE `order_servis` (
 --
 
 INSERT INTO `order_servis` (`id_order`, `tanggal`, `waktu`, `id_pelanggan`, `id_kota`, `id_kecamatan`, `lokasi_pelanggan`, `id_keahlian`, `status_order`, `status_bayar`) VALUES
-(1, '2021-07-05', '12:00:00', 2, 1, 16, 'asfasfasf', 1, 'selesai', 'Sudah Terbayar');
+(4, '07/10/20', '12:00:00', 2, 1, 1, 'afasd', 1, 'selesai', 'Sudah Terbayar'),
+(5, '07/11/20', '12:00:00', 4, 1, 6, 'adasd', 1, 'belum', 'Belum Terbayar');
 
 -- --------------------------------------------------------
 
@@ -232,6 +242,13 @@ CREATE TABLE `pembayaran_servis` (
   `id_order` int(11) NOT NULL,
   `total_harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pembayaran_servis`
+--
+
+INSERT INTO `pembayaran_servis` (`id_pembayaran`, `id_order`, `total_harga`) VALUES
+(1, 4, 22000);
 
 -- --------------------------------------------------------
 
@@ -300,6 +317,12 @@ ALTER TABLE `pembayaran_servis`
   ADD PRIMARY KEY (`id_pembayaran`);
 
 --
+-- Indexes for table `review_servis`
+--
+ALTER TABLE `review_servis`
+  ADD PRIMARY KEY (`id_review`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -307,13 +330,13 @@ ALTER TABLE `pembayaran_servis`
 -- AUTO_INCREMENT for table `detail_order_servis`
 --
 ALTER TABLE `detail_order_servis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `keahlian`
 --
 ALTER TABLE `keahlian`
-  MODIFY `id_keahlian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_keahlian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `kecamatan`
@@ -337,7 +360,7 @@ ALTER TABLE `mitra`
 -- AUTO_INCREMENT for table `order_servis`
 --
 ALTER TABLE `order_servis`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
@@ -349,7 +372,13 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT for table `pembayaran_servis`
 --
 ALTER TABLE `pembayaran_servis`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `review_servis`
+--
+ALTER TABLE `review_servis`
+  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -14,7 +14,7 @@ class Page extends CI_Controller
         $data['title'] = "Home";
         $data['id'] = $this->M_Page->get_keahlian('id');
         $id = $this->session->userdata('id');
-        echo $id;
+        //echo $id;
         $this->load->view('template/shop/header_shop', $data);
         $this->load->view('template/shop/navbar_shop', $data);
         $this->load->view('page/home', $data);
@@ -83,40 +83,39 @@ class Page extends CI_Controller
 
     public function layanan()
     {
-    
-            //load library
-            $this->load->library('pagination');
-            //pagination
-            $config['base_url'] = 'http://localhost/ecomm_service/service/page/layanan';
-            $config['total_rows'] = $this->M_Page->count_all_data();
-            $data['total_rows'] = $config['total_rows'];
-            $config['per_page'] = 3;
 
-            $data['start'] = $this->uri->segment(4);
+        //load library
+        $this->load->library('pagination');
+        //pagination
+        $config['base_url'] = 'http://localhost/ecomm_service/service/page/layanan';
+        $config['total_rows'] = $this->M_Page->count_all_data();
+        $data['total_rows'] = $config['total_rows'];
+        $config['per_page'] = 3;
 
-            // Agar bisa mengganti stylenya sesuai class2 yg ada dibootstrap
-            $config['full_tag_open'] = '<nav><ul class="pagination">';
-            $config['full_tag_close'] = '</ul></nav>';
+        $data['start'] = $this->uri->segment(4);
 
-            $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="">';
-            $config['cur_tag_close'] = '</a></li>';
-            $config['num_tag_open'] = '<li class="page-item">';
-            $config['num_tag_close'] = '</li>';
+        // Agar bisa mengganti stylenya sesuai class2 yg ada dibootstrap
+        $config['full_tag_open'] = '<nav><ul class="pagination">';
+        $config['full_tag_close'] = '</ul></nav>';
 
-            $config['attributes'] = array('class' => 'page-link');
-            // End style pagination
+        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
 
-            $this->pagination->initialize($config);
+        $config['attributes'] = array('class' => 'page-link');
+        // End style pagination
 
-            $data['title'] = "Layanan";
-            $data['keahlian'] = $this->M_Page->get_keahlian_all();
-            $data['mitra'] = $this->M_Page->tampil_mitra($config['per_page'], $data['start']);
-            $this->load->view('template/shop/header_shop', $data);
-            $this->load->view('template/shop/navbar_shop');
-            $this->load->view('template/shop/sidebar_shop', $data);
-            $this->load->view('page/layanan', $data);
-            $this->load->view('template/shop/footer_shop', $data);
+        $this->pagination->initialize($config);
 
+        $data['title'] = "Layanan";
+        $data['keahlian'] = $this->M_Page->get_keahlian_all();
+        $data['mitra'] = $this->M_Page->tampil_mitra($config['per_page'], $data['start']);
+        $this->load->view('template/shop/header_shop', $data);
+        $this->load->view('template/shop/navbar_shop');
+        $this->load->view('template/shop/sidebar_shop', $data);
+        $this->load->view('page/layanan', $data);
+        $this->load->view('template/shop/footer_shop', $data);
     }
 
     public function detail($id)
@@ -155,14 +154,19 @@ class Page extends CI_Controller
         $data['title'] = "Riwayat";
         $id = $this->session->userdata['id'];
         $data['riwayat'] = $this->M_Page->riwayat_order($id);
+        if (empty($id)) {
+            redirect('auth/login');
+        }
         $this->load->view('template/shop/header_shop', $data);
         $this->load->view('template/shop/navbar_shop');
         $this->load->view('page/riwayat', $data);
         $this->load->view('template/shop/footer_shop');
     }
 
-    public function status_bayar(){
+    public function status_bayar()
+    {
         $id = $this->input->post('id_order');
+        $total = $this->input->post('total');
         $status_bayar = 'Sudah Terbayar';
         $bukti_tf = $_FILES['bukti_tf'];
 
@@ -171,9 +175,7 @@ class Page extends CI_Controller
         } else {
             $config['upload_path'] = 'assets/gambar/bukti_tf';
             $config['allowed_types'] = 'jpg|png|jpeg';
-            $config['max_size']             = 1000;
-            $config['max_width']            = 1024;
-            $config['max_height']           = 768;
+            
 
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
@@ -189,19 +191,25 @@ class Page extends CI_Controller
         }
 
         $data = array(
-            'status_bayar'=>$status_bayar
+            'status_bayar' => $status_bayar
         );
 
         $id_order = array(
             'id_order' => $id
         );
         $detail_riwayat = array(
-            'bukti_tf'=> $bukti_tf
+            'bukti_tf' => $bukti_tf
+        );
+
+        $pembayaran = array(
+            'id_order' => $id,
+            'total_harga' => $total
         );
 
         $this->M_Page->pembayaran($id_order, $data, 'order_servis');
         $this->M_Page->bukti($id_order, $detail_riwayat, 'detail_order_servis');
-        redirect('service/page/index');
+        $this->M_Page->data_bayar($pembayaran);
+        redirect('service/page/riwayat');
     }
 
     public function cari()
@@ -209,5 +217,30 @@ class Page extends CI_Controller
         $search = $_GET['search'];
         $data['mitra']  = $this->M_Page->find($search);
         $hasil = $this->load->view('page/view_search', $data);
+    }
+
+    public function review_mitra(){
+        $post = $this->input->post();
+        $id_order = $post['id_order'];
+        $id_mitra = $post['id_mitra'];
+        $review = $post['review'];
+
+        $data = array(
+            'id_order' => $id_order,
+            'id_mitra' => $id_mitra,
+            'review' => $review,
+            'rating' => 4
+        );
+
+        $id_mit = array(
+            'id_mitra' => $id_mitra
+        );
+
+        $mitra = array(
+            'rating' => 4
+        );
+        $this->M_Page->input_review($data);
+        $this->M_Page->edit_rating_mitra($id_mit, $mitra, 'mitra');
+        redirect('service/page/index');
     }
 }

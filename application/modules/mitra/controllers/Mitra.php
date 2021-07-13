@@ -58,6 +58,13 @@ class Mitra extends CI_Controller
             'biaya_admin' => $biaya_admin,
             'harga_jasa' => $tarif,
         );
+        $status_mitra = 'tidak tersedia';
+        $id_mit = array(
+            'id_mitra'=>$id_mitra
+        );
+        $data2 = array(
+            'status' => $status_mitra
+        );
 
         $status = 'sedang diproses';
         $data1 = array(
@@ -68,6 +75,7 @@ class Mitra extends CI_Controller
             'id_order' => $id_order
         );
         $this->M_mitra->edit_status_order($id, $data1, 'order_servis');
+        $this->M_mitra->edit_status_mitra($id_mit, $data2, 'mitra');
         $this->M_mitra->detail_order($data);
         redirect('mitra/index');
     }
@@ -84,7 +92,7 @@ class Mitra extends CI_Controller
     {
         $data['title'] = "Riwayat";
         $id = $this->session->userdata['id'];
-        echo $id;
+        //echo $id;
         $data['riwayat'] = $this->M_mitra->riwayat_order($id);
         $data['detail'] = $this->M_mitra->get_mitra_id($id);
         $this->load->view('template/shop/header_shop', $data);
@@ -95,6 +103,8 @@ class Mitra extends CI_Controller
 
     public function change_status(){
         $id_order = $this->input->post('id_order');
+        $id_mitra = $this->input->post('id_mitra');
+        $status_mitra = 'tersedia';
         $status = 'selesai';
 
         $data = array(
@@ -105,7 +115,16 @@ class Mitra extends CI_Controller
                 'id_order' => $id_order
             );
 
+        $id_mit = array(
+            'id_mitra' => $id_mitra
+        );
+
+        $mitra = array(
+            'status' => $status_mitra
+        );
+
         $this->M_mitra->change_order_status($id, $data, 'order_servis');
+        $this->M_mitra->change_status_mitra($id_mit, $mitra, 'mitra');
         redirect('mitra/riwayat');
     }
 }
