@@ -5,26 +5,26 @@
                 <h6 class="text-uppercase mb-3">Customer services</h6>
                 <ul class="list-unstyled mb-0">
                     <li><a class="footer-link" href="#">Help &amp; Contact Us</a></li>
-                    <li><a class="footer-link" href="#">Returns &amp; Refunds</a></li>
-                    <li><a class="footer-link" href="#">Online Stores</a></li>
                     <li><a class="footer-link" href="#">Terms &amp; Conditions</a></li>
                 </ul>
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
-                <h6 class="text-uppercase mb-3">Company</h6>
+                <h6 class="text-uppercase mb-3">Fitur</h6>
                 <ul class="list-unstyled mb-0">
-                    <li><a class="footer-link" href="#">What We Do</a></li>
-                    <li><a class="footer-link" href="#">Available Services</a></li>
-                    <li><a class="footer-link" href="#">Latest Posts</a></li>
+                    <li><a class="footer-link" href="#">Layanan</a></li>
+                    <li><a class="footer-link" href="#">Daftar Mitra</a></li>
+                    <li><a class="footer-link" href="#">About</a></li>
+                    <li><a class="footer-link" id="chat" href="#chat">Chat</a></li>
                     <li><a class="footer-link" href="#">FAQs</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
                 <h6 class="text-uppercase mb-3">Social media</h6>
-                <ul class="list-unstyled mb-0">
-                    <li><a class="footer-link" href="#">Twitter</a></li>
-                    <li><a class="footer-link" href="#">Instagram</a></li>
-                </ul>
+
+                <a class="footer-link px-2" href="#"><i class="fab fa-twitter-square fa-2x" style="color: lightblue;"></i></a>
+                <a class="footer-link px-2" href="#"><i class="fab fa-instagram fa-2x" style="color: tomato;"></i></a>
+                <a class="footer-link px-2" href="#"><i class="fab fa-whatsapp fa-2x" style="color: lightgreen;"></i></a>
+
             </div>
         </div>
     </div>
@@ -149,6 +149,48 @@
         });
     });
 </script>
+
+
+<!-- Life Chat -->
+
+<!-- Start of LiveChat (www.livechatinc.com) code -->
+<script>
+    window.__lc = window.__lc || {};
+    window.__lc.license = 12959352;;
+    (function(n, t, c) {
+        function i(n) {
+            return e._h ? e._h.apply(null, n) : e._q.push(n)
+        }
+        var e = {
+            _q: [],
+            _h: null,
+            _v: "2.0",
+            on: function() {
+                i(["on", c.call(arguments)])
+            },
+            once: function() {
+                i(["once", c.call(arguments)])
+            },
+            off: function() {
+                i(["off", c.call(arguments)])
+            },
+            get: function() {
+                if (!e._h) throw new Error("[LiveChatWidget] You can't use getters before load.");
+                return i(["get", c.call(arguments)])
+            },
+            call: function() {
+                i(["call", c.call(arguments)])
+            },
+            init: function() {
+                var n = t.createElement("script");
+                n.async = !0, n.type = "text/javascript", n.src = "https://cdn.livechatinc.com/tracking.js", t.head.appendChild(n)
+            }
+        };
+        !n.__lc.asyncInit && e.init(), n.LiveChatWidget = n.LiveChatWidget || e
+    }(window, document, [].slice))
+</script>
+<noscript><a href="https://www.livechatinc.com/chat-with/12959352/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechatinc.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+<!-- End of LiveChat code -->
 <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </div>
