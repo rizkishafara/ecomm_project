@@ -34,7 +34,7 @@
                         <!-- /.card-header -->
                         <!-- form start -->
                         <?php echo form_open('board/data/keahlian/tambahKeahlian'); ?>
-                        <form role="form" method="POST" enctype="multipart/form-data">
+                        
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="daftar_keahlian">Nama Keahlian</label>
@@ -58,7 +58,7 @@
                             <div class="card-footer">
                                 <button type="submit" name="btnSubmit" class="btn btn-primary">Submit</button>
                             </div>
-                        </form>
+                        
                         <?php echo form_close(); ?>
                     </div>
                     <!-- /.card -->

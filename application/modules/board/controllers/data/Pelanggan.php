@@ -31,8 +31,10 @@ class Pelanggan extends CI_Controller
         }
 
         $data["pelanggan"] = $edit->getIdPelanggan($id);
-        $data["kecamatan"] = $edit->get_kec($id);
-        $data["kota"] = $edit->get_kota($id);
+
+        //Telah Diubah
+        $data["kota"] = $edit->get_kota();
+       
 
         $this->load->view('template/auth/head', $data);
         $this->load->view('template/auth/navbar');
@@ -40,5 +42,14 @@ class Pelanggan extends CI_Controller
         $this->load->view('editpelangganv', $data);
         $this->load->view('template/auth/footer');
 
+    }
+
+
+    //Menambah Function Ini
+    public function kecamatan()
+    {
+        $id = $this->input->post('id');
+        $data = $this->m_data->get_kec($id);
+        echo json_encode($data);
     }
 }

@@ -1,5 +1,6 @@
 <script src="<?php echo base_url('assets/ckeditor/ckeditor.js') ?>"></script>
 <!-- Content Wrapper. Contains page content -->
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -79,13 +80,27 @@
                                         <?php echo form_error('kategori') ?>
                                     </div>
                                 </div>
+                                <div class=" form-group">
+                                    <label for="kecamatan">Kota</label>
+                                    <select class="form-control" placeholder="Kategori" id="kota" name="kota">
+
+                                        <option value="<?php echo $pelanggan->id_kota ?>"><?php echo $pelanggan->nama_kota ?></option>
+                                        <?php
+                                        foreach ($kota as $kot) :
+                                        ?>
+                                            <option value="<?php echo $kot->id_kota ?>"><?php echo $kot->nama_kota ?></option>
+                                        <?php
+                                        endforeach;
+                                        ?>
+                                    </select>
+                                    <?php echo form_error('kota', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
 
 
-                                
                                 <div class=" form-group">
                                     <label for="kecamatan">Kecamatan</label>
                                     <select class="form-control" placeholder="Kategori" id="kecamatan" name="kecamatan">
-                                        
+
                                         <option value="<?php echo $pelanggan->id_kecamatan ?>"><?php echo $pelanggan->nama_kec ?></option>
                                         <?php
                                         foreach ($kecamatan as $k) :

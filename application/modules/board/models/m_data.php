@@ -56,6 +56,7 @@ class m_data extends CI_Model
         $this->db->select('*');
         $this->db->from('pelanggan');
         $this->db->join('kecamatan', 'pelanggan.id_kecamatan=kecamatan.id_kec');
+        $this->db->join('kota', 'pelanggan.id_kota=kota.id_kota');
         $this->db->where('id_pelanggan', $id);
         return $this->db->get()->row();
     }
@@ -67,19 +68,10 @@ class m_data extends CI_Model
         return $this->db->get()->row();
     }
 
-    public function getKecamatan($id)
-    {
-        $this->db->select('*');
-        $this->db->from('kecamatan');
-        $this->db->join('pelanggan', 'pelanggan.id_kecamatan=kecamatan.id_kec');
-        $this->db->where('id_pelanggan', $id);
-        return $this->db->get()->row();
-    }
-
     public function get_kota()
     {
         $hasil = $this->db->query("SELECT * FROM kota");
-        return $hasil->result_array();
+        return $hasil->result();
     }
 
     public function get_kec($id)
@@ -139,8 +131,8 @@ class m_data extends CI_Model
         $config['max_size']             = 10240;
 
         $this->load->library('upload', $config);
-
-        if ($this->upload->do_upload('gambar')) {
+       
+        if ($this->upload->do_upload($_FILES['gambar'])) {
             return $this->upload->data("file_name");
         }else{
             $error = array('error' => $this->upload->display_errors());

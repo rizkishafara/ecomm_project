@@ -9,7 +9,7 @@
 
                     <li class="mb-2"><a class="reset-anchor" href="<?php echo base_url('service/page/kategori/pembangunan'); ?>">Pembangunan</a></li>
                     <li class="mb-2"><a class="reset-anchor" href="<?php echo base_url('service/page/kategori/otomotif'); ?>">Otomotif</a></li>
-                    <li class="mb-2"><a class="reset-anchor" href="<?php echo base_url('service/page/kategori/AsistenRumah'); ?>">Asisten Rumah</a></li>
+                    <li class="mb-2"><a class="reset-anchor" href="<?php echo base_url('service/page/kategori/Asisten'); ?>">Asisten Rumah</a></li>
                     <li class="mb-2"><a class="reset-anchor" href="<?php echo base_url('service/page/kategori/Elektronik'); ?>">Elektronik</a></li>
 
                 </ul>

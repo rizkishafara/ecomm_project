@@ -25,7 +25,7 @@ class Keahlian extends CI_Controller
         $keahlian = $this->m_data;
         $validation = $this->form_validation;
         $validation->set_rules($keahlian->rules());
-
+         
         if ($validation->run()) {
             $keahlian->simpanKeahlian();
             $this->session->set_flashdata('success', 'Berhasil disimpan');

@@ -69,13 +69,15 @@
         })
     });
 </script>
+
+<!-- Telah Diubah -->
 <script>
     $(document).ready(function() {
         $('#kota').change(function() {
             var id = $(this).val();
             $.ajax({
                 type: "POST",
-                url: "<?php echo base_url('board/data/pelanggan'); ?>",
+                url: "<?php echo base_url('board/data/pelanggan/kecamatan'); ?>",
                 data: {
                     id: id
                 },
