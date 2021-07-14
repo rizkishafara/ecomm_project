@@ -48,7 +48,7 @@
                             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Feature</a>
                                 <div class="dropdown-menu mt-3" aria-labelledby="pagesDropdown">
                                     <a class="dropdown-item border-0 transition-link" href="<?php echo base_url('service/page/about') ?>">About</a>
-                                    <a class="dropdown-item border-0 transition-link" href="#">Guide</a>
+                                    <a class="dropdown-item border-0 transition-link" href="<?php echo base_url('service/page/guide') ?>">Guide</a>
                                 </div>
                             </li>
                         </ul>

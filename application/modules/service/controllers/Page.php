@@ -149,6 +149,15 @@ class Page extends CI_Controller
         $this->load->view('template/shop/footer_shop');
     }
 
+    public function guide()
+    {
+        $data['title'] = "Guide";
+        $this->load->view('template/shop/header_shop', $data);
+        $this->load->view('template/shop/navbar_shop');
+        $this->load->view('page/guide');
+        $this->load->view('template/shop/footer_shop');
+    }
+
     public function riwayat()
     {
         $data['title'] = "Riwayat";
@@ -175,7 +184,7 @@ class Page extends CI_Controller
         } else {
             $config['upload_path'] = 'assets/gambar/bukti_tf';
             $config['allowed_types'] = 'jpg|png|jpeg';
-            
+
 
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
@@ -219,7 +228,8 @@ class Page extends CI_Controller
         $hasil = $this->load->view('page/view_search', $data);
     }
 
-    public function review_mitra(){
+    public function review_mitra()
+    {
         $post = $this->input->post();
         $id_order = $post['id_order'];
         $id_mitra = $post['id_mitra'];
@@ -243,6 +253,4 @@ class Page extends CI_Controller
         $this->M_Page->edit_rating_mitra($id_mit, $mitra, 'mitra');
         redirect('service/page/index');
     }
-
-   
 }

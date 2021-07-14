@@ -20,7 +20,7 @@
                         <div class="mb-3 position-relative">
                             <div class="badge text-white badge"></div>
                             <a class="d-block">
-                                <img class="" src="<?php echo base_url() . 'assets/gambar/mitra/' . $m['gambar_keahlian'] ?>" width="200" height="180">
+                                <img class="img-fluid" src="<?php echo base_url() . 'assets/gambar/mitra/' . $m['gambar_keahlian'] ?>" width="160" height="160">
                             </a>
                             <div class="product-overlay">
                                 <ul class="mb-0 list-inline">
