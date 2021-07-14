@@ -149,6 +149,15 @@ class Page extends CI_Controller
         $this->load->view('template/shop/footer_shop');
     }
 
+    public function guide()
+    {
+        $data['title'] = "About";
+        $this->load->view('template/shop/header_shop', $data);
+        $this->load->view('template/shop/navbar_shop');
+        $this->load->view('page/guide');
+        $this->load->view('template/shop/footer_shop');
+    }
+
     public function riwayat()
     {
         $data['title'] = "Riwayat";
@@ -248,7 +257,7 @@ class Page extends CI_Controller
             'id_order' => $id_order,
             'id_mitra' => $id_mitra,
             'review' => $review,
-            'rating' => 4
+            'rating' => $rating
         );
 
         $id_mit = array(

@@ -21,14 +21,14 @@ class M_mitra extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    public function get_order_id($id,$limit, $start){
+    public function get_order_id($id){
         $this->db->select('*');
         $this->db->join('keahlian', 'order_servis.id_keahlian=keahlian.id_keahlian');
         $this->db->join('mitra', 'order_servis.id_keahlian=mitra.id_keahlian');
         $this->db->join('pelanggan', 'pelanggan.id_pelanggan=mitra.id_pelanggan');
         $this->db->where('mitra.id_mitra', $id);
         //$this->db->where('order_servis.id_keahlian', $mitra);
-        return $this->db->get('order_servis',$limit, $start)->result_array();
+        return $this->db->get('order_servis')->result_array();
     }
 
     public function get_mitra_keahlian($id)

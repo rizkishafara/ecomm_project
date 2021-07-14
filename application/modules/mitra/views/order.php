@@ -42,8 +42,6 @@
                                 </td>
                             </tr>
                         </form>
-                    <?php }else{ ?>
-                        <strong>Anda Sudah Memiliki Pelanggan</strong>
                     <?php } ?>
                 <?php endforeach; ?>
 

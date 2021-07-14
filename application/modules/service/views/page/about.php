@@ -22,14 +22,12 @@
         <div class="row mb-3 align-items-center">
         </div>
         <div class="row">
-            <h3>Service Online</h3>
+            <h3>Layanan Jasa Online "Function Service"</h3>
             <div class="text-justify">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, assumenda corrupti eligendi ducimus eveniet ea, alias sint rerum, quis labore impedit? Nam iure temporibus esse itaque perspiciatis vel ad aut!
-                    Quod voluptate quia, voluptas quos laudantium eius quaerat nam maiores obcaecati, explicabo odit nisi. Exercitationem mollitia autem magnam, saepe cum modi aliquid quae facilis illum molestiae rerum, quod ut! Consectetur.
-                    Natus, ex corrupti expedita perferendis aspernatur eum reiciendis sunt ea perspiciatis modi aut deleniti corporis totam, itaque amet tempore nam nostrum mollitia, fuga vitae. Officiis magni aspernatur nam magnam id!
-                    Facilis repudiandae assumenda, qui illo aut tempora, minima hic esse totam ex error blanditiis laboriosam tenetur voluptatem quaerat consectetur consequatur culpa asperiores! Voluptate, ipsa. Officia suscipit vitae totam earum minima.</p>
+                <p>Berawal dari sebuah ide untuk menyelesaikan masalah pada kehidupan sehari-hari, terpikirkanlah untuk membuat sebuah aplikasi dimana Anda bisa menggunakan layanan jasa online tanpa keluar rumah.<br><br>Layanan Jasa Online hanya di <b>Function Service</b>, kami siap melayani!<br><br><i>" Mengapa harus memilih kami? "</i><br><br><b>1. Menyediakan Tenaga Kerja Profesional</b><br>Kami memahami kebutuhan Anda untuk mendapatkan pelayanan dengan orang yang berpengalaman serta profesional dalam bidangnya.<br><br><b>2. Mudah Dalam Penggunaan</b><br>Di desain secara user-friendly sehingga memudahkan pengunjung saat menggunakan aplikasi.<br><br><b>3. Tanpa Ribet & Nyaman</b><br>Berbagai fitur lengkap siap mendukung pengguna sehingga proses transaksi dapat dilakukan dengan cepat, tanpa ribet dan nyaman.<br><br></p>
             </div>
         </div>
+        <br>
     </div>
 </div>
 </div>

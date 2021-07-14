@@ -11,35 +11,11 @@ class Mitra extends CI_Controller
     }
     public function index()
     {
-        //load library
-        $this->load->library('pagination');
-        //pagination
-        $config['base_url'] = 'http://localhost/ecomm_service/mitra/mitra/index';
-        $config['total_rows'] = $this->M_mitra->count_all_data();
-        $data['total_rows'] = $config['total_rows'];
-        $config['per_page'] = 3;
-
-        $data['start'] = $this->uri->segment(4);
-
-        // Agar bisa mengganti stylenya sesuai class2 yg ada dibootstrap
-        $config['full_tag_open'] = '<nav><ul class="pagination">';
-        $config['full_tag_close'] = '</ul></nav>';
-
-        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="">';
-        $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li class="page-item">';
-        $config['num_tag_close'] = '</li>';
-
-        $config['attributes'] = array('class' => 'page-link');
-        // End style pagination
-
-        $this->pagination->initialize($config);
-
         $data['title'] = "Order";
         $data['ahli'] = $this->M_mitra->get_keahlian_all();
 
         $id_login = $this->session->userdata['id'];
-        $data['order_servis'] = $this->M_mitra->get_order_id($id_login,$config['per_page'], $data['start']);
+        $data['order_servis'] = $this->M_mitra->get_order_id($id_login);
         
         $this->load->view('template/shop/header_shop', $data);
         $this->load->view('template/shop/navbar_shop');
