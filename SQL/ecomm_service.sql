@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2021 at 04:01 PM
+-- Generation Time: Jul 14, 2021 at 12:12 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -41,7 +41,8 @@ CREATE TABLE `detail_order_servis` (
 --
 
 INSERT INTO `detail_order_servis` (`id`, `id_order`, `harga_jasa`, `biaya_admin`, `id_mitra`, `bukti_tf`) VALUES
-(5, 4, 20000, 2000, 6, 'pexels-snapwire-730896.jpg');
+(8, 7, 20000, 2000, 6, 'produk6.jpg'),
+(9, 8, 20000, 2000, 6, 'produk61.jpg');
 
 -- --------------------------------------------------------
 
@@ -53,7 +54,7 @@ CREATE TABLE `keahlian` (
   `id_keahlian` int(11) NOT NULL,
   `daftar_keahlian` varchar(50) NOT NULL,
   `gambar_keahlian` varchar(100) NOT NULL,
-  `deskripsi` varchar(255) NOT NULL,
+  `deskripsi` varchar(1000) NOT NULL,
   `jenis` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -62,20 +63,26 @@ CREATE TABLE `keahlian` (
 --
 
 INSERT INTO `keahlian` (`id_keahlian`, `daftar_keahlian`, `gambar_keahlian`, `deskripsi`, `jenis`) VALUES
-(1, 'Tukang Ledeng', 'pipa.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Pembangunan'),
-(2, 'Kelistrikan', 'listrik.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Elektronik'),
-(3, 'Tukang Bangunan', 'bangunan.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Pembangunan'),
-(4, 'Check Up Motor', 'check.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Otomotif'),
-(5, 'Overhaul Mesin Motor', 'tune.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Otomotif'),
-(6, 'Tune Up Motor', 'servis.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure recusandae! Repellat non numquam, totam officiis vero soluta harum beatae sed, corrupti commodi ut. Ad commodi doloremque deserunt inventore amet?', 'Otomotif'),
-(7, 'Cleanning Servis', 'cleanning.jpg', 'Ini contoh', 'Pembangunan'),
-(8, 'Oli Motor', 'gantioli.jpg', 'Ganti oli motor', 'Otomotif'),
-(9, 'Rantai Motor', 'gantirantai.jpg', 'Ganti rantai motor', 'Otomotif'),
-(10, 'Kampas Rem Motor', 'kampasrem.jpg', 'Ganti kampas rem motor', 'Otomotif'),
-(11, 'Kelistrikan Motor', 'kelistrikanmotor.jpg', 'Kelistrikan motor', 'Otomotif'),
-(12, 'Tukang Kebun', 'tukang_kebun.jpg', 'Tukang kebun', 'Asisten Rumah'),
-(13, 'Servis AC', 'servisac.jpg', 'Servis AC', 'Elektronik'),
-(14, 'Pembantu', 'pembantu.jpg', 'Pembantu', 'Asisten Rumah');
+(1, 'Tukang Ledeng', 'pipa.jpg', 'Jasa tukang ledeng digunakan untuk memasang dan memperbaiki hal yang berkaitan dengan pipa, saluran, atau peralatan lain yang terkait dengan saluran air.', 'Pembangunan'),
+(2, 'Kelistrikan', 'listrik.jpg', 'Jasa tukang kelistrikan digunakan untuk memasang dan memperbaiki hal yang berkaitan dengan aliran listrik seperti pasang kabel, stopkontak atau saklar pada rumah, gedung, sekolah, atau tempat bangunan yang lain.', 'Elektronik'),
+(3, 'Tukang Bangunan', 'bangunan.jpg', 'Jasa tukang bangunan digunakan untuk membangun dan memperbaiki hal umum yang berkaitan dengan infrastruktur seperti rumah, sekolah, gedung, kantor, hotel, dan lain sebagainya.', 'Pembangunan'),
+(4, 'Check Up Motor', 'check.jpg', 'Jasa check up motor digunakan untuk mengecek kendaraan motor dan melakukan servis ringan jika ada kerusakan. Terdiri dari pembersihan karburator, penyetelan karburator, pembersihan saringan udara, pemeriksaan dan penggantian oli, pembersihan busi, penyetelan dan pelumasan rantai roda, penyetelan rem depan dan belakang, pemeriksaan dan penambahan air aki, pemeriksaan lampu dan klakson.', 'Otomotif'),
+(5, 'Overhaul Mesin Motor', 'tune.jpg', 'Jasa overhaul mesin motor digunakan untuk mengecek kendaraan motor dan melakukan servis berat jika ada kerusakan. Mencakup penggantian spare part di dalam ruang bakar (piston set) dan komponen-komponen di dalam ruang transmisi. Pada overhaul proses pengerjaan dilakukan proses turun mesin.', 'Otomotif'),
+(6, 'Tune Up Motor', 'servis.jpg', 'Jasa tune up motor digunakan untuk mengecek kendaraan motor dan melakukan servis lengkap jika ada kerusakan. Terdiri dari pembersihan karburator, penyetelan karburator, pembersihan saringan udara, pemeriksaan dan penggantian oli, pembersihan busi, penyetelan dan pelumasan rantai roda, penyetelan rem depan dan belakang, pemeriksaan dan penambahan air aki, pemeriksaan lampu dan klakson, penyetelan dan pelumasan kabel gas, pemeriksaan dan penyetelan stang kemudi, pengencangan mur dan baut, pemeriksaan roda dan ban, penyetelan klep, penyetelan kopling.', 'Otomotif'),
+(7, 'Cleanning Servis', 'cleanning.jpg', 'Jasa cleanning servis digunakan untuk membersihkan ruangan – ruangan tertentu, dimana mereka di tempatkan seperti kawasan kantor, hotel, gedung, apartemen, rumah sakit, tempat umum dan bahkan rumah pribadi. ', 'Asisten'),
+(8, 'Oli Motor', 'gantioli.jpg', 'Jasa ganti oli motor digunakan untuk mengecek keadaan oli kendaraan motor dan melakukan penggantian oli apabila diperlukan.', 'Otomotif'),
+(9, 'Rantai Motor', 'gantirantai.jpg', 'Jasa ganti rantai oli motor digunakan untuk mengecek keadaan rantai kendaraan motor dan melakukan penggantian rantai apabila diperlukan.', 'Otomotif'),
+(10, 'Kampas Rem Motor', 'kampasrem.jpg', 'Jasa ganti kampas rem motor digunakan untuk mengecek keadaan kampas rem kendaraan motor dan melakukan penggantian kampas rem apabila diperlukan.', 'Otomotif'),
+(11, 'Kelistrikan Motor', 'kelistrikanmotor.jpg', 'Jasa kelistrikan motor digunakan untuk mengecek keadaan yang berhubungan dengan listrik dan melakukan penggantian komponen kelistrikan seperti lampu atau aki motor apabila diperlukan.', 'Otomotif'),
+(12, 'Tukang Kebun', 'tukang_kebun.jpg', 'Jasa tukang kebun digunakan untuk memasang dan memperbaiki hal yang berkaitan dengan perkebunan seperti melakukan pembersihan area taman atau kebun, menata dan merawat secara rutin pada tempat umum, kawasan kantor, hotel, apartemen atau bahkan rumah pribadi.', 'Asisten'),
+(13, 'Tukang AC', 'servisac.jpg', 'Jasa servis dan pemasangan AC digunakan untuk memasang dan memperbaiki hal yang berkaitan dengan Air Conditioner.', 'Elektronik'),
+(14, 'Pembantu', 'pembantu.jpg', 'Jasa pembantu digunakan untuk mengurus pekerjaan rumah tangga seperti memasak serta menghidangkan makanan, mencuci, membersihkan rumah, dan mengasuh anak-anak hingga dapat pula merawat orang lanjut usia yang mengalami keterbatasan fisik.', 'Asisten'),
+(15, 'Tukang TV', 'servistv.jpg', 'Jasa servis dan pemasangan TV digunakan untuk memasang dan memperbaiki hal yang berkaitan dengan perangkat televisi.', 'Elektronik'),
+(16, 'Tukang Water Heater', 'waterheater.jpg', 'Jasa servis dan pemasangan Water Heater digunakan untuk memasang dan memperbaiki hal yang berkaitan dengan Water Heater.', 'Elektronik'),
+(17, 'Tukang Atap Bangunan', 'atapbocor.jpg', 'Jasa tukang atap bangunan digunakan untuk memasang genteng (atap) dan memperbaiki hal yang berkaitan dengan genteng (atap) seperti bocor, merembes, rusak atau pengecatan.', 'Pembangunan'),
+(18, 'Tukang Cat', 'tukangcat.jpg', 'Jasa tukang cat digunakan untuk mengecat interior atau eksterior bangunan seperti rumah, gedung atau kantor, dan lain sebagainya.', 'Pembangunan'),
+(19, 'Satpam', 'satpam.jpg', 'Jasa satpam digunakan untuk menyelenggarakan keamanan dan ketertiban di lingkungan atau tempat kerja seperti rumah pribadi, kantor atau gedung, hotel, atau tempat umum layaknya rumah sakit yang meliputi aspek pengamanan fisik, personel, informasi dan pengamanan teknis lainnya.', 'Asisten'),
+(20, 'Tukang Cuci Motor', 'cucimotor.jpg', 'Jasa cuci motor digunakan untuk mencuci kendaraan bermotor tanpa harus pergi ke tempat pencucian motor.', 'Otomotif');
 
 -- --------------------------------------------------------
 
@@ -199,8 +206,8 @@ CREATE TABLE `order_servis` (
 --
 
 INSERT INTO `order_servis` (`id_order`, `tanggal`, `waktu`, `id_pelanggan`, `id_kota`, `id_kecamatan`, `lokasi_pelanggan`, `id_keahlian`, `status_order`, `status_bayar`) VALUES
-(4, '07/10/20', '12:00:00', 2, 1, 1, 'afasd', 1, 'selesai', 'Sudah Terbayar'),
-(5, '07/11/20', '12:00:00', 4, 1, 6, 'adasd', 1, 'belum', 'Belum Terbayar');
+(7, '07/15/20', '12:00:00', 2, 1, 1, 'ailsdjlas', 1, 'selesai', 'Sudah Terbayar'),
+(8, '07/16/20', '12:00:00', 2, 2, 17, 'asfasf', 1, 'selesai', 'Sudah Terbayar');
 
 -- --------------------------------------------------------
 
@@ -248,7 +255,8 @@ CREATE TABLE `pembayaran_servis` (
 --
 
 INSERT INTO `pembayaran_servis` (`id_pembayaran`, `id_order`, `total_harga`) VALUES
-(1, 4, 22000);
+(2, 7, 22000),
+(3, 8, 22000);
 
 -- --------------------------------------------------------
 
@@ -263,6 +271,13 @@ CREATE TABLE `review_servis` (
   `review` varchar(255) NOT NULL,
   `rating` enum('1','2','3','4','5') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `review_servis`
+--
+
+INSERT INTO `review_servis` (`id_review`, `id_order`, `id_mitra`, `review`, `rating`) VALUES
+(4, 7, 6, 'Bagus', '4');
 
 --
 -- Indexes for dumped tables
@@ -330,13 +345,13 @@ ALTER TABLE `review_servis`
 -- AUTO_INCREMENT for table `detail_order_servis`
 --
 ALTER TABLE `detail_order_servis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `keahlian`
 --
 ALTER TABLE `keahlian`
-  MODIFY `id_keahlian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_keahlian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `kecamatan`
@@ -360,7 +375,7 @@ ALTER TABLE `mitra`
 -- AUTO_INCREMENT for table `order_servis`
 --
 ALTER TABLE `order_servis`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
@@ -372,13 +387,13 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT for table `pembayaran_servis`
 --
 ALTER TABLE `pembayaran_servis`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `review_servis`
 --
 ALTER TABLE `review_servis`
-  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
