@@ -69,6 +69,36 @@
         })
     });
 </script>
+<script>
+    $(document).ready(function() {
+        $('#kota').change(function() {
+            var id = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url('board/data/pelanggan'); ?>",
+                data: {
+                    id: id
+                },
+                async: false,
+                dataType: 'json',
+                success: function(data) {
+                    var html = '';
+                    var i;
+                    for (i = 0; i < data.length; i++) {
+                        html += '<option value="'+data[i].id_kec+'">' + data[i].nama_kec + '</option>';
+                    }
+                    $('#kecamatan').html(html);
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    // Ketika ada error          
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                    // Munculkan alert error        
+
+                }
+            });
+        });
+    });
+</script>
 </body>
 
 </html>

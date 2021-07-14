@@ -42,24 +42,24 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php echo base_url('board/data/user') ?>" class="nav-link <?php if ($this->uri->segment(3) == "user") {
+                            <a href="<?php echo base_url('board/data/pelanggan') ?>" class="nav-link <?php if ($this->uri->segment(3) == "pelanggan") {
                                   echo 'active'; } ?>">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Pengguna</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo base_url('board/data/produk') ?>" class="nav-link <?php if ($this->uri->segment(3) == "produk") {
-                                    echo 'active'; } ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Produk</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo base_url('board/data/pelanggan') ?>" class="nav-link <?php if ($this->uri->segment(3) == "pelanggan") {
-                                    echo 'active'; } ?>">
-                                <i class="far fa-circle nav-icon"></i>
                                 <p>Pelanggan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo base_url('board/data/mitra') ?>" class="nav-link <?php if ($this->uri->segment(3) == "mitra") {
+                                    echo 'active'; } ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Mitra</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo base_url('board/data/keahlian') ?>" class="nav-link <?php if ($this->uri->segment(3) == "keahlian") {
+                                    echo 'active'; } ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Keahlian</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -67,20 +67,6 @@
                                     echo 'active'; } ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Order</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo base_url('board/data/kategori') ?>" class="nav-link <?php if ($this->uri->segment(3) == "kategori") {
-                                    echo 'active'; } ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Kategori</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo base_url('board/data/detail_order') ?>" class="nav-link <?php if ($this->uri->segment(3) == "detail_order") {
-                                    echo 'active'; } ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Detail Order</p>
                             </a>
                         </li>
                     </ul>
