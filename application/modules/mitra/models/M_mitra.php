@@ -80,6 +80,14 @@ class M_mitra extends CI_Model
     }
 
 
+    public function getSaldo($id){
+        $this->db->select("*");
+        $this->db->from('detail_order_servis');
+        $this->db->where('id_mitra', $id);
+
+        return $this->db->get()->result_array();
+    }
+
     public function get_mitra_id($id)
     {
         $this->db->select('*');
@@ -100,5 +108,9 @@ class M_mitra extends CI_Model
     public function change_status_mitra($id, $mitra, $table){
         $this->db->where($id);
         $this->db->update($table, $mitra);
+    }
+
+    public function tarik_saldo(){
+        
     }
 }

@@ -61,7 +61,7 @@ class M_Page extends CI_Model
         $this->db->join('mitra', 'mitra.id_mitra=detail_order_servis.id_mitra');
         $this->db->join('keahlian', 'order_servis.id_keahlian=keahlian.id_keahlian');
         $this->db->where('order_servis.id_pelanggan', $id);
-        $this->db->order_by('id_order', 'desc');
+        $this->db->order_by('order_servis.id_order', 'desc');
         return $this->db->get()->result_array();
     }
 

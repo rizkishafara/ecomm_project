@@ -7,7 +7,7 @@
             $date = new DateTime($r['waktu']);
             //$tanggal = new DateTime($r['tanggal'])
         ?>
-            <div class="card">
+            <div class="card mt-5">
                 <div class="card-body">
                     <table>
                         <tr>
@@ -67,8 +67,11 @@
                         <button type="submit" class="btn btn-success">Upload Bukti Pembayaran</button>
                         </form>
                     <?php } else if ($r['status_order'] == 'sedang diproses') { ?>
+                        
                         <p><?php echo $r['status_order'] ?></p>
-                    <?php } else if ($r['status_order'] == 'selesai' && $r['status_bayar'] == 'Sudah Terbayar') { ?>
+
+                    <?php } else if ($r['status_order'] == 'selesai' && $r['status_bayar'] == 'Sudah Terbayar' && $r['id'] == null) { ?>
+
                         <div class="align-item-center">
                             <p align="center">Transaksi Telah Selesai, Silahkan Memberikan review</p>
                             <div style="margin-left: 505px; margin-top:5px;">
@@ -81,6 +84,9 @@
 
                             </div>
                         </div>
+
+                    <?php }else if ($r['status_order'] == 'selesai' && $r['status_bayar'] == 'Sudah Terbayar'){ ?>
+                        <p>Terima Kasih Telah Memberikan Ulasan</p>
                     <?php } ?>
                 </div>
             </div>
