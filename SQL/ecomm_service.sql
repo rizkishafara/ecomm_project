@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2021 at 12:12 PM
+-- Generation Time: Jul 14, 2021 at 06:18 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -42,7 +42,9 @@ CREATE TABLE `detail_order_servis` (
 
 INSERT INTO `detail_order_servis` (`id`, `id_order`, `harga_jasa`, `biaya_admin`, `id_mitra`, `bukti_tf`) VALUES
 (8, 7, 20000, 2000, 6, 'produk6.jpg'),
-(9, 8, 20000, 2000, 6, 'produk61.jpg');
+(9, 8, 20000, 2000, 6, 'produk5.jpg'),
+(10, 9, 20000, 2000, 6, 'produk62.jpg'),
+(11, 11, 20000, 2000, 6, '');
 
 -- --------------------------------------------------------
 
@@ -180,7 +182,7 @@ CREATE TABLE `mitra` (
 --
 
 INSERT INTO `mitra` (`id_mitra`, `id_pelanggan`, `id_keahlian`, `nama_mitra`, `foto_mitra`, `alamat_mitra`, `harga_jasa`, `no_ktp`, `status`, `rating`) VALUES
-(6, 3, 1, 'Tama', 'background_2.png', 'adasfas', 20000, 2147483647, 'tersedia', 4);
+(6, 3, 1, 'Tama', 'background_2.png', 'adasfas', 20000, 2147483647, 'tidak tersedia', 4);
 
 -- --------------------------------------------------------
 
@@ -198,16 +200,20 @@ CREATE TABLE `order_servis` (
   `lokasi_pelanggan` varchar(255) NOT NULL,
   `id_keahlian` int(11) NOT NULL,
   `status_order` enum('belum','sedang diproses','selesai','') NOT NULL,
-  `status_bayar` enum('Belum Terbayar','Sudah Terbayar','','') NOT NULL
+  `status_bayar` enum('Belum Terbayar','Sudah Terbayar','','') NOT NULL,
+  `rating_review` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `order_servis`
 --
 
-INSERT INTO `order_servis` (`id_order`, `tanggal`, `waktu`, `id_pelanggan`, `id_kota`, `id_kecamatan`, `lokasi_pelanggan`, `id_keahlian`, `status_order`, `status_bayar`) VALUES
-(7, '07/15/20', '12:00:00', 2, 1, 1, 'ailsdjlas', 1, 'selesai', 'Sudah Terbayar'),
-(8, '07/16/20', '12:00:00', 2, 2, 17, 'asfasf', 1, 'selesai', 'Sudah Terbayar');
+INSERT INTO `order_servis` (`id_order`, `tanggal`, `waktu`, `id_pelanggan`, `id_kota`, `id_kecamatan`, `lokasi_pelanggan`, `id_keahlian`, `status_order`, `status_bayar`, `rating_review`) VALUES
+(7, '07/15/20', '12:00:00', 2, 1, 1, 'ailsdjlas', 1, 'selesai', 'Sudah Terbayar', 1),
+(8, '07/16/20', '12:00:00', 2, 2, 17, 'asfasf', 1, 'selesai', 'Sudah Terbayar', 0),
+(9, '07/15/20', '12:00:00', 2, 1, 1, 'sdasd', 1, 'selesai', 'Sudah Terbayar', 4),
+(10, '07/15/20', '15:00:00', 4, 1, 16, 'dasd', 1, 'belum', 'Belum Terbayar', 0),
+(11, '07/15/20', '12:00:00', 2, 1, 16, 'aonfas', 1, 'sedang diproses', 'Belum Terbayar', 0);
 
 -- --------------------------------------------------------
 
@@ -256,7 +262,9 @@ CREATE TABLE `pembayaran_servis` (
 
 INSERT INTO `pembayaran_servis` (`id_pembayaran`, `id_order`, `total_harga`) VALUES
 (2, 7, 22000),
-(3, 8, 22000);
+(3, 8, 22000),
+(4, 9, 22000),
+(5, 8, 22000);
 
 -- --------------------------------------------------------
 
@@ -277,7 +285,11 @@ CREATE TABLE `review_servis` (
 --
 
 INSERT INTO `review_servis` (`id_review`, `id_order`, `id_mitra`, `review`, `rating`) VALUES
-(4, 7, 6, 'Bagus', '4');
+(4, 7, 6, 'Bagus', '4'),
+(5, 9, 6, 'Bagus', '4'),
+(6, 9, 6, 'Bagus Sekali', '4'),
+(7, 9, 6, 'Bagus Sekali', '4'),
+(8, 8, 6, 'Bagus', '4');
 
 --
 -- Indexes for dumped tables
@@ -345,7 +357,7 @@ ALTER TABLE `review_servis`
 -- AUTO_INCREMENT for table `detail_order_servis`
 --
 ALTER TABLE `detail_order_servis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `keahlian`
@@ -375,7 +387,7 @@ ALTER TABLE `mitra`
 -- AUTO_INCREMENT for table `order_servis`
 --
 ALTER TABLE `order_servis`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
@@ -387,13 +399,13 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT for table `pembayaran_servis`
 --
 ALTER TABLE `pembayaran_servis`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `review_servis`
 --
 ALTER TABLE `review_servis`
-  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
