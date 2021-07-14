@@ -149,20 +149,12 @@ class Page extends CI_Controller
         $this->load->view('template/shop/footer_shop');
     }
 
-    public function guide()
-    {
-        $data['title'] = "Guide";
-        $this->load->view('template/shop/header_shop', $data);
-        $this->load->view('template/shop/navbar_shop');
-        $this->load->view('page/guide');
-        $this->load->view('template/shop/footer_shop');
-    }
-
     public function riwayat()
     {
         $data['title'] = "Riwayat";
         $id = $this->session->userdata['id'];
         $data['riwayat'] = $this->M_Page->riwayat_order($id);
+       
         if (empty($id)) {
             redirect('auth/login');
         }
@@ -172,19 +164,34 @@ class Page extends CI_Controller
         $this->load->view('template/shop/footer_shop');
     }
 
+    public function batalOrder($id = null){
+        $this->M_Page->orderBatal($id);
+        redirect('service/page/layanan');
+    }
+
+    public function review_rating($id = null){
+        $data['title'] = "Review";
+        $data['riwayat'] = $this->M_Page->beriRating($id);
+        $this->load->view('template/shop/header_shop', $data);
+        $this->load->view('template/shop/navbar_shop');
+        $this->load->view('page/review', $data);
+        $this->load->view('template/shop/footer_shop');
+    }
+
     public function status_bayar()
     {
         $id = $this->input->post('id_order');
         $total = $this->input->post('total');
         $status_bayar = 'Sudah Terbayar';
         $bukti_tf = $_FILES['bukti_tf'];
+       
 
         if ($bukti_tf == '') {
             echo '....';
         } else {
             $config['upload_path'] = 'assets/gambar/bukti_tf';
             $config['allowed_types'] = 'jpg|png|jpeg';
-
+            
 
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
@@ -200,7 +207,8 @@ class Page extends CI_Controller
         }
 
         $data = array(
-            'status_bayar' => $status_bayar
+            'status_bayar' => $status_bayar,
+            
         );
 
         $id_order = array(
@@ -208,6 +216,7 @@ class Page extends CI_Controller
         );
         $detail_riwayat = array(
             'bukti_tf' => $bukti_tf
+            
         );
 
         $pembayaran = array(
@@ -228,12 +237,12 @@ class Page extends CI_Controller
         $hasil = $this->load->view('page/view_search', $data);
     }
 
-    public function review_mitra()
-    {
+    public function review_mitra(){
         $post = $this->input->post();
         $id_order = $post['id_order'];
         $id_mitra = $post['id_mitra'];
         $review = $post['review'];
+        $rating = $this->input->post('rating');
 
         $data = array(
             'id_order' => $id_order,
@@ -246,11 +255,22 @@ class Page extends CI_Controller
             'id_mitra' => $id_mitra
         );
 
+        $id_or = array(
+            'id_order'   => $id_order
+        );
+
+        $rating_or = array(
+            'rating_review' => $rating
+        );
+
         $mitra = array(
             'rating' => 4
         );
         $this->M_Page->input_review($data);
+        $this->M_Page->rating_order($id_or, $rating_or, 'order_servis');
         $this->M_Page->edit_rating_mitra($id_mit, $mitra, 'mitra');
-        redirect('service/page/index');
+        redirect('service/page/riwayat');
     }
+
+   
 }

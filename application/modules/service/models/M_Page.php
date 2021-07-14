@@ -52,6 +52,11 @@ class M_Page extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    public function orderBatal($id){
+        $this->db->where('id_order', $id);
+        $this->db->delete('order_servis');
+    }
+
     public function riwayat_order($id)
     {
         $this->db->select('*');
@@ -64,6 +69,19 @@ class M_Page extends CI_Model
         $this->db->order_by('order_servis.id_order', 'desc');
         return $this->db->get()->result_array();
     }
+
+    public function beriRating($id)
+    {
+        $this->db->select('*');
+        $this->db->from('order_servis');
+        $this->db->join('pelanggan', 'pelanggan.id_pelanggan=order_servis.id_pelanggan');
+        $this->db->join('detail_order_servis', 'detail_order_servis.id_order=order_servis.id_order');
+        $this->db->join('mitra', 'mitra.id_mitra=detail_order_servis.id_mitra');
+        $this->db->join('keahlian', 'order_servis.id_keahlian=keahlian.id_keahlian');
+        $this->db->where('order_servis.id_order', $id);
+        return $this->db->get()->result_array();
+    }
+   
 
 
     public function find($search)
@@ -91,6 +109,12 @@ class M_Page extends CI_Model
 
     public function input_review($data){
         $this->db->insert('review_servis', $data);
+    }
+
+    public function rating_order($id, $data, $table)
+    {
+        $this->db->where($id);
+        $this->db->update($table, $data);
     }
 
     public function edit_rating_mitra($id, $mitra, $table){

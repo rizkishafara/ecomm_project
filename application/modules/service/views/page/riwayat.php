@@ -1,13 +1,15 @@
 <div class="">
     <!-- <?php echo json_encode($riwayat) ?> -->
     <div class="container pb-5">
-        <?php foreach ($riwayat as $r) {
+        <?php foreach ($riwayat as $r) :
             $biaya_admin = 10 / 100 * $r['harga_jasa'];
             $total = $biaya_admin + $r['harga_jasa'];
             $date = new DateTime($r['waktu']);
             //$tanggal = new DateTime($r['tanggal'])
+
+            $rating = $r['rating_review']
         ?>
-            <div class="card mt-5">
+            <div class="card mt-5" id="data">
                 <div class="card-body">
                     <table>
                         <tr>
@@ -67,10 +69,11 @@
                         <button type="submit" class="btn btn-success">Upload Bukti Pembayaran</button>
                         </form>
                     <?php } else if ($r['status_order'] == 'sedang diproses') { ?>
-                        
-                        <p><?php echo $r['status_order'] ?></p>
 
-                    <?php } else if ($r['status_order'] == 'selesai' && $r['status_bayar'] == 'Sudah Terbayar' && $r['id'] == null) { ?>
+                        <p><?php echo $r['status_order'] ?></p>
+                        <a href="<?php echo base_url('service/page/batalOrder/'.$r['id_order'])?>" class="btn btn-danger">Batal Order</a>
+
+                    <?php } else if ($r['status_order'] == 'selesai' && $r['status_bayar'] == 'Sudah Terbayar' && $rating == 0) { ?>
 
                         <div class="align-item-center">
                             <p align="center">Transaksi Telah Selesai, Silahkan Memberikan review</p>
@@ -78,66 +81,18 @@
 
                                 <div class="input-group flex-column flex-sm-row mb-3">
                                     <div class="input-group-append">
-                                        <button class="btn btn-success btn-block" id="button-addon2" data-toggle="modal" data-target="#exampleModal">Beri Ulasan </button>
+                                        <a href="<?php echo base_url('service/page/review_rating/' . $r['id_order']) ?>" type="button" class="btn btn-info btn-xs" >Beri Ulasan</a>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
 
-                    <?php }else if ($r['status_order'] == 'selesai' && $r['status_bayar'] == 'Sudah Terbayar'){ ?>
+                    <?php } else if ($rating != 0) { ?>
                         <p>Terima Kasih Telah Memberikan Ulasan</p>
                     <?php } ?>
                 </div>
             </div>
-        <?php } ?>
+        <?php endforeach; ?>
     </div>
 
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Review</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <?php foreach ($riwayat as $r) { ?>
-                        <?php echo form_open_multipart('service/page/review_mitra'); ?>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="nama_produk">Nama Petugas</label>
-                                <input type="hidden" name="id_order" value="<?php echo $r['id_order'] ?>">
-                                <input type="hidden" name="id_mitra" value="<?php echo $r['id_mitra'] ?>">
-                                <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $r['nama_mitra'] ?>" readonly>
-                                <?php echo form_error('nama_produk', '<small class="text-danger pl-3">', '</small>'); ?>
-                            </div>
-                            <div class="form-group">
-                                <label for="nama_produk">Jenis Jasa</label>
-                                <input type="text" class="form-control" id="keahlian" name="keahlian" value="<?php echo $r['daftar_keahlian'] ?>" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="nama_produk">Status Pengerjaan</label>
-                                <input type="text" class="form-control" id="status" name="status" value="<?php echo $r['status_order'] ?>" readonly>
-                            </div>
-                            <div class=" form-group">
-                                <label for="deskripsi">Ulasan</label>
-                                <textarea type="text" class="form-control" id="review" name="review" rows="4" placeholder="Ulasan"></textarea>
-                                <?php echo form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                            <button type="submit" name="btnSubmit" class="btn btn-primary">Submit</button>
-                        </div>
-                        <?php echo form_close(); ?>
-                    <?php } ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    

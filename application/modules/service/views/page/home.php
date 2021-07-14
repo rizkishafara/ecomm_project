@@ -23,8 +23,8 @@
                 <div class="col-md-4">
                     <div class="card bg-dark" style="width: 18rem; border-radius: 30px;">
                         <div class="card-body text-white">
-                            <h5 class="card-title">" Menyediakan Tenaga Kerja Profesional "</h5>
-                            <br>
+                            <h5 class="card-title">Menyediakan Tenaga Kerja Profesional</h5>
+
                             <p class="card-text">Kami memahami kebutuhan Anda untuk mendapatkan pelayanan dengan orang yang berpengalaman serta profesional dalam bidangnya.</p>
 
                         </div>
@@ -33,7 +33,7 @@
                 <div class="col-md-4">
                     <div class="card bg-dark pb-4" style="width: 18rem; border-radius: 30px;">
                         <div class="card-body text-white">
-                            <h5 class="card-title">" Mudah Dalam Penggunaan "</h5>
+                            <h5 class="card-title">Mudah Dalam Penggunaan</h5>
                             <br>
                             <p class="card-text">Di desain secara user-friendly sehingga memudahkan pengunjung saat menggunakan aplikasi.</p>
 
@@ -43,7 +43,7 @@
                 <div class="col-md-4">
                     <div class="card bg-dark" style="width: 18rem; border-radius: 30px;">
                         <div class="card-body text-white">
-                            <h5 class="card-title">" Tanpa Ribet & Nyaman "</h5>
+                            <h5 class="card-title">Tanpa Ribet&Nyaman</h5>
                             <br>
                             <p class="card-text">Berbagai fitur lengkap siap mendukung pengguna sehingga proses transaksi dapat dilakukan dengan cepat, tanpa ribet dan nyaman</p>
 
@@ -122,13 +122,15 @@
                         </div>
                         <div class="form-group">
                             <label for="nama_produk">Tarif Jasa</label>
-                            <input type="text" class="form-control" id="tarif" name="tarif" placeholder="Nama Lengkap">
+                            <input type="text" class="form-control" id="tarif" name="tarif" placeholder="Tarif Jasa">
                             <?php echo form_error('nama_produk', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
                         <button type="submit" name="btnSubmit" class="btn btn-primary">Submit</button>
+                        <strong>*NB : Pastikan data yang diisi sudah lengkap dan benar</strong><br>
+                        <strong></strong>
                     </div>
                     <?php echo form_close(); ?>
                 </div>
