@@ -12,11 +12,25 @@ class Order extends CI_Controller
     public function index()
     {
         $data['title'] = "Data Order";
-        $data['order'] = $this->m_data->tampil_order()->result();
+        $data['order'] = $this->m_data->tampilOrder()->result();
         $this->load->view('template/auth/head', $data);
         $this->load->view('template/auth/navbar');
         $this->load->view('template/auth/sidebar');
         $this->load->view('orderv', $data);
         $this->load->view('template/auth/footer');
+    }
+    public function detailOrder($id = null)
+    {
+        $data['title'] = "Detail Data";
+        $detail = $this->m_data;
+
+        $data["order"] = $detail->getIdOrder($id);
+
+        $this->load->view('template/auth/head', $data);
+        $this->load->view('template/auth/navbar');
+        $this->load->view('template/auth/sidebar');
+        $this->load->view('detailorderv', $data);
+        $this->load->view('template/auth/footer');
+
     }
 }

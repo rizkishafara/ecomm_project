@@ -25,15 +25,11 @@ class Keahlian extends CI_Controller
         $keahlian = $this->m_data;
         $validation = $this->form_validation;
         $validation->set_rules($keahlian->rules());
-         
+
         if ($validation->run()) {
             $keahlian->simpanKeahlian();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
-        }else{
-            $this->session->set_flashdata('success', 'GAGAL');
         }
-
-        $this->session->set_flashdata('success', 'GAGAL');
         $this->load->view('template/auth/head', $data);
         $this->load->view('template/auth/navbar');
         $this->load->view('template/auth/sidebar');
@@ -45,6 +41,7 @@ class Keahlian extends CI_Controller
         $data['title'] = "Edit Data";
         $edit = $this->m_data;
         $validation = $this->form_validation;
+        $validation->set_rules($edit->rules());
         
         if ($validation->run()) {
             $edit->ubahKeahlian();;
@@ -59,5 +56,13 @@ class Keahlian extends CI_Controller
         $this->load->view('editkeahlianv', $data);
         $this->load->view('template/auth/footer');
 
+    }
+    public function delete($id=null)
+    {
+        if (!isset($id)) show_404();
+        
+        if ($this->m_data->deleteKeahlian($id)) {
+            redirect(site_url('board/data/keahlian'));
+        }
     }
 }

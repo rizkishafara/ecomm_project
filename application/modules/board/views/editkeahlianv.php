@@ -11,7 +11,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item">Data</li>
-                        <li class="breadcrumb-item">Pelanggan</li>
+                        <li class="breadcrumb-item">Keahlian</li>
                         <li class="breadcrumb-item active">Edit</li>
                     </ol>
                 </div>
@@ -27,19 +27,26 @@
                 <div class="col-md-8">
                     <!-- general form elements -->
                     <div class="card card-warning">
+                    <?php if ($this->session->flashdata('success')): ?>
+                        <div class="alert alert-success" role="alert">
+                            <?php echo $this->session->flashdata('success'); ?>
+                        </div>
+                    <?php endif; ?>
                         <div class="card-header">
-                            <h3 class="card-title">Tabel Pelanggan</h3>
+                            <h3 class="card-title">Tabel Keahlian</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <?php echo form_open('board/data/keahlian/editKeahlian'); ?>
-                        <form role="form" enctype="multipart/form-data">
+                        <form role="form" method="post" action="" enctype="multipart/form-data">
                             <div class="card-body">
-                                <input type="" class="form-control" id="inputName" name="id_keahlian" value="<?php echo $keahlian->id_keahlian ?>">
+                            <input type="hidden" name="id_keahlian" value="<?php echo $keahlian->id_keahlian?>" />
                                 <div class="form-group">
-                                    <label for="daftar_keahlian">Daftar Keahlian</label>
-                                    <input type="text" class="form-control" id="daftar_keahlian" name="daftar_keahlian" placeholder="Daftar Keahlian" value="<?php echo $keahlian->daftar_keahlian ?>">
-                                    <?php echo form_error('daftar_keahlian', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    <label for="daftar_keahlian">Nama Keahlian</label>
+                                    <input class="form-control <?php echo form_error('daftar_keahlian') ? 'is-invalid':'' ?>"
+                                    type="text" name="daftar_keahlian" placeholder="Id User" value="<?php echo $keahlian->daftar_keahlian ?>" />
+                                    <div class="invalid-feedback">
+                                        <?php echo form_error('daftar_keahlian') ?>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                         <label for="">Gambar Keahlian</label>
@@ -50,19 +57,28 @@
                                             <?php echo form_error('gambar_keahlian') ?>
                                         </div>
                                     </div>
-
                                 <div class="form-group">
-                                    <label for="deskripsi">Deskripsi</label>
-                                    <textarea type="text" class="form-control" id="deskrips" name="deskrips" placeholder="Deskripsi" value=""><?php echo $keahlian->deskripsi ?></textarea>
-                                    <?php echo form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
+                                        <label for="deskripsi">Deskripsi*</label>
+                                        <textarea class="form-control <?php echo form_error('deskripsi') ? 'is-invalid':'' ?>"
+                                        type="text" name="deskripsi" min="0" placeholder="Deskripsi" value=""><?php echo $keahlian->deskripsi ?></textarea>
+                                        <div class="invalid-feedback">
+                                            <?php echo form_error('satuan') ?>
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="jenis">Jenis Keahlian</label>
+                                    <input class="form-control <?php echo form_error('jenis') ? 'is-invalid':'' ?>"
+                                    type="text" name="jenis" placeholder="Id User" value="<?php echo $keahlian->jenis ?>" />
+                                    <div class="invalid-feedback">
+                                        <?php echo form_error('jenis') ?>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" name="btnSubmit" class="btn btn-primary">Submit</button>
+                                <input class="btn btn-success" type="submit" name="btn" value="Save" />
                             </div>
                         </form>
-                        <?php echo form_close(); ?>
                     </div>
                     <!-- /.card -->
                 </div>

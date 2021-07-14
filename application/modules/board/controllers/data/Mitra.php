@@ -24,21 +24,29 @@ class Mitra extends CI_Controller
         $data['title'] = "Edit Data";
         $edit = $this->m_data;
         $validation = $this->form_validation;
+        $validation->set_rules($edit->rulesmitra());
         
         if ($validation->run()) {
             $edit->ubahMitra();;
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
 
-        $data["Mitra"] = $edit->getIdPelanggan($id);
-        $data["kecamatan"] = $edit->get_kec($id);
-        $data["kota"] = $edit->get_kota($id);
+        $data["mitra"] = $edit->getIdMitra($id);
+        $data["keahlian"] = $edit->getIdKeahlian($id);
 
         $this->load->view('template/auth/head', $data);
         $this->load->view('template/auth/navbar');
         $this->load->view('template/auth/sidebar');
-        $this->load->view('editpelangganv', $data);
+        $this->load->view('editmitrav', $data);
         $this->load->view('template/auth/footer');
 
+    }
+    public function hapusMitra($id=null)
+    {
+        if (!isset($id)) show_404();
+        
+        if ($this->m_data->deleteMitra($id)) {
+            redirect(site_url('board/data/mitra'));
+        }
     }
 }

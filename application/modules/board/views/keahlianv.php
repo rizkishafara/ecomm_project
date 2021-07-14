@@ -10,7 +10,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item">Data</li>
-                        <li class="breadcrumb-item active">Pelanggan</li>
+                        <li class="breadcrumb-item active">Keahlian</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                 <div class="col-md">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Tabel Pelanggan</h3>
+                            <h3 class="card-title">Tabel Keahlian</h3>
                             <br>
                             <a href="<?php echo base_url()?>/board/data/keahlian/tambahKeahlian"><span class="badge badge-primary">Tambah</span></a>
                         </div>
@@ -37,6 +37,7 @@
                                         <th>Daftar Keahlian</th>
                                         <th>Gambar Keahlian</th>
                                         <th>Deskripsi</th>
+                                        <th>Jenis Keahlian</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -51,9 +52,10 @@
                                                 <img src="<?php echo base_url('assets/gambar/mitra/'.$row->gambar_keahlian) ?>" width="120" />
                                             </td>
                                             <td><?php echo $row->deskripsi ?></td>
+                                            <td><?php echo $row->jenis?></td>
                                             <td>
                                                 <a href="<?php echo base_url('board/data/keahlian/editKeahlian/'.$row->id_keahlian)?>"><span class="badge badge-success">Edit</span></a>
-                                                <a href="<?php echo base_url('board/data/keahlian/hapusKeahlian/'.$row->id_keahlian)?>"><span class="badge badge-danger">Delete</span></a>
+                                                <a href="<?php echo base_url('board/data/keahlian/delete/'.$row->id_keahlian)?>"><span class="badge badge-danger">Delete</span></a>
                                             </td>
                                         </tr>
                                     <?php

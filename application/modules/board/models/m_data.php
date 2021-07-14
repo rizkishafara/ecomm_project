@@ -11,13 +11,84 @@ class m_data extends CI_Model
             'label' => 'Daftar Keahlian',
             'rules' => 'required'],
 
-            ['field' => 'gambar',
-            'label' => 'Gambar Keahlian',
-            'rules' => 'required'],
-
             ['field' => 'deskripsi',
             'label' => 'Deskripsi',
             'rules' => 'required']
+        ];
+    }
+    public function rulespelanggan()
+    {
+        return [
+
+            ['field' => 'nama_pelanggan',
+            'label' => 'Nama Pelanggan',
+            'rules' => 'required'],
+
+            ['field' => 'email_pelanggan',
+            'label' => 'Email Pelanggan',
+            'rules' => 'required'],
+
+            ['field' => 'username_pelanggan',
+            'label' => 'Username Pelanggan',
+            'rules' => 'required'],
+
+            ['field' => 'password_pelanggan',
+            'label' => 'Password Pelanggan',
+            'rules' => 'required'],
+
+            ['field' => 'alamat_pelanggan',
+            'label' => 'Alamat Pelanggan',
+            'rules' => 'required'],
+
+            ['field' => 'no_hp',
+            'label' => 'No HP',
+            'rules' => 'required'],
+
+            ['field' => 'jenis',
+            'label' => 'Jenis',
+            'rules' => 'required'],
+
+            ['field' => 'kota',
+            'label' => 'Kota',
+            'rules' => 'numeric'],
+
+            ['field' => 'kecamatan',
+            'label' => 'Kecamatan',
+            'rules' => 'numeric']
+            
+        ];
+    }
+    public function rulesmitra()
+    {
+        return [
+
+            ['field' => 'keahlian',
+            'label' => 'Keahlian',
+            'rules' => 'required'],
+
+            ['field' => 'nama_mitra',
+            'label' => 'Nama Mitra',
+            'rules' => 'required'],
+
+            ['field' => 'alamat_mitra',
+            'label' => 'Alamat Mitra',
+            'rules' => 'required'],
+
+            ['field' => 'harga_jasa',
+            'label' => 'Harga Jasa',
+            'rules' => 'required'],
+
+            ['field' => 'no_ktp',
+            'label' => 'No KTP',
+            'rules' => 'required'],
+
+            ['field' => 'status',
+            'label' => 'Status',
+            'rules' => 'required'],
+
+            ['field' => 'rating',
+            'label' => 'Rating',
+            'rules' => 'numeric']
         ];
     }
     // Tampil Data //
@@ -37,7 +108,10 @@ class m_data extends CI_Model
     }
     public function tampilMitra()
     {
-        return $this->db->get('mitra');
+        $this->db->select('*');
+        $this->db->from('mitra');
+        $this->db->join('keahlian', 'mitra.id_keahlian=keahlian.id_keahlian');
+        return $this->db->get();
     }
     public function tampil_do()
     {
@@ -46,6 +120,16 @@ class m_data extends CI_Model
     public function tampil_user()
     {
         return $this->db->get('users');
+    }
+    public function tampilOrder()
+    {
+        $this->db->select('*');
+        $this->db->from('order_servis');
+        $this->db->join('pelanggan', 'order_servis.id_pelanggan=pelanggan.id_pelanggan');
+        $this->db->join('kota', 'order_servis.id_kota=kota.id_kota');
+        $this->db->join('kecamatan', 'order_servis.id_kecamatan=kecamatan.id_kec');
+        $this->db->join('keahlian', 'order_servis.id_keahlian=keahlian.id_keahlian');
+        return $this->db->get();
     }
 
 
@@ -66,6 +150,27 @@ class m_data extends CI_Model
         $this->db->from('keahlian');
         $this->db->where('id_keahlian', $id);
         return $this->db->get()->row();
+        // $hasil = $this->db->query("SELECT * FROM keahlian");
+        // return $hasil->result();
+    }
+    public function getIdMitra($id)
+    {
+        //return $this->db->get_where($this->_pelanggan, ["id_pelanggan" => $id])->row();
+
+        $this->db->select('*');
+        $this->db->from('mitra');
+        $this->db->join('keahlian', 'mitra.id_keahlian=keahlian.id_keahlian');
+        $this->db->where('id_mitra', $id);
+        return $this->db->get()->row();
+    }
+    public function getIdOrder($id)
+    {
+        //return $this->db->get_where($this->_pelanggan, ["id_pelanggan" => $id])->row();
+
+        $this->db->select('*');
+        $this->db->from('detail_order_servis');
+        $this->db->join('mitra', 'detail_order_servis.id_mitra=mitra.id_mitra');
+        return $this->db->get()->row();
     }
 
     public function get_kota()
@@ -83,10 +188,10 @@ class m_data extends CI_Model
     public function simpanKeahlian()
     {
         $post = $this->input->post();
-        //$this->id_keahlian = $post["id_keahlian"];
         $this->daftar_keahlian = $post["daftar_keahlian"];
         $this->gambar_keahlian = $this->_imageKeahlian();
         $this->deskripsi = $post["deskripsi"];
+        $this->jenis = $post["jenis"];
         return $this->db->insert("keahlian", $this);
     }
 
@@ -94,45 +199,77 @@ class m_data extends CI_Model
     public function ubahPelanggan()
     {
         $post = $this->input->post();
-        $this->id_pelanggan = $post["id_pelanggan"];
+        //$this->id_pelanggan = $post["id_pelanggan"];
         $this->nama_pelanggan = $post["nama_pelanggan"];
         $this->email_pelanggan = $post["email_pelanggan"];
         $this->username_pelanggan = $post["username_pelanggan"];
-        $this->password_pelanggan = md5($post["pasword_pelanggan"]);
+        $this->password_pelanggan = md5($post["password_pelanggan"]);
         $this->alamat_pelanggan = $post["alamat_pelanggan"];
         $this->id_kota = $post["kota"];
         $this->id_kecamatan = $post["kecamatan"];
         $this->no_hp = $post["no_hp"];
         $this->jenis = $post["jenis"];
-        return $this->db->update($this->pelanggan, $this, array('id_pelanggan' => $post['id']));
+        return $this->db->update("pelanggan", $this, array('id_pelanggan' => $post['id_pelanggan']));
     }
     public function ubahKeahlian()
     {
         $post = $this->input->post();
-        $this->id_keahlian = $post["id_keahlian"];
+        //$this->id_keahlian = $post["id_keahlian"];
         $this->daftar_keahlian = $post["daftar_keahlian"];
-        $this->email_pelanggan = $post["email_pelanggan"];
-        if (!empty($_FILES["gambar"]["name"])) {
-            $this->gambar = $this->_imageKeahlian();
+        if (!empty($_FILES["gambar_keahlian"]["name"])) {
+            $this->gambar_keahlian = $this->_imageKeahlian();
         } else {
-            $this->gambar = $post["old_image"];
+            $this->gambar_keahlian = $post["old_image"];
         }
         $this->deskripsi = $post["deskripsi"];
+        $this->jenis = $post["jenis"];
         
-        return $this->db->update($this->keahlian, $this, array('id_keahlian' => $post['id']));
+        return $this->db->update('keahlian', $this, array('id_keahlian' => $post['id_keahlian']));
+    }
+    public function ubahMitra()
+    {
+        $post = $this->input->post();
+        $this->id_keahlian = $post["keahlian"];
+        $this->nama_mitra = $post["nama_mitra"];
+        if (!empty($_FILES["foto_mitra"]["name"])) {
+            $this->foto_mitra = $this->_imageMitra();
+        } else {
+            $this->foto_mitra = $post["old_image"];
+        }
+        $this->alamat_mitra = $post["alamat_mitra"];
+        $this->harga_jasa = $post["harga_jasa"];
+        $this->no_ktp = $post["no_ktp"];
+        $this->status = $post["status"];
+        $this->rating = $post["rating"];
+        
+        return $this->db->update('mitra', $this, array('id_mitra' => $post['id_mitra']));
+    }
+
+    public function deleteKeahlian($id)
+    {
+        return $this->db->delete('keahlian', array("id_keahlian" => $id));
+    }
+    public function deletePelanggan($id)
+    {
+        return $this->db->delete('pelanggan', array("id_pelanggan" => $id));
+    }
+    public function deleteMitra($id)
+    {
+        return $this->db->delete('mitra', array("id_mitra" => $id));
     }
 
     private function _imageKeahlian()
     {
-        $config['upload_path']          = './assets/gambar/mitra/';
-        $config['allowed_types']        = 'gif|jpg|png';
+        $config['upload_path']          = 'assets/gambar/mitra';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
         $config['file_name']            = $this->daftar_keahlian;
         $config['overwrite']			= true;
         $config['max_size']             = 10240;
 
         $this->load->library('upload', $config);
-       
-        if ($this->upload->do_upload($_FILES['gambar'])) {
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('gambar_keahlian')) {
             return $this->upload->data("file_name");
         }else{
             $error = array('error' => $this->upload->display_errors());
@@ -140,6 +277,26 @@ class m_data extends CI_Model
         }
         
         return "default.jpg";
+    }
+    private function _imageMitra()
+    {
+        $config['upload_path']          = 'assets/gambar/img';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+        $config['file_name']            = $this->nama_mitra;
+        $config['overwrite']			= true;
+        $config['max_size']             = 10240;
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('foto_mitra')) {
+            return $this->upload->data("file_name");
+        }else{
+            $error = array('error' => $this->upload->display_errors());
+                echo '<div class="alert alert-danger">' . $error['error'] . '</div>';
+        }
+        
+        return "avatar.png";
     }
 
     

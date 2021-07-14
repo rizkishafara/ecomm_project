@@ -26,42 +26,34 @@
                         <div class="card-header">
                             <h3 class="card-title">Tabel Pelanggan</h3>
                             <br>
-                            <a href=""><span class="badge badge-primary">Tambah</span></a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>ID Pelanggan</th>
+                                        <th>No</th>
                                         <th>Nama Lengkap</th>
                                         <th>Email</th>
                                         <th>Username</th>
                                         <th>Password</th>
-                                        <th>Alamat</th>
-                                        <th>Kecamatan</th>
-                                        <th>Kota</th>
-                                        <th>No HP</th>
-                                        <th>Jenis</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
+                                    $no=1;
                                     foreach ($pelanggan as $plg) {
                                     ?>
                                         <tr>
-                                            <td><?php echo $plg->id_pelanggan ?></td>
+                                            <td><?php echo $no++ ?></td>
                                             <td><?php echo $plg->nama_pelanggan ?></td>
                                             <td><?php echo $plg->email_pelanggan ?></td>
                                             <td><?php echo $plg->username_pelanggan ?></td>
                                             <td><?php echo $plg->password_pelanggan ?></td>
-                                            <td><?php echo $plg->alamat_pelanggan ?></td>
-                                            <td><?php echo $plg->nama_kec ?></td>
-                                            <td><?php echo $plg->nama_kota ?></td>
-                                            <td><?php echo $plg->no_hp ?></td>
                                             <td><?php echo $plg->jenis ?></td>
                                             <td>
+                                                <a href="<?php echo base_url('board/data/pelanggan/detailPelanggan/'.$plg->id_pelanggan)?>"><span class="badge badge-primary">Detail</span></a>
                                                 <a href="<?php echo base_url('board/data/pelanggan/editPelanggan/'.$plg->id_pelanggan)?>"><span class="badge badge-success">Edit</span></a>
                                                 <a href="<?php echo base_url('board/data/pelanggan/hapusPelanggan/'.$plg->id_pelanggan)?>"><span class="badge badge-danger">Delete</span></a>
                                             </td>

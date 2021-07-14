@@ -19,11 +19,28 @@ class Pelanggan extends CI_Controller
         $this->load->view('pelangganv', $data);
         $this->load->view('template/auth/footer');
     }
+    public function detailPelanggan($id = null)
+    {
+        $data['title'] = "Detail Data";
+        $edit = $this->m_data;
+
+        $data["pelanggan"] = $edit->getIdPelanggan($id);
+        $data["kota"] = $edit->get_kota();
+
+        $this->load->view('template/auth/head', $data);
+        $this->load->view('template/auth/navbar');
+        $this->load->view('template/auth/sidebar');
+        $this->load->view('detailpelangganv', $data);
+        $this->load->view('template/auth/footer');
+
+    }
+
     public function editPelanggan($id = null)
     {
         $data['title'] = "Edit Data";
         $edit = $this->m_data;
         $validation = $this->form_validation;
+        $validation->set_rules($edit->rulespelanggan());
         
         if ($validation->run()) {
             $edit->ubahPelanggan();;
@@ -31,10 +48,7 @@ class Pelanggan extends CI_Controller
         }
 
         $data["pelanggan"] = $edit->getIdPelanggan($id);
-
-        //Telah Diubah
         $data["kota"] = $edit->get_kota();
-       
 
         $this->load->view('template/auth/head', $data);
         $this->load->view('template/auth/navbar');
@@ -43,13 +57,18 @@ class Pelanggan extends CI_Controller
         $this->load->view('template/auth/footer');
 
     }
-
-
-    //Menambah Function Ini
     public function kecamatan()
     {
         $id = $this->input->post('id');
         $data = $this->m_data->get_kec($id);
         echo json_encode($data);
+    }
+    public function hapusPelanggan($id=null)
+    {
+        if (!isset($id)) show_404();
+        
+        if ($this->m_data->deletePelanggan($id)) {
+            redirect(site_url('board/data/pelanggan'));
+        }
     }
 }
