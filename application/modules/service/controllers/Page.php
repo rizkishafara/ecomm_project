@@ -87,10 +87,10 @@ class Page extends CI_Controller
         //load library
         $this->load->library('pagination');
         //pagination
-        $config['base_url'] = 'http://localhost/ecomm_service/service/page/layanan';
+        $config['base_url'] = 'http://localhost/ecomm_service/service/page/layanan/';
         $config['total_rows'] = $this->M_Page->count_all_data();
         $data['total_rows'] = $config['total_rows'];
-        $config['per_page'] = 3;
+        $config['per_page'] = 6;
 
         $data['start'] = $this->uri->segment(4);
 
@@ -128,11 +128,11 @@ class Page extends CI_Controller
         $this->load->view('template/shop/footer_shop', $data);
     }
 
-    public function kategori($id)
+    public function kategori($jenis)
     {
         $data['title'] = "Kategori";
         $data['keahlian'] = $this->M_Page->get_keahlian_all();
-        $data['getIdKeahlian'] = $this->M_Page->get_keahlian_id($id);
+        $data['getIdKeahlian'] = $this->M_Page->get_keahlian_id($jenis);
         $this->load->view('template/shop/header_shop', $data);
         $this->load->view('template/shop/navbar_shop');
         $this->load->view('template/shop/sidebar_shop', $data);
@@ -243,4 +243,6 @@ class Page extends CI_Controller
         $this->M_Page->edit_rating_mitra($id_mit, $mitra, 'mitra');
         redirect('service/page/index');
     }
+
+   
 }

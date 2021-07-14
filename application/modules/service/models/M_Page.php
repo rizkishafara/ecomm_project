@@ -44,11 +44,11 @@ class M_Page extends CI_Model
         return $this->db->get('keahlian')->result_array();
     }
 
-    public function get_keahlian_id($id)
+    public function get_keahlian_id($jenis)
     {
         $this->db->select('*');
         $this->db->from('keahlian');
-        $this->db->where('jenis', $id);
+        $this->db->where('jenis', $jenis);
         return $this->db->get()->result_array();
     }
 
@@ -61,6 +61,7 @@ class M_Page extends CI_Model
         $this->db->join('mitra', 'mitra.id_mitra=detail_order_servis.id_mitra');
         $this->db->join('keahlian', 'order_servis.id_keahlian=keahlian.id_keahlian');
         $this->db->where('order_servis.id_pelanggan', $id);
+        $this->db->order_by('id_order', 'desc');
         return $this->db->get()->result_array();
     }
 
