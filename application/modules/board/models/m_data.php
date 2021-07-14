@@ -3,21 +3,41 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class m_data extends CI_Model
 {
     
-    // Produk //
-    private $_pelanggan = "pelanggan";
-    private $_kecamatan = "kecamatan";
-    private $_kota = "kota";
-    public function tampil_produk()
+    public function rules()
     {
-        return $this->db->get('tbl_produk');
+        return [
+
+            ['field' => 'daftar_keahlian',
+            'label' => 'Daftar Keahlian',
+            'rules' => 'required'],
+
+            ['field' => 'gambar',
+            'label' => 'Gambar Keahlian',
+            'rules' => 'required'],
+
+            ['field' => 'deskripsi',
+            'label' => 'Deskripsi',
+            'rules' => 'required']
+        ];
     }
-    public function tampil_order()
+    // Tampil Data //
+    public function tampil_pelanggan()
     {
-        return $this->db->get('tbl_order');
+        $this->db->select('*');
+        $this->db->from('pelanggan');
+        $this->db->join('kecamatan', 'pelanggan.id_kecamatan=kecamatan.id_kec');
+        $this->db->join('kota', 'pelanggan.id_kota=kota.id_kota');
+        return $this->db->get();
+
+        //return $this->db->get('pelanggan');
     }
-    public function tampil_kategori()
+    public function tampilKeahlian()
     {
-        return $this->db->get('kategori');
+        return $this->db->get('keahlian');
+    }
+    public function tampilMitra()
+    {
+        return $this->db->get('mitra');
     }
     public function tampil_do()
     {
@@ -37,6 +57,13 @@ class m_data extends CI_Model
         $this->db->from('pelanggan');
         $this->db->join('kecamatan', 'pelanggan.id_kecamatan=kecamatan.id_kec');
         $this->db->where('id_pelanggan', $id);
+        return $this->db->get()->row();
+    }
+    public function getIdKeahlian($id)
+    {
+        $this->db->select('*');
+        $this->db->from('keahlian');
+        $this->db->where('id_keahlian', $id);
         return $this->db->get()->row();
     }
 
@@ -61,6 +88,17 @@ class m_data extends CI_Model
         return $ambil->result();
     }
 
+    public function simpanKeahlian()
+    {
+        $post = $this->input->post();
+        //$this->id_keahlian = $post["id_keahlian"];
+        $this->daftar_keahlian = $post["daftar_keahlian"];
+        $this->gambar_keahlian = $this->_imageKeahlian();
+        $this->deskripsi = $post["deskripsi"];
+        return $this->db->insert("keahlian", $this);
+    }
+
+
     public function ubahPelanggan()
     {
         $post = $this->input->post();
@@ -75,6 +113,41 @@ class m_data extends CI_Model
         $this->no_hp = $post["no_hp"];
         $this->jenis = $post["jenis"];
         return $this->db->update($this->pelanggan, $this, array('id_pelanggan' => $post['id']));
+    }
+    public function ubahKeahlian()
+    {
+        $post = $this->input->post();
+        $this->id_keahlian = $post["id_keahlian"];
+        $this->daftar_keahlian = $post["daftar_keahlian"];
+        $this->email_pelanggan = $post["email_pelanggan"];
+        if (!empty($_FILES["gambar"]["name"])) {
+            $this->gambar = $this->_imageKeahlian();
+        } else {
+            $this->gambar = $post["old_image"];
+        }
+        $this->deskripsi = $post["deskripsi"];
+        
+        return $this->db->update($this->keahlian, $this, array('id_keahlian' => $post['id']));
+    }
+
+    private function _imageKeahlian()
+    {
+        $config['upload_path']          = './assets/gambar/mitra/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['file_name']            = $this->daftar_keahlian;
+        $config['overwrite']			= true;
+        $config['max_size']             = 10240;
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('gambar')) {
+            return $this->upload->data("file_name");
+        }else{
+            $error = array('error' => $this->upload->display_errors());
+                echo '<div class="alert alert-danger">' . $error['error'] . '</div>';
+        }
+        
+        return "default.jpg";
     }
 
     
@@ -127,14 +200,5 @@ class m_data extends CI_Model
     }
 
     // Pelanggan //
-    public function tampil_pelanggan()
-    {
-        $this->db->select('*');
-        $this->db->from('pelanggan');
-        $this->db->join('kecamatan', 'pelanggan.id_kecamatan=kecamatan.id_kec');
-        $this->db->join('kota', 'pelanggan.id_kota=kota.id_kota');
-        return $this->db->get();
-
-        //return $this->db->get('pelanggan');
-    }
+    
 }
