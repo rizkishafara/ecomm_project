@@ -75,7 +75,7 @@ class M_mitra extends CI_Model
         $this->db->join('mitra', 'order_servis.id_keahlian=mitra.id_keahlian');
         $this->db->join('pelanggan', 'pelanggan.id_pelanggan=mitra.id_pelanggan');
         $this->db->where('pelanggan.id_pelanggan', $id);
-        //$this->db->where('order_servis.id_keahlian', $mitra);
+        
         return $this->db->get('order_servis')->result_array();
     }
 
@@ -97,6 +97,7 @@ class M_mitra extends CI_Model
         $this->db->join('keahlian', 'order_servis.id_keahlian=keahlian.id_keahlian');
         $this->db->join('mitra', 'mitra.id_mitra=detail_order_servis.id_mitra');
         $this->db->where('mitra.id_mitra', $id);
+        $this->db->order_by('order_servis.id_order', 'desc');
         return $this->db->get()->result_array();
     }
 

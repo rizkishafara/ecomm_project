@@ -24,7 +24,7 @@
         ?>
             <form action="<?php echo base_url('mitra/mitra/change_status') ?>" method="post">
 
-                <div class="card">
+                <div class="card mt-5">
                     <div class="card-body">
                         <table>
                             <input type="hidden" name="id_order" value="<?php echo $d['id_order']; ?>">
