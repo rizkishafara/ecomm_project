@@ -48,13 +48,7 @@ class Register extends CI_Controller
 		}
 	}
 
-	public function kecamatan()
-	{
-		$id = $this->input->post('id');
-		$data = $this->Pesan_model->get_kec($id);
-		echo json_encode($data);
-	}
-
+	
 	private function _sendEmail(){
 		$config = [
 			'mailtype' => 'html',

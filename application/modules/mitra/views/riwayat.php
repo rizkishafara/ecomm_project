@@ -1,7 +1,7 @@
 <div class="">
     <!-- <?php echo json_encode($detail) ?> -->
     <div class="container" style="width: 300px; margin-right:883px;">
-        <form action="<?php echo base_url('mitra/mitra/tarik_saldo') ?>">
+        <form action="#">
             <div class="card">
                 <div class="card-body">
                     <?php
@@ -49,7 +49,7 @@
                             <tr>
                                 <td>Lokasi Order</td>
                                 <td>:</td>
-                                <td> <?php echo $d['alamat_pelanggan'] ?> </td>
+                                <td> <?php echo $d['lokasi_pelanggan'] ?> </td>
                             </tr>
                             <tr>
                                 <td>Waktu Pengerjaan</td>
@@ -83,6 +83,11 @@
                     <div class="modal-body">
                         <?php echo form_open_multipart('service/page/tambah_mitra'); ?>
                         <div class="card-body">
+                            <div class="form-group">
+                                <label for="nama_produk">Nominal</label>
+                                <input type="text" class="form-control" id="nominal" name="nominal" placeholder="Masukan Nilai Nominal">
+                                <?php echo form_error('nama_produk', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
                             <div class="form-group">
                                 <label for="nama_produk">Nomor Rekening</label>
                                 <input type="text" class="form-control" id="norek" name="norek" placeholder="norek">

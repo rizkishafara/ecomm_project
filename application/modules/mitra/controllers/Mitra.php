@@ -13,7 +13,6 @@ class Mitra extends CI_Controller
     {
         $data['title'] = "Order";
         $data['ahli'] = $this->M_mitra->get_keahlian_all();
-
         $id_login = $this->session->userdata['id'];
         $data['order_servis'] = $this->M_mitra->get_order_id($id_login);
         
