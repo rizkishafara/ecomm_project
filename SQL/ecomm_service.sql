@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2021 at 06:18 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.3.28
+-- Generation Time: Jul 16, 2021 at 05:09 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,10 +41,10 @@ CREATE TABLE `detail_order_servis` (
 --
 
 INSERT INTO `detail_order_servis` (`id`, `id_order`, `harga_jasa`, `biaya_admin`, `id_mitra`, `bukti_tf`) VALUES
-(8, 7, 20000, 2000, 6, 'produk6.jpg'),
-(9, 8, 20000, 2000, 6, 'produk5.jpg'),
-(10, 9, 20000, 2000, 6, 'produk62.jpg'),
-(11, 11, 20000, 2000, 6, '');
+(8, 7, 20000, 2000, 6, 'background_2.png'),
+(9, 8, 20000, 2000, 6, 'Didan_Hafiz_Putra_Pratama.png'),
+(10, 9, 20000, 2000, 6, 'index.jpg'),
+(11, 11, 20000, 2000, 6, 'pexels-snapwire-730896.jpg');
 
 -- --------------------------------------------------------
 
@@ -65,7 +65,7 @@ CREATE TABLE `keahlian` (
 --
 
 INSERT INTO `keahlian` (`id_keahlian`, `daftar_keahlian`, `gambar_keahlian`, `deskripsi`, `jenis`) VALUES
-(1, 'Tukang Ledeng', 'pipa.jpg', 'Jasa tukang ledeng digunakan untuk memasang dan memperbaiki hal yang berkaitan dengan pipa, saluran, atau peralatan lain yang terkait dengan saluran air.', 'Pembangunan'),
+(1, 'Tukang Ledeng', 'pipa.jpg', '<p>Jasa tukang ledeng digunakan untuk memasang serta memperbaiki hal yang berkaitan dengan pipa, saluran, atau peralatan lain yang terkait dengan saluran air.</p>\r\n', 'Pembangunan'),
 (2, 'Kelistrikan', 'listrik.jpg', 'Jasa tukang kelistrikan digunakan untuk memasang dan memperbaiki hal yang berkaitan dengan aliran listrik seperti pasang kabel, stopkontak atau saklar pada rumah, gedung, sekolah, atau tempat bangunan yang lain.', 'Elektronik'),
 (3, 'Tukang Bangunan', 'bangunan.jpg', 'Jasa tukang bangunan digunakan untuk membangun dan memperbaiki hal umum yang berkaitan dengan infrastruktur seperti rumah, sekolah, gedung, kantor, hotel, dan lain sebagainya.', 'Pembangunan'),
 (4, 'Check Up Motor', 'check.jpg', 'Jasa check up motor digunakan untuk mengecek kendaraan motor dan melakukan servis ringan jika ada kerusakan. Terdiri dari pembersihan karburator, penyetelan karburator, pembersihan saringan udara, pemeriksaan dan penggantian oli, pembersihan busi, penyetelan dan pelumasan rantai roda, penyetelan rem depan dan belakang, pemeriksaan dan penambahan air aki, pemeriksaan lampu dan klakson.', 'Otomotif'),
@@ -84,7 +84,8 @@ INSERT INTO `keahlian` (`id_keahlian`, `daftar_keahlian`, `gambar_keahlian`, `de
 (17, 'Tukang Atap Bangunan', 'atapbocor.jpg', 'Jasa tukang atap bangunan digunakan untuk memasang genteng (atap) dan memperbaiki hal yang berkaitan dengan genteng (atap) seperti bocor, merembes, rusak atau pengecatan.', 'Pembangunan'),
 (18, 'Tukang Cat', 'tukangcat.jpg', 'Jasa tukang cat digunakan untuk mengecat interior atau eksterior bangunan seperti rumah, gedung atau kantor, dan lain sebagainya.', 'Pembangunan'),
 (19, 'Satpam', 'satpam.jpg', 'Jasa satpam digunakan untuk menyelenggarakan keamanan dan ketertiban di lingkungan atau tempat kerja seperti rumah pribadi, kantor atau gedung, hotel, atau tempat umum layaknya rumah sakit yang meliputi aspek pengamanan fisik, personel, informasi dan pengamanan teknis lainnya.', 'Asisten'),
-(20, 'Tukang Cuci Motor', 'cucimotor.jpg', 'Jasa cuci motor digunakan untuk mencuci kendaraan bermotor tanpa harus pergi ke tempat pencucian motor.', 'Otomotif');
+(20, 'Tukang Cuci Motor', 'cucimotor.jpg', 'Jasa cuci motor digunakan untuk mencuci kendaraan bermotor tanpa harus pergi ke tempat pencucian motor.', 'Otomotif'),
+(62, 'Tukang A', 'Tukang_A.jpg', '<p>Ini <strong>bold</strong> ini <em>miring</em> ini <s>coret</s> dah itu aja apa yaaaaaa</p>\r\n', 'Memasak');
 
 -- --------------------------------------------------------
 
@@ -105,20 +106,20 @@ CREATE TABLE `kecamatan` (
 INSERT INTO `kecamatan` (`id_kec`, `nama_kec`, `id_kota`) VALUES
 (1, 'Banyumanik', 1),
 (2, 'Candisari', 1),
-(3, 'Gayamsari', 1),
-(4, 'Genuk', 1),
-(5, 'Gunung Pati', 1),
-(6, 'Mijen', 1),
-(7, 'Ngaliyan', 1),
-(8, 'Pedurungan', 1),
-(9, 'Semarang Barat', 1),
-(10, 'Semarang Selatan', 1),
-(11, 'Semarang Tengah', 1),
-(12, 'Semarang Timur', 1),
-(13, 'Semarang Utara', 1),
-(14, 'Tembalang', 1),
-(15, 'Tugu', 1),
-(16, 'Gajah Mungkur', 1),
+(3, 'Gajah Mungkur', 1),
+(4, 'Gayamsari', 1),
+(5, 'Genuk', 1),
+(6, 'Gunung Pati', 1),
+(7, 'Mijen', 1),
+(8, 'Ngaliyan', 1),
+(9, 'Pedurungan', 1),
+(10, 'Semarang Barat', 1),
+(11, 'Semarang Selatan', 1),
+(12, 'Semarang Tengah', 1),
+(13, 'Semarang Timur', 1),
+(14, 'Semarang Utara', 1),
+(15, 'Tembalang', 1),
+(16, 'Tugu', 1),
 (17, 'Ambarawa', 2),
 (18, 'Bancak', 2),
 (19, 'Bandungan', 2),
@@ -182,7 +183,75 @@ CREATE TABLE `mitra` (
 --
 
 INSERT INTO `mitra` (`id_mitra`, `id_pelanggan`, `id_keahlian`, `nama_mitra`, `foto_mitra`, `alamat_mitra`, `harga_jasa`, `no_ktp`, `status`, `rating`) VALUES
-(6, 3, 1, 'Tama', 'background_2.png', 'adasfas', 20000, 2147483647, 'tidak tersedia', 4);
+(6, 3, 1, 'Tamago', 'background_2.png', 'adasfas', 20000, 2147483647, 'tidak tersedia', 4);
+
+--
+-- Triggers `mitra`
+--
+DELIMITER $$
+CREATE TRIGGER `hapus_mitra` AFTER DELETE ON `mitra` FOR EACH ROW BEGIN
+INSERT INTO non_mitra(
+	id_mitra,
+    id_pelanggan,
+    id_keahlian,
+    nama_mitra,
+    foto_mitra,
+    alamat_mitra,
+    harga_jasa,
+    no_ktp,
+    status,
+    rating,
+    tgl_hapus,
+    user
+)
+VALUES(
+	OLD.id_mitra,
+    OLD.id_pelanggan,
+    OLD.id_keahlian,
+    OLD.nama_mitra,
+    OLD.foto_mitra,
+    OLD.alamat_mitra,
+    OLD.harga_jasa,
+    OLD.no_ktp,
+    OLD.status,
+    OLD.rating,
+    SYSDATE(),
+    CURRENT_USER
+);
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `non_mitra`
+--
+
+CREATE TABLE `non_mitra` (
+  `id_mitra` int(11) NOT NULL,
+  `id_pelanggan` int(11) DEFAULT NULL,
+  `id_keahlian` int(11) DEFAULT NULL,
+  `nama_mitra` varchar(100) DEFAULT NULL,
+  `foto_mitra` varchar(100) DEFAULT NULL,
+  `alamat_mitra` varchar(255) DEFAULT NULL,
+  `harga_jasa` int(11) DEFAULT NULL,
+  `no_ktp` int(16) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL,
+  `rating` double DEFAULT NULL,
+  `tgl_hapus` date DEFAULT NULL,
+  `user` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `non_mitra`
+--
+
+INSERT INTO `non_mitra` (`id_mitra`, `id_pelanggan`, `id_keahlian`, `nama_mitra`, `foto_mitra`, `alamat_mitra`, `harga_jasa`, `no_ktp`, `status`, `rating`, `tgl_hapus`, `user`) VALUES
+(7, 2, 1, 'fde', '2', '22', 2332, 23322, 'tidak tersedia', 1, '2021-07-16', 'root@localhost'),
+(8, 2, 1, 'wc', 'dwed', 'wedw', 12131, 312, 'tidak tersedia', 2, '2021-07-16', 'root@localhost'),
+(9, 2, 1, 'dc', 'dsd', 'asas', 23233, 232, 'tersedia', 1, '2021-07-16', 'root@localhost'),
+(10, 10, 19, 'test', 'avatar5.png', 'test', 20000, 2147483647, 'tersedia', 0, '2021-07-16', 'root@localhost');
 
 -- --------------------------------------------------------
 
@@ -240,9 +309,11 @@ CREATE TABLE `pelanggan` (
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `nama_pelanggan`, `email_pelanggan`, `username_pelanggan`, `password_pelanggan`, `alamat_pelanggan`, `no_hp`, `jenis`, `id_kota`, `id_kecamatan`) VALUES
 (1, 'admin', 'admin@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '081111111111', 'admin', 0, 0),
-(2, 'Rian', 'rian@gmail.com', 'rian', 'cb2b28afc2cc836b33eb7ed86f99e65a', 'Jl.Dr.Cipto Mangunkusumo', '088233520366', 'member', 2, 17),
+(2, 'Rian Eko', 'rian@gmail.com', 'rian', '950a25b0774acaf3cbb6a4bf3e4dd76f', 'Jl.Dr.Cipto Mangunkusumo', '088233520366', 'member', 2, 17),
 (3, 'Tama', 'tama@gmail.com', 'tama', '407b056f5e6197a948b7f836567fb63d', 'asdasdasd', '0456536', 'mitra', 1, 1),
-(4, 'Rizki', 'rizki@gmail.com', 'rizki', '3e089c076bf1ec3a8332280ee35c28d4', 'Jln. Ngaliyan Nomor 52', '088233520117', 'member', 1, 7);
+(4, 'Rizki Shafara', 'rizki@gmail.com', 'rizki', 'd27760903cceed436111922912553b96', 'Jln. Ngaliyan Nomor 52', '088233520117', 'member', 1, 7),
+(6, 'Muhammad Iqbal', 'iqbal@gmail.com', 'iqbal', '0c0db1b3bffc603096ca7f053cbb72f4', 'Jalan Apa Adanya', '0918230912', 'member', 2, 17),
+(10, 'test', 'test@gmail.com', 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', '018923901', 'member', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -326,6 +397,12 @@ ALTER TABLE `mitra`
   ADD PRIMARY KEY (`id_mitra`);
 
 --
+-- Indexes for table `non_mitra`
+--
+ALTER TABLE `non_mitra`
+  ADD PRIMARY KEY (`id_mitra`);
+
+--
 -- Indexes for table `order_servis`
 --
 ALTER TABLE `order_servis`
@@ -363,7 +440,7 @@ ALTER TABLE `detail_order_servis`
 -- AUTO_INCREMENT for table `keahlian`
 --
 ALTER TABLE `keahlian`
-  MODIFY `id_keahlian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_keahlian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `kecamatan`
@@ -381,7 +458,7 @@ ALTER TABLE `kota`
 -- AUTO_INCREMENT for table `mitra`
 --
 ALTER TABLE `mitra`
-  MODIFY `id_mitra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_mitra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `order_servis`
@@ -393,7 +470,7 @@ ALTER TABLE `order_servis`
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `pembayaran_servis`
