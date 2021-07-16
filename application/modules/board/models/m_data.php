@@ -144,14 +144,18 @@ class m_data extends CI_Model
         $this->db->where('id_pelanggan', $id);
         return $this->db->get()->row();
     }
+    public function getAllKeahlian($id)
+    {
+        $this->db->select('*');
+        $this->db->from('keahlian');
+        return $this->db->get()->result();
+    }
     public function getIdKeahlian($id)
     {
         $this->db->select('*');
         $this->db->from('keahlian');
         $this->db->where('id_keahlian', $id);
         return $this->db->get()->row();
-        // $hasil = $this->db->query("SELECT * FROM keahlian");
-        // return $hasil->result();
     }
     public function getIdMitra($id)
     {

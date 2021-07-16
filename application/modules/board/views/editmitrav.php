@@ -40,7 +40,7 @@
                         <form role="form" method="post" action="" enctype="multipart/form-data">
                             <div class="card-body">
                             
-                        <input class="hidden <?php echo form_error('id_mitra') ? 'is-invalid':'' ?>" type="text" name="id_mitra" placeholder="id_mitra" value="<?php echo $mitra->id_mitra ?>" />
+                        <input class="hidden " type="hidden" name="id_mitra" placeholder="id_mitra" value="<?php echo $mitra->id_mitra ?>" />
                             <div class=" form-group">
                                     <label for="keahlian">Keahlian</label>
                                     <select class="form-control" placeholder="Keahlian" id="keahlian" name="keahlian">

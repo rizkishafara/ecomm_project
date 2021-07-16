@@ -33,7 +33,7 @@ class Mitra extends CI_Controller
         }
 
         $data["mitra"] = $edit->getIdMitra($id);
-        $data["keahlian"] = $edit->getIdKeahlian($id);
+        $data["keahlian"] = $edit->getAllKeahlian($id);
 
         $this->load->view('template/auth/head', $data);
         $this->load->view('template/auth/navbar');

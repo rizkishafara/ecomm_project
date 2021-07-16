@@ -36,7 +36,7 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>ID Mitra</th>
+                                        <th>No</th>
                                         <th>Keahlian</th>
                                         <th>Nama Mitra</th>
                                         <th>Foto</th>
@@ -50,10 +50,11 @@
                                 </thead>
                                 <tbody>
                                     <?php
+                                    $no=1;
                                     foreach ($mitra as $row) {
                                     ?>
                                         <tr>
-                                            <td><?php echo $row->id_mitra ?></td>
+                                            <td><?php echo $no++ ?></td>
                                             <td><?php echo $row->daftar_keahlian ?></td>
                                             <td><?php echo $row->nama_mitra ?></td>
                                             <td>
