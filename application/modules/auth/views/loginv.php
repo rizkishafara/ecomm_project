@@ -142,6 +142,7 @@
                 <h3 class="login-heading mb-4">Welcome back!</h3>
                 <form>
                   <div class="form-label-group">
+                    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('sukses'); ?>"></div>
                     <?php // Cetak jika ada notifikasi
                     if ($this->session->flashdata('sukses')) {
                       echo '<div class="alert alert-primary" role="alert">' . $this->session->flashdata('sukses') .

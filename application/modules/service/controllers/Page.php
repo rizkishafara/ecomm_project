@@ -78,7 +78,8 @@ class Page extends CI_Controller
         $this->M_Page->Add_mitra($data, 'mitra');
         $this->M_Page->edit_jenis_pelanggan($id_pelanggan, $data1, 'pelanggan');
         $this->session->set_flashdata('pesan', 'ditambahkan');
-        redirect('service/page/index');
+        $this->session->set_flashdata('sukses', "Silahkan Login Sebagai Mitra");
+        redirect('auth/login');
     }
 
     public function layanan()
@@ -111,6 +112,11 @@ class Page extends CI_Controller
         $data['title'] = "Layanan";
         $data['keahlian'] = $this->M_Page->get_keahlian_all();
         $data['mitra'] = $this->M_Page->tampil_mitra($config['per_page'], $data['start']);
+
+        $id = $this->session->userdata['id'];
+        if (empty($id)) {
+            redirect('auth/login');
+        }
         $this->load->view('template/shop/header_shop', $data);
         $this->load->view('template/shop/navbar_shop');
         $this->load->view('template/shop/sidebar_shop', $data);
