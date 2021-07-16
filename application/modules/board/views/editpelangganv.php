@@ -28,11 +28,11 @@
                 <div class="col-md-8">
                     <!-- general form elements -->
                     <div class="card card-warning">
-                    <?php if ($this->session->flashdata('success')): ?>
-                        <div class="alert alert-success" role="alert">
-                            <?php echo $this->session->flashdata('success'); ?>
-                        </div>
-                    <?php endif; ?>
+                        <?php if ($this->session->flashdata('success')) : ?>
+                            <div class="alert alert-success" role="alert">
+                                <?php echo $this->session->flashdata('success'); ?>
+                            </div>
+                        <?php endif; ?>
                         <div class="card-header">
                             <h3 class="card-title">Tabel Pelanggan</h3>
                         </div>
@@ -59,6 +59,7 @@
                                 <div class="form-group">
                                     <label for="password_pelanggan">Password</label>
                                     <input type="text" class="form-control" id="password_pelanggan" name="password_pelanggan" placeholder="Password" value="<?php echo $pelanggan->password_pelanggan ?>">
+                                    <input type="hidden" class="form-control" id="old_pass" name="old_pass" placeholder="Password" value="<?php echo $pelanggan->password_pelanggan ?>">
                                     <?php echo form_error('password_pelanggan', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
@@ -72,7 +73,7 @@
                                     <?php echo form_error('no_hp', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="jenis">Jenis*</label></br>
+                                    <label for="jenis">Jenis</label></br>
                                     <?php $jenis = $pelanggan->jenis; ?>
                                     <select class=" form-control bootstrap-select <?php echo form_error('jenis') ? 'is-invalid' : '' ?>" type="select" name="jenis" placeholder="Kategori" aria-label="Default select example">
                                         <option value="">Pilih Kategori</option>
@@ -104,15 +105,7 @@
                                 <div class=" form-group">
                                     <label for="kecamatan">Kecamatan</label>
                                     <select class="form-control" placeholder="Kategori" id="kecamatan" name="kecamatan">
-
                                         <option value="<?php echo $pelanggan->id_kecamatan ?>"><?php echo $pelanggan->nama_kec ?></option>
-                                        <?php
-                                        foreach ($kecamatan as $k) :
-                                        ?>
-                                            <option value="<?php echo $k->id_kec ?>"><?php echo $k->nama_kec ?></option>
-                                        <?php
-                                        endforeach;
-                                        ?>
                                     </select>
                                     <?php echo form_error('kecamatan', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>

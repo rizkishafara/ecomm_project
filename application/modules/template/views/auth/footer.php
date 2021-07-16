@@ -47,7 +47,7 @@
         Swal.fire({
             icon: 'success',
             title: 'Sukses',
-            text: 'Berhasil ' + $flashData,
+            text: 'Berhasil. ' + $flashData,
         })
     }
     $('.tombol-hapus').on('click', function(e) {
@@ -56,7 +56,7 @@
 
         Swal.fire({
             title: 'Apakah Anda yakin?',
-            text: "Data pengguna akan dihapus!",
+            text: 'Data akan dihapus!',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -87,7 +87,7 @@
                     var html = '';
                     var i;
                     for (i = 0; i < data.length; i++) {
-                        html += '<option value="'+data[i].id_kec+'">' + data[i].nama_kec + '</option>';
+                        html += '<option value="' + data[i].id_kec + '">' + data[i].nama_kec + '</option>';
                     }
                     $('#kecamatan').html(html);
                 },

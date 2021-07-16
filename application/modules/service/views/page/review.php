@@ -24,17 +24,17 @@
                     <?php echo form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
-                    <label for="nama_produk">Rating</label><br> 
-                        <input type="radio" name="rating"  value="1" />
-                        <label for="change" class="mr-3">1</label>
-                        <input type="radio" name="rating"  value="2" />
-                        <label for="change" class="mr-3">2</label>
-                        <input type="radio" name="rating" i value="3" />
-                        <label for="change" class="mr-3">3</label>
-                        <input type="radio" name="rating"  value="4" />
-                        <label for="change" class="mr-3">4</label>
-                        <input type="radio" name="rating"  value="5" />
-                        <label for="change" class="mr-3">5</label>
+                    <label for="nama_produk">Rating</label><br>
+                    <input type="radio" name="rating" value="1" />
+                    <label for="change" class="mr-3">1</label>
+                    <input type="radio" name="rating" value="2" />
+                    <label for="change" class="mr-3">2</label>
+                    <input type="radio" name="rating" i value="3" />
+                    <label for="change" class="mr-3">3</label>
+                    <input type="radio" name="rating" value="4" />
+                    <label for="change" class="mr-3">4</label>
+                    <input type="radio" name="rating" value="5" />
+                    <label for="change" class="mr-3">5</label>
                 </div>
             </div>
             <!-- /.card-body -->

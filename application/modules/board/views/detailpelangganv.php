@@ -33,16 +33,16 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form role=""  enctype="multipart/form-data">
+                        <form role="" enctype="multipart/form-data">
                             <div class="card-body">
-                              
-                                <div class="form-group" >
+
+                                <div class="form-group">
                                     <label for="nama_pelanggan">ID pelanggan</label>
                                     <input readonly type="" class="form-control" id="inputName" name="id_pelanggan" value="<?php echo $pelanggan->id_pelanggan ?>">
                                 </div>
-                                <div class="form-group" >
+                                <div class="form-group">
                                     <label for="nama_pelanggan">Nama pelanggan</label>
-                                    <input readonly type="text" class="form-control" id="nama_pelanggan" name="nama_pelanggan" placeholder="Nama pelanggan" value="<?php echo $pelanggan->nama_pelanggan ?>" >
+                                    <input readonly type="text" class="form-control" id="nama_pelanggan" name="nama_pelanggan" placeholder="Nama pelanggan" value="<?php echo $pelanggan->nama_pelanggan ?>">
                                     <?php echo form_error('nama_pelanggan', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
@@ -71,7 +71,7 @@
                                     <?php echo form_error('no_hp', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="jenis">Jenis*</label></br>
+                                    <label for="jenis">Jenis</label></br>
                                     <?php $jenis = $pelanggan->jenis; ?>
                                     <select disabled class=" form-control bootstrap-select <?php echo form_error('jenis') ? 'is-invalid' : '' ?>" type="select" name="jenis" placeholder="Kategori" aria-label="Default select example">
                                         <option value="">Pilih Kategori</option>

@@ -23,29 +23,46 @@ class simple_login
     public function login($username, $password)
     {
         //cek username dan password
-        $query = $this->CI->db->get_where('users', array('username' => $username, 'password' =>
+        $query = $this->CI->db->get_where('pelanggan', array('username_pelanggan' => $username, 'password_pelanggan' =>
         md5($password)));
         if ($query->num_rows() == 1) {
             //ambil data user berdasar username
-            $row = $this->CI->db->query('SELECT id_user,jenis FROM users where username = "' . $username . '"');
-            $admin = $row->row();
-            $id = $admin->id_user;
-            $jenis = $admin->jenis;
+            $row = $this->CI->db->query('SELECT * FROM pelanggan where username_pelanggan = "' . $username . '"');
+            $pelanggan = $row->row();
+            $jenis = $pelanggan->jenis;
+            $id = $pelanggan->id_pelanggan;
 
-            if ($jenis == '2') {
+
+            if ($jenis == 'member') {
                 //set session user
                 $this->CI->session->set_userdata('username', $username);
+                $this->CI->session->set_userdata('jenis', $jenis);
                 $this->CI->session->set_userdata('id_login', uniqid(rand()));
                 $this->CI->session->set_userdata('id', $id);
+                $this->CI->session->set_flashdata('pesan', 'Member telah login!');
                 //redirect ke halaman dashboard
-                redirect(site_url('shop/page'));
-            } else {
+                redirect(site_url('service/page'));
+            } else if ($jenis == 'admin') {
                 //set session user
                 $this->CI->session->set_userdata('username', $username);
+                $this->CI->session->set_userdata('jenis', $jenis);
                 $this->CI->session->set_userdata('id_login', uniqid(rand()));
                 $this->CI->session->set_userdata('id', $id);
+                $this->CI->session->set_flashdata('pesan', 'Admin telah login!');
                 //redirect ke halaman dashboard
                 redirect(site_url('board/dashboard'));
+            } else {
+                $row = $this->CI->db->query('SELECT * FROM mitra where id_pelanggan = "' . $id . '"');
+                $mitra = $row->row();
+                $id_mitra = $mitra->id_mitra;
+                //set session user
+                $this->CI->session->set_userdata('username', $username);
+                $this->CI->session->set_userdata('jenis', $jenis);
+                $this->CI->session->set_userdata('id_login', uniqid(rand()));
+                $this->CI->session->set_userdata('id', $id_mitra);
+                $this->CI->session->set_flashdata('pesan', 'Mitra telah login!');
+                //redirect ke halaman dashboard
+                redirect(site_url('service/page'));
             }
         } else {
             //jika tidak ada, set notifikasi dalam flashdata.
@@ -75,6 +92,7 @@ class simple_login
      */
     public function logout()
     {
+        $this->CI->session->unset_userdata('jenis');
         $this->CI->session->unset_userdata('username');
         $this->CI->session->unset_userdata('id_login');
         $this->CI->session->unset_userdata('id');

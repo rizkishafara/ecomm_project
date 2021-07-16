@@ -1,7 +1,3 @@
-<!-- NOTIFICATION -->
-<div class="flash-data" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
-<div class="tombol-hapus" data-flashdata="<?= $this->session->flashdata('delete'); ?>"></div>
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -36,7 +32,7 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th>ID Mitra</th>
                                         <th>Keahlian</th>
                                         <th>Nama Mitra</th>
                                         <th>Foto</th>
@@ -50,15 +46,14 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $no=1;
                                     foreach ($mitra as $row) {
                                     ?>
                                         <tr>
-                                            <td><?php echo $no++ ?></td>
+                                            <td><?php echo $row->id_mitra ?></td>
                                             <td><?php echo $row->daftar_keahlian ?></td>
                                             <td><?php echo $row->nama_mitra ?></td>
                                             <td>
-                                                <img src="<?php echo base_url('assets/gambar/img/'.$row->foto_mitra) ?>" width="120" />
+                                                <img src="<?php echo base_url('assets/gambar/img/' . $row->foto_mitra) ?>" width="120" />
                                             </td>
                                             <td><?php echo $row->alamat_mitra ?></td>
                                             <td><?php echo $row->harga_jasa ?></td>
@@ -66,8 +61,12 @@
                                             <td><?php echo $row->status ?></td>
                                             <td><?php echo $row->rating ?></td>
                                             <td>
-                                                <a href="<?php echo base_url('board/data/mitra/editMitra/'.$row->id_mitra)?>"><span class="badge badge-success">Edit</span></a>
-                                                <a href="<?php echo base_url('board/data/mitra/hapusMitra/'.$row->id_mitra)?>"><span class="badge badge-danger">Delete</span></a>
+                                                <a href="<?php echo base_url('board/data/mitra/editMitra/' . $row->id_mitra) ?>"><span class="badge badge-success">Edit</span></a>
+                                                <form action="<?php echo base_url('board/data/mitra/hapusMitra/')?>" method="post">
+                                                    <input type="hidden" name="id_mitra" value="<?php echo $row->id_mitra ?>">
+                                                    <input type="hidden" name="id_pelanggan" value="<?php echo $row->id_pelanggan ?>">
+                                                    <button class="badge badge-danger" type="submit">Delete</button>
+                                                </form>
                                             </td>
                                         </tr>
                                     <?php

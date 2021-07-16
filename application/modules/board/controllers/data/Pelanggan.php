@@ -32,7 +32,6 @@ class Pelanggan extends CI_Controller
         $this->load->view('template/auth/sidebar');
         $this->load->view('detailpelangganv', $data);
         $this->load->view('template/auth/footer');
-
     }
 
     public function editPelanggan($id = null)
@@ -41,10 +40,10 @@ class Pelanggan extends CI_Controller
         $edit = $this->m_data;
         $validation = $this->form_validation;
         $validation->set_rules($edit->rulespelanggan());
-        
+
         if ($validation->run()) {
             $edit->ubahPelanggan();;
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            $this->session->set_flashdata('success', 'Pelanggan telah terupdate!');
             redirect('board/data/pelanggan');
         }
 
@@ -56,7 +55,6 @@ class Pelanggan extends CI_Controller
         $this->load->view('template/auth/sidebar');
         $this->load->view('editpelangganv', $data);
         $this->load->view('template/auth/footer');
-
     }
     public function kecamatan()
     {
@@ -64,11 +62,12 @@ class Pelanggan extends CI_Controller
         $data = $this->m_data->get_kec($id);
         echo json_encode($data);
     }
-    public function hapusPelanggan($id=null)
+    public function hapusPelanggan($id = null)
     {
         if (!isset($id)) show_404();
-        
+
         if ($this->m_data->deletePelanggan($id)) {
+            $this->session->set_flashdata('success', 'Pelanggan telah dihapus!');
             redirect(site_url('board/data/pelanggan'));
         }
     }

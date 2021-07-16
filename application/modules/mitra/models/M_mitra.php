@@ -7,7 +7,8 @@ class M_mitra extends CI_Model
         return $this->db->get('order_servis')->num_rows();
     }
 
-    public function tampil_order(){
+    public function tampil_order()
+    {
         $this->db->select('*');
         $this->db->from('order_servis');
         $this->db->join('keahlian', 'order_servis.id_keahlian=keahlian.id_keahlian');
@@ -21,7 +22,8 @@ class M_mitra extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    public function get_order_id($id){
+    public function get_order_id($id)
+    {
         $this->db->select('*');
         $this->db->join('keahlian', 'order_servis.id_keahlian=keahlian.id_keahlian');
         $this->db->join('mitra', 'order_servis.id_keahlian=mitra.id_keahlian');
@@ -40,17 +42,18 @@ class M_mitra extends CI_Model
         return $this->db->get()->result();
     }
 
-    public function detail_order($data){
+    public function detail_order($data)
+    {
         $this->db->insert('detail_order_servis', $data);
-       
     }
-    public function edit_status_order($id_order,$data1, $table)
+    public function edit_status_order($id_order, $data1, $table)
     {
         $this->db->where($id_order);
         $this->db->update($table, $data1);
     }
 
-    public function edit_status_mitra($id, $data2, $table){
+    public function edit_status_mitra($id, $data2, $table)
+    {
         $this->db->where($id);
         $this->db->update($table, $data2);
     }
@@ -75,12 +78,13 @@ class M_mitra extends CI_Model
         $this->db->join('mitra', 'order_servis.id_keahlian=mitra.id_keahlian');
         $this->db->join('pelanggan', 'pelanggan.id_pelanggan=mitra.id_pelanggan');
         $this->db->where('pelanggan.id_pelanggan', $id);
-        
+        //$this->db->where('order_servis.id_keahlian', $mitra);
         return $this->db->get('order_servis')->result_array();
     }
 
 
-    public function getSaldo($id){
+    public function getSaldo($id)
+    {
         $this->db->select("*");
         $this->db->from('detail_order_servis');
         $this->db->where('id_mitra', $id);
@@ -101,17 +105,19 @@ class M_mitra extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    public function change_order_status($id_order, $data, $table){
+    public function change_order_status($id_order, $data, $table)
+    {
         $this->db->where($id_order);
         $this->db->update($table, $data);
     }
 
-    public function change_status_mitra($id, $mitra, $table){
+    public function change_status_mitra($id, $mitra, $table)
+    {
         $this->db->where($id);
         $this->db->update($table, $mitra);
     }
 
-    public function tarik_saldo(){
-        
+    public function tarik_saldo()
+    {
     }
 }

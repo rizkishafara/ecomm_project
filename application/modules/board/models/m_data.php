@@ -110,17 +110,11 @@ class m_data extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('mitra');
+        $this->db->join('pelanggan', 'mitra.id_pelanggan=pelanggan.id_pelanggan');
         $this->db->join('keahlian', 'mitra.id_keahlian=keahlian.id_keahlian');
         return $this->db->get();
     }
-    public function tampil_do()
-    {
-        return $this->db->get('tbl_detail_order');
-    }
-    public function tampil_user()
-    {
-        return $this->db->get('users');
-    }
+   
     public function tampilOrder()
     {
         $this->db->select('*');
@@ -144,18 +138,14 @@ class m_data extends CI_Model
         $this->db->where('id_pelanggan', $id);
         return $this->db->get()->row();
     }
-    public function getAllKeahlian($id)
-    {
-        $this->db->select('*');
-        $this->db->from('keahlian');
-        return $this->db->get()->result();
-    }
     public function getIdKeahlian($id)
     {
         $this->db->select('*');
         $this->db->from('keahlian');
         $this->db->where('id_keahlian', $id);
         return $this->db->get()->row();
+        // $hasil = $this->db->query("SELECT * FROM keahlian");
+        // return $hasil->result();
     }
     public function getIdMitra($id)
     {
@@ -174,7 +164,6 @@ class m_data extends CI_Model
         $this->db->select('*');
         $this->db->from('detail_order_servis');
         $this->db->join('mitra', 'detail_order_servis.id_mitra=mitra.id_mitra');
-        $this->db->where('id_order', $id);
         return $this->db->get()->row();
     }
 
@@ -258,9 +247,18 @@ class m_data extends CI_Model
     {
         return $this->db->delete('pelanggan', array("id_pelanggan" => $id));
     }
+
+    public function edit_jenis($id, $data, $table){
+        $this->db->where($id);
+        $this->db->update($table, $data);
+    }
     public function deleteMitra($id)
     {
-        return $this->db->delete('mitra', array("id_mitra" => $id));
+
+        // $this->db->where('id_pelanggan')
+        $this->db->where('id_mitra', $id);
+        $this->db->delete('mitra');
+        
     }
 
     private function _imageKeahlian()

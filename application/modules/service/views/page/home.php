@@ -128,8 +128,8 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
+                        <strong>*NB : Pastikan data yang diisi sudah lengkap dan benar</strong><br><br>
                         <button type="submit" name="btnSubmit" class="btn btn-primary">Submit</button>
-                        <strong>*NB : Pastikan data yang diisi sudah lengkap dan benar</strong><br>
                         <strong></strong>
                     </div>
                     <?php echo form_close(); ?>

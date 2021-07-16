@@ -47,7 +47,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $no=1;
+                                    $no = 1;
                                     foreach ($order as $row) {
                                     ?>
                                         <tr>
@@ -62,7 +62,16 @@
                                             <td><?php echo $row->status_order ?></td>
                                             <td><?php echo $row->status_bayar ?></td>
                                             <td>
-                                                <a href="<?php echo base_url('board/data/order/detailOrder/'.$row->id_order)?>"><span class="badge badge-primary">Detail</span></a>
+                                                <?php
+                                                if ($row->status_order != 'belum') {
+                                                ?>
+                                                    <a href="<?php echo base_url('board/data/order/detailOrder/' . $row->id_order) ?>"><span class="badge badge-primary">Detail</span></a>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                <?php
+                                                }
+                                                ?>
                                             </td>
                                         </tr>
                                     <?php

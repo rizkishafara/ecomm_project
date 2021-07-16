@@ -1,3 +1,5 @@
+<!-- NOTIFICATION -->
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('pesan'); ?>"></div>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->

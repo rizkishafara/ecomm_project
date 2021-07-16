@@ -39,7 +39,7 @@ class simple_login
                 $this->CI->session->set_userdata('jenis', $jenis);
                 $this->CI->session->set_userdata('id_login', uniqid(rand()));
                 $this->CI->session->set_userdata('id', $id);
-                $this->CI->session->set_flashdata('pesan', 'Login');
+                $this->CI->session->set_flashdata('pesan', 'Member telah login!');
                 //redirect ke halaman dashboard
                 redirect(site_url('service/page'));
             } else if ($jenis == 'admin') {
@@ -48,7 +48,7 @@ class simple_login
                 $this->CI->session->set_userdata('jenis', $jenis);
                 $this->CI->session->set_userdata('id_login', uniqid(rand()));
                 $this->CI->session->set_userdata('id', $id);
-                $this->CI->session->set_flashdata('pesan', 'Login');
+                $this->CI->session->set_flashdata('pesan', 'Admin telah login!');
                 //redirect ke halaman dashboard
                 redirect(site_url('board/dashboard'));
             } else {
@@ -60,7 +60,7 @@ class simple_login
                 $this->CI->session->set_userdata('jenis', $jenis);
                 $this->CI->session->set_userdata('id_login', uniqid(rand()));
                 $this->CI->session->set_userdata('id', $id_mitra);
-                $this->CI->session->set_flashdata('pesan', 'Login');
+                $this->CI->session->set_flashdata('pesan', 'Mitra telah login!');
                 //redirect ke halaman dashboard
                 redirect(site_url('service/page'));
             }

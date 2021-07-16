@@ -46,7 +46,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $no=1;
+                                    $no = 1;
                                     foreach ($pelanggan as $plg) {
                                     ?>
                                         <tr>
@@ -57,9 +57,9 @@
                                             <td><?php echo $plg->password_pelanggan ?></td>
                                             <td><?php echo $plg->jenis ?></td>
                                             <td>
-                                                <a href="<?php echo base_url('board/data/pelanggan/detailPelanggan/'.$plg->id_pelanggan)?>"><span class="badge badge-primary">Detail</span></a>
-                                                <a href="<?php echo base_url('board/data/pelanggan/editPelanggan/'.$plg->id_pelanggan)?>"><span class="badge badge-success">Edit</span></a>
-                                                <a href="<?php echo base_url('board/data/pelanggan/hapusPelanggan/'.$plg->id_pelanggan)?>"><span class="badge badge-danger">Delete</span></a>
+                                                <a href="<?php echo base_url('board/data/pelanggan/detailPelanggan/' . $plg->id_pelanggan) ?>"><span class="badge badge-primary">Detail</span></a>
+                                                <a href="<?php echo base_url('board/data/pelanggan/editPelanggan/' . $plg->id_pelanggan) ?>"><span class="badge badge-success">Edit</span></a>
+                                                <a class="badge badge-danger tombol-hapus" href="<?php echo base_url('board/data/pelanggan/hapusPelanggan/' . $plg->id_pelanggan) ?>"><span>Delete</span></a>
                                             </td>
                                         </tr>
                                     <?php

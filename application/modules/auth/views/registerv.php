@@ -158,8 +158,8 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-label-group">
-                        <select style="border-radius: 20px;" class="pl-4 form-control bootstrap-select <?php echo form_error('kota') ? 'is-invalid' : '' ?>" id="kota" name="kota" placeholder="kota" aria-label="Default select example">
-                          <option value="">Pilih </option>
+                        <select style="border-radius: 20px; height:50px" class="pl-4 form-control bootstrap-select <?php echo form_error('kota') ? 'is-invalid' : '' ?>" id="kota" name="kota" placeholder="kota" aria-label="Default select example">
+                          <option value="">Kota / Kabupaten</option>
                           <?php foreach ($kota as $k) { ?>
                             <option id="id_kota" value="<?php echo $k['id_kota'] ?>"><?php echo $k['nama_kota']; ?></option>
                           <?php } ?>
@@ -173,8 +173,8 @@
 
                     <div class="col-md-6">
                       <div class="form-label-group">
-                        <select style="border-radius: 20px;" class="pl-4 form-control bootstrap-select <?php echo form_error('kecamatan') ? 'is-invalid' : '' ?>" id="kecamatan" name="kecamatan" placeholder="kecamatan">
-                          <option value="0">Pilih </option>
+                        <select style="border-radius: 20px; height:50px" class="pl-4 form-control bootstrap-select <?php echo form_error('kecamatan') ? 'is-invalid' : '' ?>" id="kecamatan" name="kecamatan" placeholder="kecamatan">
+                          <option value="0">Kecamatan</option>
                           <?php foreach ($kec as $kec) { ?>
                             <option id="id_kecamatan" value="<?php echo $kec['id_kec'] ?>"><?php echo $kec['nama_kec']; ?></option>
                           <?php } ?>

@@ -1,5 +1,3 @@
-
-
 <body>
 	<div class="container" style="padding: 50px;">
 		<div class="container">
@@ -76,7 +74,7 @@
 					<div class="border mb-3" style="padding: 10px;">
 						<label class="fw-bold fs-4">Kenapa harus menggunakan jasa kami?</label>
 						</br>
-						<p style="text-align:justify;">Function Service adalah aplikasi yang menyediakan layanan sewa jasa yang akan mempermudah bagi anda yang sedang mencari jasa tukang, motir, sepesialis listrik, dll.</br></br> Dengan menggandeng tenaga profesional, kami akan membuat puas pelanggan dengan layanan yang kami berikan</p>
+						<p style="text-align:justify;">Function Service adalah aplikasi yang menyediakan layanan sewa jasa yang akan mempermudah bagi anda yang sedang mencari jasa tukang. Dengan menggandeng tenaga profesional, kami akan membuat puas pelanggan dengan layanan yang kami berikan</p>
 					</div>
 					<div class="border mb-3" style="padding: 10px;">
 						<label class="fw-bold fs-4">Butuh bantuan?</label>

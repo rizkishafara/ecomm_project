@@ -84,7 +84,7 @@
         Swal.fire({
             icon: 'success',
             title: 'Sukses',
-            text: 'Berhasil ' + $flashData,
+            text: 'Berhasil. ' + $flashData,
         })
     }
 </script>

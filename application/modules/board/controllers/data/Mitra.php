@@ -29,11 +29,10 @@ class Mitra extends CI_Controller
         if ($validation->run()) {
             $edit->ubahMitra();;
             $this->session->set_flashdata('success', 'Berhasil disimpan');
-            redirect('board/data/mitra');
         }
 
         $data["mitra"] = $edit->getIdMitra($id);
-        $data["keahlian"] = $edit->getAllKeahlian($id);
+        $data["keahlian"] = $edit->getIdKeahlian($id);
 
         $this->load->view('template/auth/head', $data);
         $this->load->view('template/auth/navbar');
@@ -42,12 +41,24 @@ class Mitra extends CI_Controller
         $this->load->view('template/auth/footer');
 
     }
-    public function hapusMitra($id=null)
+    public function hapusMitra()
     {
-        if (!isset($id)) show_404();
+        $id_mitra = $this->input->post('id_mitra');
+        $id_pelanggan = $this->input->post('id_pelanggan');
+        $jenis = 'member';
+
+
+        $id = array(
+            'id_pelanggan' => $id_pelanggan
+        );
+
+        $data = array(
+            'jenis' => $jenis
+        );
+        $this->m_data->edit_jenis($id, $data, 'pelanggan');
+        $this->m_data->deleteMitra($id_mitra);
+
+        redirect(site_url('board/data/mitra'));
         
-        if ($this->m_data->deleteMitra($id)) {
-            redirect(site_url('board/data/mitra'));
-        }
     }
 }

@@ -29,7 +29,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Tabel Keahlian</h3>
                             <br>
-                            <a href="<?php echo base_url()?>/board/data/keahlian/tambahKeahlian"><span class="badge badge-primary">Tambah</span></a>
+                            <a href="<?php echo base_url() ?>/board/data/keahlian/tambahKeahlian"><span class="badge badge-primary">Tambah</span></a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -50,15 +50,15 @@
                                     ?>
                                         <tr>
                                             <td><?php echo $row->id_keahlian ?></td>
-                                            <td><?php echo $row->daftar_keahlian?></td>
+                                            <td><?php echo $row->daftar_keahlian ?></td>
                                             <td>
-                                                <img src="<?php echo base_url('assets/gambar/mitra/'.$row->gambar_keahlian) ?>" width="120" />
+                                                <img src="<?php echo base_url('assets/gambar/mitra/' . $row->gambar_keahlian) ?>" width="120" />
                                             </td>
                                             <td><?php echo $row->deskripsi ?></td>
-                                            <td><?php echo $row->jenis?></td>
+                                            <td><?php echo $row->jenis ?></td>
                                             <td>
-                                                <a href="<?php echo base_url('board/data/keahlian/editKeahlian/'.$row->id_keahlian)?>"><span class="badge badge-success">Edit</span></a>
-                                                <a class="badge badge-danger tombol-hapus" href="<?php echo base_url('board/data/Keahlian/delete/'.$row->id_keahlian)?>"><span >Delete</span></a>
+                                                <a href="<?php echo base_url('board/data/keahlian/editKeahlian/' . $row->id_keahlian) ?>"><span class="badge badge-success">Edit</span></a>
+                                                <a class="badge badge-danger tombol-hapus" href="<?php echo base_url('board/data/Keahlian/delete/' . $row->id_keahlian) ?>"><span>Delete</span></a>
                                             </td>
                                         </tr>
                                     <?php

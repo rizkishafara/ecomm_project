@@ -47,7 +47,7 @@
         Swal.fire({
             icon: 'success',
             title: 'Sukses',
-            text: 'Berhasil ' + $flashData,
+            text: 'Berhasil. ' + $flashData,
         })
     }
     $('.tombol-hapus').on('click', function(e) {
