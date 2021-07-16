@@ -38,7 +38,6 @@
                                         <th>Pelanggan </th>
                                         <th>Kecamatan</th>
                                         <th>Kota</th>
-                                        <th>Lokasi Pelanggan</th>
                                         <th>Layanan</th>
                                         <th>Status Order</th>
                                         <th>Status Bayar</th>
@@ -57,7 +56,6 @@
                                             <td><?php echo $row->nama_pelanggan ?></td>
                                             <td><?php echo $row->nama_kec ?></td>
                                             <td><?php echo $row->nama_kota ?></td>
-                                            <td><?php echo $row->lokasi_pelanggan ?></td>
                                             <td><?php echo $row->daftar_keahlian ?></td>
                                             <td><?php echo $row->status_order ?></td>
                                             <td><?php echo $row->status_bayar ?></td>

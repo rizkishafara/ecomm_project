@@ -121,7 +121,7 @@ class m_data extends CI_Model
         $this->db->from('order_servis');
         $this->db->join('pelanggan', 'order_servis.id_pelanggan=pelanggan.id_pelanggan');
         $this->db->join('kota', 'order_servis.id_kota=kota.id_kota');
-        $this->db->join('kecamatan', 'order_servis.id_kecamatan=kecamatan.id_kec');
+        $this->db->join('kecamatan', 'order_servis.id_kec=kecamatan.id_kec');
         $this->db->join('keahlian', 'order_servis.id_keahlian=keahlian.id_keahlian');
         return $this->db->get();
     }

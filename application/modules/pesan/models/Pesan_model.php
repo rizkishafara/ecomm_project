@@ -8,7 +8,7 @@ class Pesan_model extends CI_Model
     public $tanggal;
     public $id_pelanggan;
     public $id_kota;
-    public $id_kecamatan;
+    public $id_kec;
     public $lokasi_pelanggan;
     public $id_keahlian;
     
@@ -73,7 +73,7 @@ class Pesan_model extends CI_Model
         $this->waktu = $post["waktu"];
         $this->id_pelanggan = $this->session->userdata('id');
         $this->id_kota = $post["kota"];
-        $this->id_kecamatan = $post["kecamatan"];
+        $this->id_kec = $post["kecamatan"];
         $this->lokasi_pelanggan = $post["lokasi_pelanggan"];
         $this->id_keahlian = $post['keahlian'];
         return $this->db->insert($this->_table, $this);

@@ -17,7 +17,7 @@
                 <?php
                 $no = 1;
                 foreach ($order_servis as $o) :
-                    if ($o['status_order'] == 'belum' && $o['status'] == 'tersedia') {
+                    if ($o['status_order'] == 'belum' && $o['status'] == 'tersedia' && $o['id_kec'] == $o['id_kecamatan']) {
                 ?>
                         <form method="post" action="<?php echo base_url() ?>mitra/mitra/input_detail">
                             <tr>
