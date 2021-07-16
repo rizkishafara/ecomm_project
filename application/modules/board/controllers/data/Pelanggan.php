@@ -45,6 +45,7 @@ class Pelanggan extends CI_Controller
         if ($validation->run()) {
             $edit->ubahPelanggan();;
             $this->session->set_flashdata('success', 'Berhasil disimpan');
+            redirect('board/data/pelanggan');
         }
 
         $data["pelanggan"] = $edit->getIdPelanggan($id);

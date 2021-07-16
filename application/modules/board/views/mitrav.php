@@ -1,3 +1,7 @@
+<!-- NOTIFICATION -->
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
+<div class="tombol-hapus" data-flashdata="<?= $this->session->flashdata('delete'); ?>"></div>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->

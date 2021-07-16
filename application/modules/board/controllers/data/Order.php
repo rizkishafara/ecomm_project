@@ -24,7 +24,7 @@ class Order extends CI_Controller
         $data['title'] = "Detail Data";
         $detail = $this->m_data;
 
-        $data["order"] = $detail->getIdOrder($id);
+        $data["detail"] = $detail->getIdOrder($id);
 
         $this->load->view('template/auth/head', $data);
         $this->load->view('template/auth/navbar');

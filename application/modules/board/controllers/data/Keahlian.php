@@ -28,7 +28,8 @@ class Keahlian extends CI_Controller
 
         if ($validation->run()) {
             $keahlian->simpanKeahlian();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            $this->session->set_flashdata('success', 'disimpan');
+            redirect('board/data/keahlian');
         }
         $this->load->view('template/auth/head', $data);
         $this->load->view('template/auth/navbar');
@@ -45,7 +46,8 @@ class Keahlian extends CI_Controller
         
         if ($validation->run()) {
             $edit->ubahKeahlian();;
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            $this->session->set_flashdata('success', 'disimpan');
+            redirect('board/data/keahlian');
         }
 
         $data["keahlian"] = $edit->getIdKeahlian($id);
@@ -62,6 +64,7 @@ class Keahlian extends CI_Controller
         if (!isset($id)) show_404();
         
         if ($this->m_data->deleteKeahlian($id)) {
+            $this->session->set_flashdata('success', 'keahlian');
             redirect(site_url('board/data/keahlian'));
         }
     }

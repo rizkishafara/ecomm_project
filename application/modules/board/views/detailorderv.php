@@ -33,32 +33,28 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="" enctype="multipart/form-data">
+                        <form role=""  enctype="multipart/form-data">
                             <div class="card-body">
-
-                                <div class="form-group">
+                              
+                                <div class="form-group" >
                                     <label for="id">ID Order</label>
-                                    <input readonly type="" class="form-control" id="id_oder" name="id_order" value="<?php echo $order->id_order ?>">
+                                    <input readonly type="" class="form-control" id="id_oder" name="id_order" value="<?php echo $detail->id_order ?>">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" >
                                     <label for="harga_jasa">Harga Jasa</label>
-                                    <input readonly type="text" class="form-control" id="harga_jasa" name="harga_jasa" placeholder="Nama order" value="<?php echo $order->harga_jasa ?>">
+                                    <input readonly type="text" class="form-control" id="harga_jasa" name="harga_jasa" placeholder="Nama order" value="<?php echo $detail->harga_jasa ?>" >
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" >
                                     <label for="biaya_admin">Biaya Admin</label>
-                                    <input readonly type="text" class="form-control" id="biaya_admin" name="biaya_admin" placeholder="Nama order" value="<?php echo $order->biaya_admin ?>">
+                                    <input readonly type="text" class="form-control" id="biaya_admin" name="biaya_admin" placeholder="Nama order" value="<?php echo $detail->biaya_admin ?>" >
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" >
                                     <label for="mitra">Mitra</label>
-                                    <input readonly type="text" class="form-control" id="mitra" name="mitra" placeholder="Nama order" value="<?php echo $order->nama_mitra ?>">
+                                    <input readonly type="text" class="form-control" id="mitra" name="mitra" placeholder="Nama order" value="<?php echo $detail->nama_mitra ?>" >
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" >
                                     <label for="mitra">Bukti Tf</label></br>
-                                    <img src="<?php echo base_url('assets/gambar/bukti_tf/' . $order->bukti_tf) ?>" width="200" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="mitra">Rating</label>
-                                    <input readonly type="text" class="form-control" id="mitra" name="mitra" placeholder="Nama order" value="<?php echo $order->rating_review ?>">
+                                    <img src="<?php echo base_url('assets/gambar/bukti_tf/'.$detail->bukti_tf) ?>" width="200" />
                                 </div>
 
                             </div>

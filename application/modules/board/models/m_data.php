@@ -170,6 +170,7 @@ class m_data extends CI_Model
         $this->db->select('*');
         $this->db->from('detail_order_servis');
         $this->db->join('mitra', 'detail_order_servis.id_mitra=mitra.id_mitra');
+        $this->db->where('id_order', $id);
         return $this->db->get()->row();
     }
 

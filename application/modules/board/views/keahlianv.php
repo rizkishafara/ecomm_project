@@ -1,3 +1,6 @@
+<!-- NOTIFICATION -->
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -55,7 +58,7 @@
                                             <td><?php echo $row->jenis?></td>
                                             <td>
                                                 <a href="<?php echo base_url('board/data/keahlian/editKeahlian/'.$row->id_keahlian)?>"><span class="badge badge-success">Edit</span></a>
-                                                <a href="<?php echo base_url('board/data/keahlian/delete/'.$row->id_keahlian)?>"><span class="badge badge-danger">Delete</span></a>
+                                                <a class="badge badge-danger tombol-hapus" href="<?php echo base_url('board/data/Keahlian/delete/'.$row->id_keahlian)?>"><span >Delete</span></a>
                                             </td>
                                         </tr>
                                     <?php
