@@ -1,7 +1,7 @@
 <div class="">
     <!-- <?php echo json_encode($detail) ?> -->
     <div class="container" style="width: 300px; margin-right:883px;">
-        <form action="<?php echo base_url('mitra/mitra/tarik_saldo') ?>">
+        <form action="#">
             <div class="card">
                 <div class="card-body">
                     <?php
