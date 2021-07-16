@@ -49,7 +49,7 @@
                             <tr>
                                 <td>Lokasi Order</td>
                                 <td>:</td>
-                                <td> <?php echo $d['alamat_pelanggan'] ?> </td>
+                                <td> <?php echo $d['lokasi_pelanggan'] ?> </td>
                             </tr>
                             <tr>
                                 <td>Waktu Pengerjaan</td>
@@ -83,6 +83,11 @@
                     <div class="modal-body">
                         <?php echo form_open_multipart('service/page/tambah_mitra'); ?>
                         <div class="card-body">
+                            <div class="form-group">
+                                <label for="nama_produk">Nominal</label>
+                                <input type="text" class="form-control" id="nominal" name="nominal" placeholder="Masukan Nilai Nominal">
+                                <?php echo form_error('nama_produk', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
                             <div class="form-group">
                                 <label for="nama_produk">Nomor Rekening</label>
                                 <input type="text" class="form-control" id="norek" name="norek" placeholder="norek">
