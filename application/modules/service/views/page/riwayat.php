@@ -71,7 +71,12 @@
                     <?php } else if ($r['status_order'] == 'sedang diproses') { ?>
 
                         <p><?php echo $r['status_order'] ?></p>
-                        <a href="<?php echo base_url('service/page/batalOrder/'.$r['id_order'])?>" class="btn btn-danger">Batal Order</a>
+                        <form action="<?php echo base_url('service/page/batalOrder')?>" method="post">
+                            <input type="text" name="id_mitra" value="<?php echo $r['id_mitra'] ?>">
+                            <input type="hidden" name="id_order" value="<?php echo $r['id_order'] ?>">
+
+                            <button type="submit" class="btn btn-danger">Batal Order</button>
+                        </form>
 
                     <?php } else if ($r['status_order'] == 'selesai' && $r['status_bayar'] == 'Sudah Terbayar' && $rating == 0) { ?>
 
@@ -81,7 +86,7 @@
 
                                 <div class="input-group flex-column flex-sm-row mb-3">
                                     <div class="input-group-append">
-                                        <a href="<?php echo base_url('service/page/review_rating/' . $r['id_order']) ?>" type="button" class="btn btn-info btn-xs" >Beri Ulasan</a>
+                                        <a href="<?php echo base_url('service/page/review_rating/' . $r['id_order']) ?>" type="button" class="btn btn-info btn-xs">Beri Ulasan</a>
                                     </div>
                                 </div>
                             </div>
@@ -94,5 +99,3 @@
             </div>
         <?php endforeach; ?>
     </div>
-
-    

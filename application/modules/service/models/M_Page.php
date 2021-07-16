@@ -57,6 +57,12 @@ class M_Page extends CI_Model
         $this->db->delete('order_servis');
     }
 
+    public function ubah_status_mitra($id, $data, $table)
+    {
+        $this->db->where($id);
+        $this->db->update($table, $data);
+    }
+
     public function riwayat_order($id)
     {
         $this->db->select('*');

@@ -173,8 +173,21 @@ class Page extends CI_Controller
         $this->load->view('template/shop/footer_shop');
     }
 
-    public function batalOrder($id = null){
-        $this->M_Page->orderBatal($id);
+    public function batalOrder(){
+        $id_mitra = $this->input->post('id_mitra');
+        $id_order = $this->input->post('id_order');
+
+        $status_mitra = 'tersedia';
+
+        $id_mit = array(
+            'id_mitra' => $id_mitra
+        );
+        $data = array(
+            'status' => $status_mitra
+        );
+
+        $this->M_Page->ubah_status_mitra($id_mit, $data, 'mitra');
+        $this->M_Page->orderBatal($id_order);
         redirect('service/page/layanan');
     }
 
