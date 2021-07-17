@@ -97,7 +97,7 @@ class Page extends CI_Controller
         //load library
         $this->load->library('pagination');
         //pagination
-        $config['base_url'] = 'http://function-service.xyz/service/page/layanan/';
+        $config['base_url'] = 'http://localhost/ecomm_service/service/page/layanan/';
         $config['total_rows'] = $this->M_Page->count_all_data();
         $data['total_rows'] = $config['total_rows'];
         $config['per_page'] = 6;
