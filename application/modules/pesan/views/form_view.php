@@ -53,7 +53,7 @@
 
 						<div class="form-group">
 							<label for="example-date-input" class="form-label">Tanggal Pengerjaan</label>
-							<input class="form-control <?php echo form_error('tanggal') ? 'is-invalid' : '' ?>" type="text" id="datepicker" name="tanggal">
+							<input class="form-control <?php echo form_error('tanggal') ? 'is-invalid' : '' ?>" type="text" id="datepicker" name="tanggal" autocomplete="off">
 							<div class="invalid-feedback">
 								<?php echo form_error('tanggal') ?>
 							</div>

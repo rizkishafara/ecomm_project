@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 16, 2021 at 05:09 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Host: localhost:3306
+-- Generation Time: Jul 17, 2021 at 11:29 AM
+-- Server version: 10.2.39-MariaDB-log-cll-lve
+-- PHP Version: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ecomm_service`
+-- Database: `functio1_ecomm_service`
 --
 
 -- --------------------------------------------------------
@@ -33,7 +34,7 @@ CREATE TABLE `detail_order_servis` (
   `harga_jasa` int(11) NOT NULL,
   `biaya_admin` int(11) NOT NULL,
   `id_mitra` int(11) NOT NULL,
-  `bukti_tf` varchar(50) NOT NULL
+  `bukti_tf` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -44,7 +45,8 @@ INSERT INTO `detail_order_servis` (`id`, `id_order`, `harga_jasa`, `biaya_admin`
 (8, 7, 20000, 2000, 6, 'background_2.png'),
 (9, 8, 20000, 2000, 6, 'Didan_Hafiz_Putra_Pratama.png'),
 (10, 9, 20000, 2000, 6, 'index.jpg'),
-(11, 11, 20000, 2000, 6, 'pexels-snapwire-730896.jpg');
+(11, 11, 20000, 2000, 6, 'pexels-snapwire-730896.jpg'),
+(12, 12, 20000, 2000, 6, 'Logo1.png');
 
 -- --------------------------------------------------------
 
@@ -173,9 +175,9 @@ CREATE TABLE `mitra` (
   `foto_mitra` varchar(100) NOT NULL,
   `alamat_mitra` varchar(255) NOT NULL,
   `harga_jasa` int(11) NOT NULL,
-  `no_ktp` int(16) NOT NULL,
+  `no_ktp` varchar(16) NOT NULL,
   `status` enum('tersedia','tidak tersedia') NOT NULL,
-  `rating` double NOT NULL
+  `rating` double NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -183,7 +185,9 @@ CREATE TABLE `mitra` (
 --
 
 INSERT INTO `mitra` (`id_mitra`, `id_pelanggan`, `id_keahlian`, `nama_mitra`, `foto_mitra`, `alamat_mitra`, `harga_jasa`, `no_ktp`, `status`, `rating`) VALUES
-(6, 3, 1, 'Tamago', 'background_2.png', 'adasfas', 20000, 2147483647, 'tidak tersedia', 4);
+(6, 3, 1, 'Tamago', 'Tamago.jpg', 'adasfas', 20000, '2147483647', 'tersedia', 4),
+(12, 12, 19, 'coba', 'belum2.jpg', 'asdas', 20000, '3322107290621444', 'tersedia', 0),
+(13, 12, 18, 'mitratest', 'listrik1.jpg', 'test123', 20000, '3306123456789012', 'tersedia', 0);
 
 --
 -- Triggers `mitra`
@@ -251,7 +255,8 @@ INSERT INTO `non_mitra` (`id_mitra`, `id_pelanggan`, `id_keahlian`, `nama_mitra`
 (7, 2, 1, 'fde', '2', '22', 2332, 23322, 'tidak tersedia', 1, '2021-07-16', 'root@localhost'),
 (8, 2, 1, 'wc', 'dwed', 'wedw', 12131, 312, 'tidak tersedia', 2, '2021-07-16', 'root@localhost'),
 (9, 2, 1, 'dc', 'dsd', 'asas', 23233, 232, 'tersedia', 1, '2021-07-16', 'root@localhost'),
-(10, 10, 19, 'test', 'avatar5.png', 'test', 20000, 2147483647, 'tersedia', 0, '2021-07-16', 'root@localhost');
+(10, 10, 19, 'test', 'avatar5.png', 'test', 20000, 2147483647, 'tersedia', 0, '2021-07-16', 'root@localhost'),
+(11, 12, 18, 'testmitra', 'builder-15.jpg', 'test', 20000, 2147483647, 'tersedia', 0, '2021-07-17', 'functio1@localhost');
 
 -- --------------------------------------------------------
 
@@ -261,11 +266,11 @@ INSERT INTO `non_mitra` (`id_mitra`, `id_pelanggan`, `id_keahlian`, `nama_mitra`
 
 CREATE TABLE `order_servis` (
   `id_order` int(11) NOT NULL,
-  `tanggal` varchar(8) NOT NULL,
+  `tanggal` varchar(10) NOT NULL,
   `waktu` time NOT NULL,
   `id_pelanggan` int(11) NOT NULL,
   `id_kota` int(11) NOT NULL,
-  `id_kecamatan` int(11) NOT NULL,
+  `id_kec` int(11) NOT NULL,
   `lokasi_pelanggan` varchar(255) NOT NULL,
   `id_keahlian` int(11) NOT NULL,
   `status_order` enum('belum','sedang diproses','selesai','') NOT NULL,
@@ -277,12 +282,13 @@ CREATE TABLE `order_servis` (
 -- Dumping data for table `order_servis`
 --
 
-INSERT INTO `order_servis` (`id_order`, `tanggal`, `waktu`, `id_pelanggan`, `id_kota`, `id_kecamatan`, `lokasi_pelanggan`, `id_keahlian`, `status_order`, `status_bayar`, `rating_review`) VALUES
+INSERT INTO `order_servis` (`id_order`, `tanggal`, `waktu`, `id_pelanggan`, `id_kota`, `id_kec`, `lokasi_pelanggan`, `id_keahlian`, `status_order`, `status_bayar`, `rating_review`) VALUES
 (7, '07/15/20', '12:00:00', 2, 1, 1, 'ailsdjlas', 1, 'selesai', 'Sudah Terbayar', 1),
 (8, '07/16/20', '12:00:00', 2, 2, 17, 'asfasf', 1, 'selesai', 'Sudah Terbayar', 0),
 (9, '07/15/20', '12:00:00', 2, 1, 1, 'sdasd', 1, 'selesai', 'Sudah Terbayar', 4),
 (10, '07/15/20', '15:00:00', 4, 1, 16, 'dasd', 1, 'belum', 'Belum Terbayar', 0),
-(11, '07/15/20', '12:00:00', 2, 1, 16, 'aonfas', 1, 'sedang diproses', 'Belum Terbayar', 0);
+(11, '07/15/20', '12:00:00', 2, 1, 16, 'aonfas', 1, 'sedang diproses', 'Belum Terbayar', 0),
+(12, '07/31/2021', '00:00:00', 2, 1, 1, 'Ini Rian', 1, 'selesai', 'Sudah Terbayar', 2);
 
 -- --------------------------------------------------------
 
@@ -309,11 +315,12 @@ CREATE TABLE `pelanggan` (
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `nama_pelanggan`, `email_pelanggan`, `username_pelanggan`, `password_pelanggan`, `alamat_pelanggan`, `no_hp`, `jenis`, `id_kota`, `id_kecamatan`) VALUES
 (1, 'admin', 'admin@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '081111111111', 'admin', 0, 0),
-(2, 'Rian Eko', 'rian@gmail.com', 'rian', '950a25b0774acaf3cbb6a4bf3e4dd76f', 'Jl.Dr.Cipto Mangunkusumo', '088233520366', 'member', 2, 17),
+(2, 'Rian Eko', 'rian@gmail.com', 'rian', 'cb2b28afc2cc836b33eb7ed86f99e65a', 'Jl.Dr.Cipto Mangunkusumo', '088233520366', 'member', 2, 17),
 (3, 'Tama', 'tama@gmail.com', 'tama', '407b056f5e6197a948b7f836567fb63d', 'asdasdasd', '0456536', 'mitra', 1, 1),
 (4, 'Rizki Shafara', 'rizki@gmail.com', 'rizki', 'd27760903cceed436111922912553b96', 'Jln. Ngaliyan Nomor 52', '088233520117', 'member', 1, 7),
-(6, 'Muhammad Iqbal', 'iqbal@gmail.com', 'iqbal', '0c0db1b3bffc603096ca7f053cbb72f4', 'Jalan Apa Adanya', '0918230912', 'member', 2, 17),
-(10, 'test', 'test@gmail.com', 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', '018923901', 'member', 1, 1);
+(6, 'Muhammad Iqbal', 'iqbal@gmail.com', 'iqbal', 'eedae20fc3c7a6e9c5b1102098771c70', 'Jalan Apa Adanya', '0918230912', 'member', 2, 17),
+(11, 'Rizki Shafara Adiyatma', 'rizki99@gmail.com', 'rizki', '3e089c076bf1ec3a8332280ee35c28d4', 'Pondok Gedang Asri', '0895800898797', 'member', 2, 35),
+(12, 'testmitra', 'test@gmail.com', 'testmitra', 'de83eee201063dd954729e80c0590ff0', 'test', '0982131231', 'mitra', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -335,7 +342,9 @@ INSERT INTO `pembayaran_servis` (`id_pembayaran`, `id_order`, `total_harga`) VAL
 (2, 7, 22000),
 (3, 8, 22000),
 (4, 9, 22000),
-(5, 8, 22000);
+(5, 8, 22000),
+(6, 12, 22000),
+(7, 12, 22000);
 
 -- --------------------------------------------------------
 
@@ -360,7 +369,8 @@ INSERT INTO `review_servis` (`id_review`, `id_order`, `id_mitra`, `review`, `rat
 (5, 9, 6, 'Bagus', '4'),
 (6, 9, 6, 'Bagus Sekali', '4'),
 (7, 9, 6, 'Bagus Sekali', '4'),
-(8, 8, 6, 'Bagus', '4');
+(8, 8, 6, 'Bagus', '4'),
+(9, 12, 6, 'Tidak datang karena jam 00.00', '2');
 
 --
 -- Indexes for dumped tables
@@ -434,7 +444,7 @@ ALTER TABLE `review_servis`
 -- AUTO_INCREMENT for table `detail_order_servis`
 --
 ALTER TABLE `detail_order_servis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `keahlian`
@@ -458,31 +468,31 @@ ALTER TABLE `kota`
 -- AUTO_INCREMENT for table `mitra`
 --
 ALTER TABLE `mitra`
-  MODIFY `id_mitra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_mitra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `order_servis`
 --
 ALTER TABLE `order_servis`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `pembayaran_servis`
 --
 ALTER TABLE `pembayaran_servis`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `review_servis`
 --
 ALTER TABLE `review_servis`
-  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

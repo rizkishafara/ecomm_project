@@ -11,7 +11,7 @@ class Pesan_model extends CI_Model
     public $id_kec;
     public $lokasi_pelanggan;
     public $id_keahlian;
-    
+
 
     public function rules()
     {
@@ -58,11 +58,11 @@ class Pesan_model extends CI_Model
             ]
         ];
     }
-    public function get_keahlian_id($keahlian){
+    public function get_keahlian_id($keahlian)
+    {
         $this->db->from('keahlian');
         $this->db->where('id_keahlian', $keahlian);
         return $this->db->get()->row_array();
-
     }
 
     public function pesan()

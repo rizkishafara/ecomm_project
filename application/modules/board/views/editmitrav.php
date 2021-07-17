@@ -94,13 +94,19 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="status">Status</label>
-                                    <input class="form-control <?php echo form_error('status') ? 'is-invalid' : '' ?>" type="text" name="status" placeholder="Status" value="<?php echo $mitra->status ?>" />
+                                <div class="form-group ">
+                                    <label for="status">Status</label></br>
+                                    <?php $status = $mitra->status; ?>
+                                    <select class=" form-control bootstrap-select <?php echo form_error('status') ? 'is-invalid' : '' ?>" type="select" name="status" placeholder="Status" aria-label="Default select example">
+                                        <option value="">Pilih Status</option>
+                                        <option <?php echo ($status == 'tidak tersedia') ? "selected" : "" ?> value="tidak tersedia">Tidak Tersedia</option>
+                                        <option <?php echo ($status == 'tersedia') ? "selected" : "" ?> value="tersedia">Tersedia</option>
+                                    </select>
                                     <div class="invalid-feedback">
                                         <?php echo form_error('status') ?>
                                     </div>
                                 </div>
+                                
                                 <div class="form-group">
                                     <label for="rating">Rating</label>
                                     <input class="form-control <?php echo form_error('rating') ? 'is-invalid' : '' ?>" type="text" name="rating" placeholder="Rating" value="<?php echo $mitra->rating ?>" />

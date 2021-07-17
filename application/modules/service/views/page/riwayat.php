@@ -72,7 +72,7 @@
 
                         <p><?php echo $r['status_order'] ?></p>
                         <form action="<?php echo base_url('service/page/batalOrder')?>" method="post">
-                            <input type="text" name="id_mitra" value="<?php echo $r['id_mitra'] ?>">
+                            <input type="hidden" name="id_mitra" value="<?php echo $r['id_mitra'] ?>">
                             <input type="hidden" name="id_order" value="<?php echo $r['id_order'] ?>">
 
                             <button type="submit" class="btn btn-danger">Batal Order</button>

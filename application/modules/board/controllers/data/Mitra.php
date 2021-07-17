@@ -28,7 +28,8 @@ class Mitra extends CI_Controller
         
         if ($validation->run()) {
             $edit->ubahMitra();;
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            $this->session->set_flashdata('success', 'MItra telah disimpan!');
+            redirect('board/data/mitra');
         }
 
         $data["mitra"] = $edit->getIdMitra($id);

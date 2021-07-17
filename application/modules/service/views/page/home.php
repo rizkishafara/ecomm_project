@@ -60,11 +60,16 @@
                 <h5 class="text-uppercase">Ingin Bergabung?</h5>
                 <p class="text-small text-muted mb-0">Jadilah salah satu Mitra kami</p>
             </div>
-            <div style="margin-left: 505px; margin-top:5px;">
-
+            <div style="margin-top:5px;">
                 <div class="input-group flex-column flex-sm-row mb-3">
-                    <div class="input-group-append">
-                        <button class="btn btn-dark btn-block" id="button-addon2" data-toggle="modal" type="button" data-target="#exampleModal">Daftar </button>
+                    <div class="input-group-append mx-auto">
+                        <?php if (empty($this->session->userdata['id'])){?>
+                            <button disabled class="btn btn-dark">Silahkan login terlebih dahulu</button>
+                        <?php }else if($this->session->userdata['jenis'] == "mitra"){?>
+                            <button disabled class="btn btn-dark">Anda sudah menjadi mitra kami</button>
+                        <?php }else{ ?>
+                              <button  class="btn btn-dark btn-block" id="button-addon2" data-toggle="modal" type="button" data-target="#exampleModal">Daftar </button>
+                        <?php }?>
                     </div>
                 </div>
 

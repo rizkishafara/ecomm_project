@@ -45,7 +45,7 @@ class Form extends CI_Controller {
 
         if ($validation->run()) {
             $pesan->pesan();
-            $this->session->set_flashdata('pesan', ', Pesanan Diproses!');
+            $this->session->set_flashdata('pesan', 'Pesanan Diproses!');
             $this->pesan($id = null);
         }
         redirect(site_url("service/page/layanan"));

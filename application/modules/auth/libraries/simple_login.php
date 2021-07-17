@@ -51,7 +51,7 @@ class simple_login
                 $this->CI->session->set_flashdata('pesan', 'Admin telah login!');
                 //redirect ke halaman dashboard
                 redirect(site_url('board/dashboard'));
-            } else {
+            } else if($jenis == 'mitra') {
                 $row = $this->CI->db->query('SELECT * FROM mitra where id_pelanggan = "' . $id . '"');
                 $mitra = $row->row();
                 $id_mitra = $mitra->id_mitra;

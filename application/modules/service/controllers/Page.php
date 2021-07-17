@@ -12,9 +12,10 @@ class Page extends CI_Controller
     public function index()
     {
         $data['title'] = "Home";
+        //$jenis = $this->session->userdata['jenis'];
         $data['id'] = $this->M_Page->get_keahlian('id');
         $id = $this->session->userdata('id');
-        //echo $id;
+        //echo $jenis;
         $this->load->view('template/shop/header_shop', $data);
         $this->load->view('template/shop/navbar_shop', $data);
         $this->load->view('page/home', $data);
@@ -22,7 +23,12 @@ class Page extends CI_Controller
     }
 
     public function tambah_mitra()
-    {
+    {   
+        if (empty($this->session->userdata['id'])) {
+            $this->session->set_flashdata('sukses', "Silahkan Login Dahulu");
+            redirect('auth/login');
+        }
+        
         $this->form_validation->set_rules('nik', 'NIK', 'required');
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
@@ -84,11 +90,16 @@ class Page extends CI_Controller
 
     public function layanan()
     {
-
+        
+        if (empty($this->session->userdata['id'])) {
+            $this->session->set_flashdata('sukses', "Silahkan Login Dahulu");
+            redirect('auth/login');
+        }
+        
         //load library
         $this->load->library('pagination');
         //pagination
-        $config['base_url'] = 'http://localhost/ecomm_service/service/page/layanan/';
+        $config['base_url'] = 'http://function-service.xyz/service/page/layanan/';
         $config['total_rows'] = $this->M_Page->count_all_data();
         $data['total_rows'] = $config['total_rows'];
         $config['per_page'] = 6;
@@ -114,9 +125,7 @@ class Page extends CI_Controller
         $data['mitra'] = $this->M_Page->tampil_mitra($config['per_page'], $data['start']);
 
         $id = $this->session->userdata['id'];
-        if (empty($id)) {
-            redirect('auth/login');
-        }
+        
         $this->load->view('template/shop/header_shop', $data);
         $this->load->view('template/shop/navbar_shop');
         $this->load->view('template/shop/sidebar_shop', $data);
@@ -166,13 +175,15 @@ class Page extends CI_Controller
 
     public function riwayat()
     {
+         if (empty($this->session->userdata['id'])) {
+            $this->session->set_flashdata('sukses', "Silahkan Login Dahulu");
+            redirect('auth/login');
+        }
         $data['title'] = "Riwayat";
         $id = $this->session->userdata['id'];
         $data['riwayat'] = $this->M_Page->riwayat_order($id);
        
-        if (empty($id)) {
-            redirect('auth/login');
-        }
+        
         $this->load->view('template/shop/header_shop', $data);
         $this->load->view('template/shop/navbar_shop');
         $this->load->view('page/riwayat', $data);
@@ -226,11 +237,8 @@ class Page extends CI_Controller
             if (!$this->upload->do_upload('bukti_tf')) {
                 $error = array('error' => $this->upload->display_errors());
                 echo '<div class="alert alert-danger">' . $error['error'] . '</div>';
-                echo $bukti_tf;
             } else {
                 $bukti_tf = $this->upload->data('file_name');
-                echo $bukti_tf;
-                echo 'success';
             }
         }
 
