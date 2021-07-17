@@ -25,16 +25,21 @@
                 </div>
                 <div class="form-group">
                     <label for="nama_produk">Rating</label><br>
+                    
                     <input type="radio" name="rating" value="1" />
-                    <label for="change" class="mr-3">1</label>
+                    <label for="change" class="mr-5">Buruk</label>
+                    
                     <input type="radio" name="rating" value="2" />
-                    <label for="change" class="mr-3">2</label>
-                    <input type="radio" name="rating" i value="3" />
-                    <label for="change" class="mr-3">3</label>
+                    <label for="change" class="mr-5">Kurang Puas</label>
+                    
+                    <input type="radio" name="rating" value="3" />
+                    <label for="change" class="mr-5">Cukup Puas</label>
+                    
                     <input type="radio" name="rating" value="4" />
-                    <label for="change" class="mr-3">4</label>
+                    <label for="change" class="mr-5">Puas</label>
+                    
                     <input type="radio" name="rating" value="5" />
-                    <label for="change" class="mr-3">5</label>
+                    <label for="change" class="mr-5">Sangat Puas</label>
                 </div>
             </div>
             <!-- /.card-body -->

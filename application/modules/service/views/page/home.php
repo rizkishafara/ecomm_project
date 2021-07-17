@@ -93,7 +93,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="nama_produk">NIK</label>
-                            <input type="text" class="form-control" id="nik" name="nik" placeholder="NIK">
+                            <input type="text" class="form-control" id="nik" name="nik" placeholder="NIK" maxlength="16">
                             <?php echo form_error('nama_produk', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="form-group">

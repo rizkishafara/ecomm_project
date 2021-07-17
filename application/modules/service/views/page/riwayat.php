@@ -20,7 +20,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Nama Pelanggan</td>
+                            <td>Nama Petugas</td>
                             <td>:</td>
                             <td><?php echo $r['nama_mitra'] ?></td>
                         </tr>

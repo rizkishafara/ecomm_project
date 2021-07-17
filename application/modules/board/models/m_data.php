@@ -324,7 +324,7 @@ class m_data extends CI_Model
     }
     private function _imageMitra()
     {
-        $config['upload_path']          = 'assets/gambar/img';
+        $config['upload_path']          = 'assets/gambar/mitra';
         $config['allowed_types']        = 'gif|jpg|png|jpeg';
         $config['file_name']            = $this->nama_mitra;
         $config['overwrite']            = true;

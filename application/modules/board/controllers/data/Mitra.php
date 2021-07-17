@@ -58,7 +58,7 @@ class Mitra extends CI_Controller
         );
         $this->m_data->edit_jenis($id, $data, 'pelanggan');
         $this->m_data->deleteMitra($id_mitra);
-
+        $this->session->set_flashdata('success', 'Mitra telah dihapus!');
         redirect(site_url('board/data/mitra'));
         
     }

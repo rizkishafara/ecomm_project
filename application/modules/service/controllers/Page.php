@@ -23,12 +23,12 @@ class Page extends CI_Controller
     }
 
     public function tambah_mitra()
-    {   
+    {
         if (empty($this->session->userdata['id'])) {
             $this->session->set_flashdata('sukses', "Silahkan Login Dahulu");
             redirect('auth/login');
         }
-        
+
         $this->form_validation->set_rules('nik', 'NIK', 'required');
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
@@ -54,10 +54,8 @@ class Page extends CI_Controller
             if (!$this->upload->do_upload('gambar')) {
                 $error = array('error' => $this->upload->display_errors());
                 echo '<div class="alert alert-danger">' . $error['error'] . '</div>';
-                echo $foto;
             } else {
                 $foto = $this->upload->data('file_name');
-                echo 'success';
             }
         }
 
@@ -90,12 +88,12 @@ class Page extends CI_Controller
 
     public function layanan()
     {
-        
+
         if (empty($this->session->userdata['id'])) {
             $this->session->set_flashdata('sukses', "Silahkan Login Dahulu");
             redirect('auth/login');
         }
-        
+
         //load library
         $this->load->library('pagination');
         //pagination
@@ -125,7 +123,7 @@ class Page extends CI_Controller
         $data['mitra'] = $this->M_Page->tampil_mitra($config['per_page'], $data['start']);
 
         $id = $this->session->userdata['id'];
-        
+
         $this->load->view('template/shop/header_shop', $data);
         $this->load->view('template/shop/navbar_shop');
         $this->load->view('template/shop/sidebar_shop', $data);
@@ -175,22 +173,23 @@ class Page extends CI_Controller
 
     public function riwayat()
     {
-         if (empty($this->session->userdata['id'])) {
+        if (empty($this->session->userdata['id'])) {
             $this->session->set_flashdata('sukses', "Silahkan Login Dahulu");
             redirect('auth/login');
         }
         $data['title'] = "Riwayat";
         $id = $this->session->userdata['id'];
         $data['riwayat'] = $this->M_Page->riwayat_order($id);
-       
-        
+
+
         $this->load->view('template/shop/header_shop', $data);
         $this->load->view('template/shop/navbar_shop');
         $this->load->view('page/riwayat', $data);
         $this->load->view('template/shop/footer_shop');
     }
 
-    public function batalOrder(){
+    public function batalOrder()
+    {
         $id_mitra = $this->input->post('id_mitra');
         $id_order = $this->input->post('id_order');
 
@@ -208,7 +207,8 @@ class Page extends CI_Controller
         redirect('service/page/layanan');
     }
 
-    public function review_rating($id = null){
+    public function review_rating($id = null)
+    {
         $data['title'] = "Review";
         $data['riwayat'] = $this->M_Page->beriRating($id);
         $this->load->view('template/shop/header_shop', $data);
@@ -223,14 +223,14 @@ class Page extends CI_Controller
         $total = $this->input->post('total');
         $status_bayar = 'Sudah Terbayar';
         $bukti_tf = $_FILES['bukti_tf'];
-       
+
 
         if ($bukti_tf == '') {
             echo '....';
         } else {
             $config['upload_path'] = 'assets/gambar/bukti_tf';
             $config['allowed_types'] = 'jpg|png|jpeg';
-            
+
 
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
@@ -244,7 +244,7 @@ class Page extends CI_Controller
 
         $data = array(
             'status_bayar' => $status_bayar,
-            
+
         );
 
         $id_order = array(
@@ -252,7 +252,7 @@ class Page extends CI_Controller
         );
         $detail_riwayat = array(
             'bukti_tf' => $bukti_tf
-            
+
         );
 
         $pembayaran = array(
@@ -273,7 +273,8 @@ class Page extends CI_Controller
         $hasil = $this->load->view('page/view_search', $data);
     }
 
-    public function review_mitra(){
+    public function review_mitra()
+    {
         $post = $this->input->post();
         $id_order = $post['id_order'];
         $id_mitra = $post['id_mitra'];
@@ -307,6 +308,4 @@ class Page extends CI_Controller
         $this->M_Page->edit_rating_mitra($id_mit, $mitra, 'mitra');
         redirect('service/page/riwayat');
     }
-
-   
 }

@@ -1,5 +1,5 @@
 <div class="">
-    <!-- <?php echo json_encode($detail) ?> -->
+     <!--<?php echo json_encode($detail) ?> -->
     <div class="container" style="width: 300px; margin-right:883px;">
         <form action="#">
             <div class="card">
@@ -21,6 +21,7 @@
     <div class="container pb-5 pt-5">
         <?php
         foreach ($detail as $d) {
+        
         ?>
             <form action="<?php echo base_url('mitra/mitra/change_status') ?>" method="post">
 
@@ -51,12 +52,35 @@
                                 <td>:</td>
                                 <td> <?php echo $d['lokasi_pelanggan'] ?> </td>
                             </tr>
-                            <tr>
-                                <td>Waktu Pengerjaan</td>
-                                <td>:</td>
-                                <td><?php echo $d['waktu'] ?>, <?php echo $d['tanggal'] ?></td>
-                            </tr>
+                             <?php foreach ($review as $r) {
 
+                                if ($r['rating'] == "1") {
+                                    $rating = "Buruk";
+                                } else if ($r['rating'] == "2") {
+                                    $rating = "Kurang Puas";
+                                } else if ($r['rating'] == "3") {
+                                    $rating = "Cukup Puas";
+                                } else if ($r['rating'] == "4") {
+                                    $rating = "Puas";
+                                } else {
+                                    $rating = "Sangat Puas";
+                                }
+                            ?>
+                                <?php if ($d['id_order'] == $r['id_order']) { ?>
+                                    <tr>
+                                        <td>Rating</td>
+                                        <td>:</td>
+                                        <td> <?php echo $rating?> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Review</td>
+                                        <td>:</td>
+                                        <td> <?php echo $r['review']?> </td>
+                                    </tr>
+                                <?php } else if ($d['rating_review'] == "0") { ?>
+
+                                <?php } ?>
+                            <?php } ?>
                         </table>
                     </div>
                     <div class="card-footer">
@@ -81,7 +105,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <?php echo form_open_multipart('service/page/tambah_mitra'); ?>
+                        <?php echo form_open_multipart('#'); ?>
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="nama_produk">Nominal</label>
@@ -96,12 +120,13 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button type="submit" name="btnSubmit" class="btn btn-primary">Tarik Saldo</button>
+                            <button type="submit" name="btnSubmit" class="btn btn-dark">Tarik Saldo</button>
                         </div>
                         <?php echo form_close(); ?>
                     </div>
                 </div>
             </div>
         </div>
-
+        
+         
     </div>

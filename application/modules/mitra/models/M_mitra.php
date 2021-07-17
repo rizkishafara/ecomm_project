@@ -104,6 +104,19 @@ class M_mitra extends CI_Model
         $this->db->order_by('order_servis.id_order', 'desc');
         return $this->db->get()->result_array();
     }
+    
+    public function get_review_id($id)
+    {
+        $this->db->select('*');
+        $this->db->from('pelanggan');
+        $this->db->join('order_servis', 'pelanggan.id_pelanggan=order_servis.id_pelanggan');
+        $this->db->join('detail_order_servis', 'detail_order_servis.id_order=order_servis.id_order');
+        $this->db->join('keahlian', 'order_servis.id_keahlian=keahlian.id_keahlian');
+        $this->db->join('mitra', 'mitra.id_mitra=detail_order_servis.id_mitra');
+        $this->db->join('review_servis', 'review_servis.id_order=order_servis.id_order');
+        $this->db->where('mitra.id_mitra', $id);
+        return $this->db->get()->result_array();
+    }
 
     public function change_order_status($id_order, $data, $table)
     {

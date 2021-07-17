@@ -57,7 +57,7 @@
                                             <td><?php echo $row->daftar_keahlian ?></td>
                                             <td><?php echo $row->nama_mitra ?></td>
                                             <td>
-                                                <img src="<?php echo base_url('assets/gambar/img/' . $row->foto_mitra) ?>" width="120" />
+                                                <img src="<?php echo base_url('assets/gambar/mitra/' . $row->foto_mitra) ?>" width="120" />
                                             </td>
                                             <td><?php echo $row->alamat_mitra ?></td>
                                             <td><?php echo $row->harga_jasa ?></td>

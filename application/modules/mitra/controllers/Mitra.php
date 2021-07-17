@@ -71,6 +71,7 @@ class Mitra extends CI_Controller
         $data['saldo'] = $this->M_mitra->getSAldo($id);
         $data['riwayat'] = $this->M_mitra->riwayat_order($id);
         $data['detail'] = $this->M_mitra->get_mitra_id($id);
+        $data['review'] = $this->M_mitra->get_review_id($id);
         $this->load->view('template/shop/header_shop', $data);
         $this->load->view('template/shop/navbar_shop');
         $this->load->view('mitra/riwayat', $data);

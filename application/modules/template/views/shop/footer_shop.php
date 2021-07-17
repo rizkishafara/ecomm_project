@@ -150,7 +150,16 @@
     });
 </script>
 
-
+<script>
+// on clik trash icon    
+$('.review').click(function(){
+    //get cover id
+    var id=$(this).attr('data-id');
+    
+    //set href to call modal
+    $('#model_review').attr('href','http://function-service.xyz/mitra/mitra/riwayat?id='+id)
+});
+</script>
 <!-- Life Chat -->
 
 <!-- Start of LiveChat (www.livechatinc.com) code -->
